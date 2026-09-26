@@ -1,0 +1,12 @@
+{
+  "name": "cave-tag-discord-login",
+  "version": "1.0.0",
+  "description": "Cave Tag Discord login backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
