@@ -980,6 +980,91 @@ button {
     font-weight: 800;
 }
 
+   <!-- =========================================================
+     CAVE TAG CODES
+========================================================= -->
+
+<section class="section" id="codes">
+
+    <div class="section-label">
+        REWARDS
+    </div>
+
+    <h2 class="section-title">
+        Cave Tag Codes.
+    </h2>
+
+    <p class="section-description">
+        Got a code? Enter it below to unlock a special
+        Cave Tag Discord reward.
+    </p>
+
+    <div class="application reveal">
+
+        <div>
+
+            <div class="section-label">
+                CODE REDEMPTION
+            </div>
+
+            <h2>
+                Redeem a Code
+            </h2>
+
+            <p>
+                Normal codes are available for a limited time.
+                Limited codes remain active until every available
+                redemption has been claimed.
+            </p>
+
+            <div class="invite-box">
+
+                <input
+                    class="invite-input"
+                    id="codeInput"
+                    type="text"
+                    placeholder="Enter your code..."
+                    maxlength="50"
+                    autocomplete="off"
+                    onkeydown="
+                        if(event.key === 'Enter')
+                            redeemCode();
+                    "
+                >
+
+                <button
+                    class="copy-btn"
+                    id="redeemButton"
+                    onclick="redeemCode()"
+                >
+                    REDEEM
+                </button>
+
+            </div>
+
+            <p
+                id="codeResult"
+                style="
+                    margin-top:15px;
+                    min-height:20px;
+                    font-weight:900;
+                "
+            ></p>
+
+        </div>
+
+        <div class="application-side">
+
+            <span class="coming-badge">
+                🎁 REWARDS
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 /* =========================================================
    DISCORD
@@ -1600,6 +1685,10 @@ footer strong {
         <a href="#gallery">Gallery</a>
 
         <a href="#applications">Applications</a>
+
+       <a href="#codes">Codes</a>
+
+       
 
         <a href="#team">Team</a>
 
