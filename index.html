@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,26 +8,37 @@
 <title>Cave Tag | Official Website</title>
 
 <meta name="description" content="The official Cave Tag website.">
+
 <meta property="og:title" content="Cave Tag">
 <meta property="og:description" content="Enter the cave. Stay untagged.">
 <meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
+<meta property="og:type" content="website">
 
 <style>
 
 /* =========================================================
-   CAVE TAG — COMPLETE WEBSITE
+   CAVE TAG — BLUE THEME
 ========================================================= */
 
 :root {
-    --green: #9cff4d;
-    --green2: #61d92f;
-    --dark: #050706;
-    --panel: #0d120e;
-    --panel2: #131b14;
-    --text: #f4f7f4;
-    --muted: #7d887f;
-    --border: rgba(156,255,77,.13);
+    --blue: #35aaff;
+    --blue2: #168cff;
+    --blue3: #006eff;
+
+    --dark: #03070d;
+    --panel: #08111c;
+    --panel2: #0d1926;
+
+    --text: #f4f8ff;
+    --muted: #7d8fa3;
+
+    --border: rgba(53,170,255,.16);
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -50,10 +62,24 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: -5;
+
     background:
-        radial-gradient(circle at 15% 10%, rgba(156,255,77,.10), transparent 30%),
-        radial-gradient(circle at 90% 45%, rgba(0,210,130,.06), transparent 30%),
-        linear-gradient(120deg, #050706, #080d09 50%, #040605);
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(53,170,255,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 45%,
+            rgba(0,110,255,.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            120deg,
+            #03070d,
+            #07111c 50%,
+            #02050a
+        );
 }
 
 body::after {
@@ -61,16 +87,20 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: -4;
+
     pointer-events: none;
-    opacity: .13;
+
+    opacity: .12;
+
     background-image:
-        radial-gradient(#fff 1px, transparent 1px);
+        radial-gradient(#ffffff 1px, transparent 1px);
+
     background-size: 45px 45px;
 }
 
 ::selection {
-    background: var(--green);
-    color: #071006;
+    background: var(--blue);
+    color: #02070d;
 }
 
 ::-webkit-scrollbar {
@@ -78,16 +108,16 @@ body::after {
 }
 
 ::-webkit-scrollbar-track {
-    background: #050706;
+    background: #03070d;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #263126;
+    background: #1b334a;
     border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--green);
+    background: var(--blue);
 }
 
 a {
@@ -101,25 +131,39 @@ button {
 
 
 /* =========================================================
-   TOP ANNOUNCEMENT
+   ANNOUNCEMENT
 ========================================================= */
 
 .announcement {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     min-height: 34px;
-    background: linear-gradient(90deg, #7ad63b, #9cff4d, #7ad63b);
-    color: #071006;
+
+    background:
+        linear-gradient(
+            90deg,
+            #168cff,
+            #35aaff,
+            #168cff
+        );
+
+    color: #02070d;
+
     z-index: 2000;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 8px 45px 8px 15px;
+
     font-size: 11px;
     font-weight: 900;
     letter-spacing: .8px;
+
     text-align: center;
 }
 
@@ -127,54 +171,79 @@ button {
     position: absolute;
     right: 15px;
     top: 50%;
+
     transform: translateY(-50%);
+
     border: 0;
     background: transparent;
+
     font-size: 18px;
     cursor: pointer;
-    color: #071006;
+
+    color: #02070d;
 }
 
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 .navbar {
     position: fixed;
+
     top: 50px;
     left: 50%;
+
     transform: translateX(-50%);
+
     width: min(1200px, 94%);
     min-height: 68px;
+
     padding: 10px 18px;
+
     border-radius: 18px;
-    background: rgba(6,10,7,.78);
+
+    background: rgba(3,8,14,.80);
+
     border: 1px solid var(--border);
+
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+
     z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 20px 70px rgba(0,0,0,.45);
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        0 0 40px rgba(0,110,255,.03);
 }
 
 .logo {
     display: flex;
     align-items: center;
+
     gap: 10px;
+
     font-size: 19px;
     font-weight: 1000;
+
     letter-spacing: 2px;
 }
 
 .logo-dot {
     width: 10px;
     height: 10px;
-    background: var(--green);
+
+    background: var(--blue);
+
     border-radius: 50%;
-    box-shadow: 0 0 20px var(--green);
+
+    box-shadow:
+        0 0 20px var(--blue);
+
     animation: pulse 1.7s infinite;
 }
 
@@ -185,30 +254,41 @@ button {
 }
 
 .nav-links a {
-    color: #89938c;
+    color: #8999aa;
+
     font-size: 11px;
     font-weight: 800;
+
     transition: .2s;
 }
 
 .nav-links a:hover {
-    color: var(--green);
+    color: var(--blue);
 }
 
 .nav-discord {
-    background: var(--green);
-    color: #071006 !important;
+    background: var(--blue);
+
+    color: #02070d !important;
+
     padding: 10px 14px;
+
     border-radius: 9px;
 }
 
 .mobile-menu {
     display: none;
-    border: 1px solid #293329;
-    background: #101610;
+
+    border: 1px solid #20384d;
+
+    background: #091421;
+
     color: white;
+
     border-radius: 9px;
+
     padding: 9px 12px;
+
     cursor: pointer;
 }
 
@@ -219,122 +299,189 @@ button {
 
 .hero {
     min-height: 100vh;
-    padding: 180px 20px 100px;
+
+    padding:
+        180px 20px 100px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
+
     text-align: center;
+
     position: relative;
 }
 
 .hero::before {
     content: "";
+
     position: absolute;
+
     width: 700px;
     height: 450px;
+
     left: 50%;
     bottom: -180px;
+
     transform: translateX(-50%);
-    background: radial-gradient(
-        ellipse,
-        rgba(156,255,77,.15),
-        transparent 70%
-    );
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(53,170,255,.16),
+            transparent 70%
+        );
+
     filter: blur(40px);
 }
 
 .hero-content {
     max-width: 1000px;
+
     position: relative;
+
     z-index: 2;
 }
 
 .status-pill {
     display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
+
     padding: 9px 16px;
-    border: 1px solid rgba(156,255,77,.22);
+
+    border:
+        1px solid
+        rgba(53,170,255,.25);
+
     border-radius: 999px;
-    background: rgba(156,255,77,.05);
-    color: #baff93;
+
+    background:
+        rgba(53,170,255,.06);
+
+    color: #8ed2ff;
+
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: 2px;
+
     margin-bottom: 28px;
 }
 
 .status-dot {
     width: 7px;
     height: 7px;
-    background: var(--green);
+
+    background: var(--blue);
+
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--green);
+
+    box-shadow:
+        0 0 15px var(--blue);
 }
 
 .hero h1 {
-    font-size: clamp(75px, 15vw, 180px);
+    font-size:
+        clamp(75px, 15vw, 180px);
+
     line-height: .78;
+
     letter-spacing: -11px;
+
     font-weight: 1000;
-    text-shadow: 0 25px 80px rgba(0,0,0,.85);
+
+    text-shadow:
+        0 25px 80px rgba(0,0,0,.85);
 }
 
 .hero h1 span {
-    color: var(--green);
-    text-shadow: 0 0 60px rgba(156,255,77,.3);
+    color: var(--blue);
+
+    text-shadow:
+        0 0 60px rgba(53,170,255,.35);
 }
 
 .hero-description {
     max-width: 680px;
-    margin: 40px auto 30px;
-    color: #89948c;
+
+    margin:
+        40px auto 30px;
+
+    color: #8999aa;
+
     font-size: 17px;
+
     line-height: 1.8;
 }
 
 .buttons {
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     flex-wrap: wrap;
+
     gap: 12px;
 }
 
 .btn {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     padding: 15px 23px;
+
     border-radius: 12px;
+
     font-size: 12px;
+
     font-weight: 900;
+
     cursor: pointer;
+
     transition: .25s;
 }
 
 .btn:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
-.btn-green {
-    color: #071006;
-    background: var(--green);
-    box-shadow: 0 12px 40px rgba(156,255,77,.12);
+.btn-blue {
+    color: #02070d;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 12px 40px
+        rgba(53,170,255,.12);
 }
 
-.btn-green:hover {
-    box-shadow: 0 18px 55px rgba(156,255,77,.28);
+.btn-blue:hover {
+    box-shadow:
+        0 18px 55px
+        rgba(53,170,255,.30);
 }
 
 .btn-dark {
     color: white;
-    background: #111711;
-    border: 1px solid #2a342c;
+
+    background: #09121c;
+
+    border:
+        1px solid #20384d;
 }
 
 .btn-dark:hover {
-    border-color: rgba(156,255,77,.4);
+    border-color:
+        rgba(53,170,255,.5);
 }
 
 
@@ -344,35 +491,59 @@ button {
 
 .stats {
     width: min(1100px, 90%);
-    margin: -25px auto 0;
+
+    margin:
+        -25px auto 0;
+
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap: 1px;
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.05);
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
+
     border-radius: 20px;
+
     overflow: hidden;
+
     position: relative;
+
     z-index: 10;
 }
 
 .stat {
     padding: 25px 15px;
+
     text-align: center;
-    background: rgba(9,13,10,.94);
+
+    background:
+        rgba(5,10,16,.94);
 }
 
 .stat-number {
-    color: var(--green);
+    color: var(--blue);
+
     font-size: 24px;
+
     font-weight: 1000;
+
     margin-bottom: 7px;
 }
 
 .stat-label {
-    color: #626c64;
+    color: #627386;
+
     font-size: 9px;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
@@ -383,28 +554,40 @@ button {
 
 .section {
     width: min(1150px, 90%);
+
     margin: auto;
+
     padding: 120px 0;
 }
 
 .section-label {
-    color: var(--green);
+    color: var(--blue);
+
     font-size: 10px;
+
     font-weight: 1000;
+
     letter-spacing: 3px;
+
     margin-bottom: 12px;
 }
 
 .section-title {
-    font-size: clamp(40px,6vw,65px);
+    font-size:
+        clamp(40px,6vw,65px);
+
     letter-spacing: -3px;
+
     margin-bottom: 15px;
 }
 
 .section-description {
-    color: #707b73;
+    color: #708196;
+
     max-width: 650px;
+
     line-height: 1.8;
+
     margin-bottom: 45px;
 }
 
@@ -415,42 +598,71 @@ button {
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
 }
 
 .feature {
     min-height: 250px;
+
     padding: 30px;
+
     border-radius: 22px;
-    background: linear-gradient(145deg,#141d15,#080c09);
-    border: 1px solid rgba(156,255,77,.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0e1a27,
+            #050a10
+        );
+
+    border:
+        1px solid
+        rgba(53,170,255,.08);
+
     position: relative;
+
     overflow: hidden;
+
     transition: .35s;
 }
 
 .feature:hover {
-    transform: translateY(-9px) scale(1.01);
-    border-color: rgba(156,255,77,.35);
+    transform:
+        translateY(-9px)
+        scale(1.01);
+
+    border-color:
+        rgba(53,170,255,.38);
+
     box-shadow:
-        0 25px 70px rgba(0,0,0,.4),
-        0 0 30px rgba(156,255,77,.04);
+        0 25px 70px
+        rgba(0,0,0,.4),
+
+        0 0 35px
+        rgba(53,170,255,.05);
 }
 
 .feature-icon {
     font-size: 38px;
+
     margin-bottom: 35px;
 }
 
 .feature h3 {
     font-size: 21px;
+
     margin-bottom: 11px;
 }
 
 .feature p {
-    color: #707a72;
+    color: #707f90;
+
     font-size: 14px;
+
     line-height: 1.7;
 }
 
@@ -461,29 +673,46 @@ button {
 
 .changelog {
     display: grid;
+
     gap: 12px;
 }
 
 .update {
     display: grid;
-    grid-template-columns: 130px 1fr;
+
+    grid-template-columns:
+        130px 1fr;
+
     gap: 25px;
+
     padding: 25px;
+
     border-radius: 18px;
-    background: #0b100c;
-    border: 1px solid rgba(255,255,255,.05);
+
+    background: #07101a;
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
+
     transition: .25s;
 }
 
 .update:hover {
-    border-color: rgba(156,255,77,.25);
-    transform: translateX(5px);
+    border-color:
+        rgba(53,170,255,.3);
+
+    transform:
+        translateX(5px);
 }
 
 .update-date {
-    color: var(--green);
+    color: var(--blue);
+
     font-size: 11px;
+
     font-weight: 1000;
+
     letter-spacing: 1px;
 }
 
@@ -492,8 +721,10 @@ button {
 }
 
 .update p {
-    color: #68736b;
+    color: #68798a;
+
     line-height: 1.6;
+
     font-size: 13px;
 }
 
@@ -504,48 +735,78 @@ button {
 
 .countdown-box {
     text-align: center;
+
     padding: 65px 25px;
+
     border-radius: 28px;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(156,255,77,.13), transparent 45%),
-        #0a0f0b;
-    border: 1px solid rgba(156,255,77,.15);
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(53,170,255,.14),
+            transparent 45%
+        ),
+
+        #07101a;
+
+    border:
+        1px solid
+        rgba(53,170,255,.18);
 }
 
 .countdown-box h2 {
-    font-size: clamp(35px,5vw,55px);
+    font-size:
+        clamp(35px,5vw,55px);
+
     margin-bottom: 12px;
 }
 
 .countdown-box p {
-    color: #737d75;
+    color: #737f8e;
 }
 
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap: 12px;
+
     max-width: 720px;
-    margin: 35px auto 0;
+
+    margin:
+        35px auto 0;
 }
 
 .time {
     padding: 25px 10px;
-    background: #070b08;
-    border: 1px solid rgba(156,255,77,.1);
+
+    background: #040a10;
+
+    border:
+        1px solid
+        rgba(53,170,255,.11);
+
     border-radius: 16px;
 }
 
 .time-number {
-    color: var(--green);
-    font-size: clamp(28px,5vw,44px);
+    color: var(--blue);
+
+    font-size:
+        clamp(28px,5vw,44px);
+
     font-weight: 1000;
 }
 
 .time-label {
     margin-top: 5px;
-    color: #59635c;
+
+    color: #596979;
+
     font-size: 9px;
+
     letter-spacing: 2px;
 }
 
@@ -556,40 +817,68 @@ button {
 
 .application {
     display: grid;
-    grid-template-columns: 1fr 300px;
+
+    grid-template-columns:
+        1fr 300px;
+
     gap: 30px;
+
     padding: 45px;
+
     border-radius: 25px;
+
     background:
-        linear-gradient(135deg,rgba(156,255,77,.09),#090d0a);
-    border: 1px solid rgba(156,255,77,.15);
+        linear-gradient(
+            135deg,
+            rgba(53,170,255,.10),
+            #050b11
+        );
+
+    border:
+        1px solid
+        rgba(53,170,255,.18);
 }
 
 .application h2 {
     font-size: 38px;
+
     margin-bottom: 12px;
 }
 
 .application p {
-    color: #707b73;
+    color: #707f90;
+
     line-height: 1.8;
 }
 
 .application-side {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 .coming-badge {
     display: inline-block;
+
     padding: 13px 20px;
-    color: var(--green);
+
+    color: var(--blue);
+
     border-radius: 999px;
-    background: rgba(156,255,77,.06);
-    border: 1px solid rgba(156,255,77,.2);
+
+    background:
+        rgba(53,170,255,.06);
+
+    border:
+        1px solid
+        rgba(53,170,255,.22);
+
     font-size: 11px;
+
     font-weight: 1000;
+
     letter-spacing: 2px;
 }
 
@@ -600,48 +889,89 @@ button {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
 }
 
 .gallery-card {
     height: 250px;
+
     border-radius: 20px;
+
     overflow: hidden;
+
     position: relative;
-    border: 1px solid rgba(156,255,77,.1);
+
+    border:
+        1px solid
+        rgba(53,170,255,.1);
+
     background:
-        radial-gradient(circle at 50% 35%,rgba(156,255,77,.15),transparent 30%),
-        linear-gradient(145deg,#182319,#080c09);
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(53,170,255,.15),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #102031,
+            #050a10
+        );
+
     transition: .35s;
 }
 
 .gallery-card:hover {
-    transform: translateY(-8px) scale(1.015);
-    border-color: rgba(156,255,77,.3);
+    transform:
+        translateY(-8px)
+        scale(1.015);
+
+    border-color:
+        rgba(53,170,255,.35);
 }
 
 .gallery-card::before {
     content: "CAVE TAG";
+
     position: absolute;
+
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    color: rgba(156,255,77,.25);
+
+    transform:
+        translate(-50%,-50%);
+
+    color:
+        rgba(53,170,255,.25);
+
     font-size: 28px;
+
     font-weight: 1000;
+
     letter-spacing: 3px;
 }
 
 .gallery-card span {
     position: absolute;
+
     bottom: 15px;
     left: 15px;
+
     padding: 7px 10px;
+
     border-radius: 7px;
-    background: rgba(0,0,0,.65);
-    color: #b5beb7;
+
+    background:
+        rgba(0,0,0,.65);
+
+    color: #b5c2cf;
+
     font-size: 10px;
+
     font-weight: 800;
 }
 
@@ -652,22 +982,38 @@ button {
 
 .discord {
     text-align: center;
+
     padding: 75px 30px;
+
     border-radius: 28px;
+
     background:
-        linear-gradient(135deg,rgba(156,255,77,.13),rgba(8,12,9,.97));
-    border: 1px solid rgba(156,255,77,.18);
+        linear-gradient(
+            135deg,
+            rgba(53,170,255,.13),
+            rgba(3,8,14,.97)
+        );
+
+    border:
+        1px solid
+        rgba(53,170,255,.2);
 }
 
 .discord h2 {
-    font-size: clamp(35px,5vw,58px);
+    font-size:
+        clamp(35px,5vw,58px);
+
     margin-bottom: 14px;
 }
 
 .discord p {
     max-width: 620px;
-    margin: auto auto 30px;
-    color: #737e76;
+
+    margin:
+        auto auto 30px;
+
+    color: #737f8e;
+
     line-height: 1.7;
 }
 
@@ -678,35 +1024,55 @@ button {
 
 .invite-box {
     max-width: 700px;
-    margin: 30px auto 0;
+
+    margin:
+        30px auto 0;
+
     display: flex;
+
     gap: 10px;
 }
 
 .invite-input {
     flex: 1;
+
     min-width: 0;
+
     padding: 14px;
+
     border-radius: 10px;
-    background: #070b08;
-    color: #9cff4d;
-    border: 1px solid #293329;
+
+    background: #040a10;
+
+    color: #72c6ff;
+
+    border:
+        1px solid #20384d;
+
     outline: none;
 }
 
 .copy-btn {
     border: 0;
+
     border-radius: 10px;
+
     padding: 0 18px;
-    background: var(--green);
-    color: #071006;
+
+    background: var(--blue);
+
+    color: #02070d;
+
     font-weight: 900;
+
     cursor: pointer;
+
     transition: .2s;
 }
 
 .copy-btn:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 
@@ -716,35 +1082,67 @@ button {
 
 .team {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap: 15px;
 }
 
 .member {
     padding: 30px;
+
     text-align: center;
+
     border-radius: 22px;
-    background: linear-gradient(145deg,#131b14,#080c09);
-    border: 1px solid rgba(156,255,77,.1);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0e1a27,
+            #050a10
+        );
+
+    border:
+        1px solid
+        rgba(53,170,255,.1);
+
     transition: .3s;
 }
 
 .member:hover {
-    transform: translateY(-8px);
-    border-color: rgba(156,255,77,.3);
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(53,170,255,.3);
 }
 
 .avatar {
     width: 85px;
     height: 85px;
-    margin: 0 auto 20px;
+
+    margin:
+        0 auto 20px;
+
     border-radius: 50%;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    background: #192219;
-    border: 2px solid rgba(156,255,77,.2);
+
+    background: #0c1a28;
+
+    border:
+        2px solid
+        rgba(53,170,255,.25);
+
     font-size: 32px;
+
+    box-shadow:
+        0 0 30px
+        rgba(53,170,255,.05);
 }
 
 .member h3 {
@@ -752,9 +1150,12 @@ button {
 }
 
 .member-role {
-    color: var(--green);
+    color: var(--blue);
+
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: 2px;
 }
 
@@ -765,16 +1166,27 @@ button {
 
 .video {
     overflow: hidden;
+
     border-radius: 24px;
+
     background: #000;
-    border: 1px solid rgba(156,255,77,.15);
-    box-shadow: 0 30px 80px rgba(0,0,0,.4);
+
+    border:
+        1px solid
+        rgba(53,170,255,.18);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.4);
 }
 
 .video iframe {
     display: block;
+
     width: 100%;
+
     aspect-ratio: 16/9;
+
     border: 0;
 }
 
@@ -785,47 +1197,69 @@ button {
 
 .faq {
     display: grid;
+
     gap: 10px;
 }
 
 .faq-item {
     overflow: hidden;
+
     border-radius: 15px;
-    background: #0b100c;
-    border: 1px solid rgba(255,255,255,.05);
+
+    background: #07101a;
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
 }
 
 .faq-question {
     width: 100%;
+
     padding: 20px;
+
     border: 0;
+
     background: transparent;
+
     color: white;
+
     cursor: pointer;
+
     display: flex;
+
     justify-content: space-between;
+
     text-align: left;
+
     font-weight: 900;
 }
 
 .faq-question:hover {
-    color: var(--green);
+    color: var(--blue);
 }
 
 .faq-answer {
     display: none;
-    padding: 0 20px 20px;
-    color: #707a72;
+
+    padding:
+        0 20px 20px;
+
+    color: #707f90;
+
     line-height: 1.7;
+
     font-size: 14px;
 }
 
-.faq-item.active .faq-answer {
+.faq-item.active
+.faq-answer {
     display: block;
 }
 
-.faq-item.active .faq-question {
-    color: var(--green);
+.faq-item.active
+.faq-question {
+    color: var(--blue);
 }
 
 
@@ -839,21 +1273,35 @@ button {
 
 .play-card {
     padding: 80px 25px;
+
     border-radius: 30px;
+
     background:
-        radial-gradient(circle at 50% 0%,rgba(156,255,77,.16),transparent 45%),
-        #0a0f0b;
-    border: 1px solid rgba(156,255,77,.18);
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(53,170,255,.16),
+            transparent 45%
+        ),
+
+        #07101a;
+
+    border:
+        1px solid
+        rgba(53,170,255,.2);
 }
 
 .play-card h2 {
-    font-size: clamp(40px,6vw,70px);
+    font-size:
+        clamp(40px,6vw,70px);
+
     letter-spacing: -3px;
+
     margin-bottom: 15px;
 }
 
 .play-card p {
-    color: #737d75;
+    color: #737f8e;
+
     margin-bottom: 30px;
 }
 
@@ -864,29 +1312,50 @@ button {
 
 .music-toggle {
     position: fixed;
+
     right: 20px;
     bottom: 20px;
+
     width: 50px;
     height: 50px;
+
     border-radius: 50%;
-    border: 1px solid rgba(156,255,77,.25);
-    background: rgba(10,15,11,.9);
+
+    border:
+        1px solid
+        rgba(53,170,255,.25);
+
+    background:
+        rgba(7,14,22,.92);
+
     color: white;
+
     cursor: pointer;
+
     z-index: 1500;
+
     font-size: 19px;
-    box-shadow: 0 10px 35px rgba(0,0,0,.4);
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.4);
+
     transition: .25s;
 }
 
 .music-toggle:hover {
-    transform: translateY(-4px);
-    border-color: var(--green);
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--blue);
 }
 
 .music-toggle.on {
-    color: #071006;
-    background: var(--green);
+    color: #02070d;
+
+    background:
+        var(--blue);
 }
 
 
@@ -896,14 +1365,20 @@ button {
 
 footer {
     padding: 50px 20px;
+
     text-align: center;
-    color: #4f5952;
-    border-top: 1px solid rgba(255,255,255,.05);
+
+    color: #4f6070;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.05);
+
     font-size: 12px;
 }
 
 footer strong {
-    color: #778078;
+    color: #778b9e;
 }
 
 
@@ -912,6 +1387,7 @@ footer strong {
 ========================================================= */
 
 @keyframes pulse {
+
     0%,100% {
         opacity: 1;
         transform: scale(1);
@@ -921,11 +1397,15 @@ footer strong {
         opacity: .45;
         transform: scale(.75);
     }
+
 }
 
 .reveal {
     opacity: 0;
-    transform: translateY(25px);
+
+    transform:
+        translateY(25px);
+
     transition:
         opacity .7s ease,
         transform .7s ease;
@@ -933,7 +1413,9 @@ footer strong {
 
 .reveal.show {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 
@@ -945,15 +1427,26 @@ footer strong {
 
     .nav-links {
         display: none;
+
         position: absolute;
+
         top: 75px;
         left: 0;
+
         width: 100%;
+
         padding: 20px;
+
         border-radius: 15px;
-        background: #0a0f0b;
-        border: 1px solid var(--border);
+
+        background: #07101a;
+
+        border:
+            1px solid
+            var(--border);
+
         flex-direction: column;
+
         align-items: stretch;
     }
 
@@ -970,7 +1463,8 @@ footer strong {
     }
 
     .stats {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .feature-grid,
@@ -981,8 +1475,10 @@ footer strong {
 
     .application {
         grid-template-columns: 1fr;
+
         text-align: center;
     }
+
 }
 
 @media(max-width: 600px) {
@@ -1004,15 +1500,18 @@ footer strong {
     }
 
     .stats {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .countdown {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .update {
         grid-template-columns: 1fr;
+
         gap: 10px;
     }
 
@@ -1027,6 +1526,7 @@ footer strong {
     .application {
         padding: 30px 20px;
     }
+
 }
 
 </style>
@@ -1065,7 +1565,10 @@ footer strong {
     </a>
 
 
-    <button class="mobile-menu" onclick="toggleMenu()">
+    <button
+        class="mobile-menu"
+        onclick="toggleMenu()"
+    >
         ☰
     </button>
 
@@ -1088,9 +1591,11 @@ footer strong {
 
         <a href="#credits">Credits</a>
 
-        <a href="https://discord.gg/WaK6ykHCbS"
-           target="_blank"
-           class="nav-discord">
+        <a
+            href="https://discord.gg/WaK6ykHCbS"
+            target="_blank"
+            class="nav-discord"
+        >
             Discord
         </a>
 
@@ -1139,11 +1644,9 @@ footer strong {
 
         <div class="buttons">
 
-            <!-- CHANGE THIS LINK WHEN THE GAME RELEASES -->
-
             <a
                 href="#"
-                class="btn btn-green"
+                class="btn btn-blue"
                 onclick="playButton(event)"
             >
                 🕹️ PLAY NOW
@@ -1174,7 +1677,10 @@ footer strong {
 
     <div class="stat">
 
-        <div class="stat-number" data-target="250">
+        <div
+            class="stat-number"
+            data-target="250"
+        >
             0+
         </div>
 
@@ -1187,7 +1693,10 @@ footer strong {
 
     <div class="stat">
 
-        <div class="stat-number" data-target="3">
+        <div
+            class="stat-number"
+            data-target="3"
+        >
             0
         </div>
 
@@ -1200,7 +1709,10 @@ footer strong {
 
     <div class="stat">
 
-        <div class="stat-number" data-target="6">
+        <div
+            class="stat-number"
+            data-target="6"
+        >
             0
         </div>
 
@@ -1231,7 +1743,10 @@ footer strong {
      FEATURES
 ========================================================= -->
 
-<section class="section" id="features">
+<section
+    class="section"
+    id="features"
+>
 
     <div class="section-label">
         THE EXPERIENCE
@@ -1242,8 +1757,10 @@ footer strong {
     </h2>
 
     <p class="section-description">
+
         Everything Cave Tag is being built around:
         movement, exploration and having fun with friends.
+
     </p>
 
 
@@ -1251,9 +1768,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">🦍</div>
+            <div class="feature-icon">
+                🦍
+            </div>
 
-            <h3>Movement</h3>
+            <h3>
+                Movement
+            </h3>
 
             <p>
                 Swing, climb and move around the cave
@@ -1265,9 +1786,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">🪨</div>
+            <div class="feature-icon">
+                🪨
+            </div>
 
-            <h3>Explore</h3>
+            <h3>
+                Explore
+            </h3>
 
             <p>
                 Explore the cave and discover different
@@ -1279,9 +1804,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">🔥</div>
+            <div class="feature-icon">
+                🔥
+            </div>
 
-            <h3>Chaos</h3>
+            <h3>
+                Chaos
+            </h3>
 
             <p>
                 Games can turn chaotic fast.
@@ -1293,9 +1822,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">👥</div>
+            <div class="feature-icon">
+                👥
+            </div>
 
-            <h3>Multiplayer</h3>
+            <h3>
+                Multiplayer
+            </h3>
 
             <p>
                 Play with friends and turn every round
@@ -1307,9 +1840,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">🛠️</div>
+            <div class="feature-icon">
+                🛠️
+            </div>
 
-            <h3>Constant Updates</h3>
+            <h3>
+                Constant Updates
+            </h3>
 
             <p>
                 New features, improvements and updates
@@ -1321,9 +1858,13 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">🌑</div>
+            <div class="feature-icon">
+                🌑
+            </div>
 
-            <h3>The Cave</h3>
+            <h3>
+                The Cave
+            </h3>
 
             <p>
                 A dark environment full of places to
@@ -1342,7 +1883,10 @@ footer strong {
      LATEST UPDATES
 ========================================================= -->
 
-<section class="section" id="updates">
+<section
+    class="section"
+    id="updates"
+>
 
     <div class="section-label">
         DEVELOPMENT
@@ -1425,7 +1969,6 @@ footer strong {
 
         </article>
 
-
     </div>
 
 </section>
@@ -1433,10 +1976,13 @@ footer strong {
 
 
 <!-- =========================================================
-     RELEASE COUNTDOWN
+     COUNTDOWN
 ========================================================= -->
 
-<section class="section" id="countdown">
+<section
+    class="section"
+    id="countdown"
+>
 
     <div class="countdown-box reveal">
 
@@ -1457,7 +2003,10 @@ footer strong {
 
             <div class="time">
 
-                <div class="time-number" id="days">
+                <div
+                    class="time-number"
+                    id="days"
+                >
                     00
                 </div>
 
@@ -1470,7 +2019,10 @@ footer strong {
 
             <div class="time">
 
-                <div class="time-number" id="hours">
+                <div
+                    class="time-number"
+                    id="hours"
+                >
                     00
                 </div>
 
@@ -1483,7 +2035,10 @@ footer strong {
 
             <div class="time">
 
-                <div class="time-number" id="minutes">
+                <div
+                    class="time-number"
+                    id="minutes"
+                >
                     00
                 </div>
 
@@ -1496,7 +2051,10 @@ footer strong {
 
             <div class="time">
 
-                <div class="time-number" id="seconds">
+                <div
+                    class="time-number"
+                    id="seconds"
+                >
                     00
                 </div>
 
@@ -1518,7 +2076,10 @@ footer strong {
      GALLERY
 ========================================================= -->
 
-<section class="section" id="gallery">
+<section
+    class="section"
+    id="gallery"
+>
 
     <div class="section-label">
         MEDIA
@@ -1529,8 +2090,10 @@ footer strong {
     </h2>
 
     <p class="section-description">
+
         Replace these placeholders with your actual
         Cave Tag screenshots whenever you have them.
+
     </p>
 
 
@@ -1570,7 +2133,10 @@ footer strong {
      MOD APPLICATIONS
 ========================================================= -->
 
-<section class="section" id="applications">
+<section
+    class="section"
+    id="applications"
+>
 
     <div class="application reveal">
 
@@ -1585,13 +2151,16 @@ footer strong {
             </h2>
 
             <p>
+
                 Want to help out with Cave Tag?
+
                 Moderator applications are currently
                 being worked on and will open in a
                 future update.
 
                 Keep an eye on the Discord for the
                 announcement when applications go live.
+
             </p>
 
         </div>
@@ -1628,16 +2197,18 @@ footer strong {
         </h2>
 
         <p>
+
             Get announcements, development updates,
             talk with other players and keep up with
             everything happening with Cave Tag.
+
         </p>
 
 
         <a
             href="https://discord.gg/WaK6ykHCbS"
             target="_blank"
-            class="btn btn-green"
+            class="btn btn-blue"
         >
             💬 JOIN DISCORD
         </a>
@@ -1672,7 +2243,10 @@ footer strong {
      TEAM
 ========================================================= -->
 
-<section class="section" id="team">
+<section
+    class="section"
+    id="team"
+>
 
     <div class="section-label">
         THE PEOPLE
@@ -1683,8 +2257,10 @@ footer strong {
     </h2>
 
     <p class="section-description">
+
         Replace the names below with your current
         team/admin names.
+
     </p>
 
 
@@ -1750,7 +2326,10 @@ footer strong {
      CREDITS
 ========================================================= -->
 
-<section class="section" id="credits">
+<section
+    class="section"
+    id="credits"
+>
 
     <div class="section-label">
         CREDITS
@@ -1940,11 +2519,9 @@ footer strong {
         </p>
 
 
-        <!-- CHANGE href="#" TO YOUR GAME DOWNLOAD/LINK -->
-
         <a
             href="#"
-            class="btn btn-green"
+            class="btn btn-blue"
             onclick="playButton(event)"
         >
             🕹️ PLAY NOW
@@ -1961,17 +2538,6 @@ footer strong {
 <!-- =========================================================
      MUSIC
 ========================================================= -->
-
-<!--
-    IMPORTANT:
-    Replace the src below with your own MP3/OGG file.
-
-    Example:
-    <source src="music.mp3" type="audio/mpeg">
-
-    The music will NOT automatically play.
-    The visitor has to press the music button.
--->
 
 <audio id="music" loop>
 
@@ -2017,10 +2583,8 @@ footer strong {
     CHANGE THIS TO YOUR REAL RELEASE DATE.
 
     Example:
-    "2026-12-25T18:00:00"
 
-    The format is:
-    YEAR-MONTH-DAY HOUR:MINUTE:SECOND
+    "2026-12-25T18:00:00"
 */
 
 const RELEASE_DATE =
@@ -2028,8 +2592,8 @@ const RELEASE_DATE =
 
 
 /*
-    When the game releases, replace the "#" in
-    the Play Now buttons with your actual link.
+    When the game releases, change this
+    to the actual game link.
 
     Example:
 
@@ -2046,9 +2610,9 @@ const GAME_LINK = "#";
 
 function closeAnnouncement() {
 
-    document.getElementById(
-        "announcement"
-    ).style.display = "none";
+    document
+        .getElementById("announcement")
+        .style.display = "none";
 
 }
 
@@ -2066,19 +2630,20 @@ function toggleMenu() {
 }
 
 
-/* Close mobile menu when clicking a link */
-
 document
     .querySelectorAll(".nav-links a")
     .forEach(link => {
 
-        link.addEventListener("click", () => {
+        link.addEventListener(
+            "click",
+            () => {
 
-            document
-                .getElementById("navLinks")
-                .classList.remove("open");
+                document
+                    .getElementById("navLinks")
+                    .classList.remove("open");
 
-        });
+            }
+        );
 
     });
 
@@ -2101,14 +2666,25 @@ function updateCountdown() {
 
     if (difference <= 0) {
 
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
+        document
+            .getElementById("days")
+            .textContent = "00";
 
-        document.getElementById(
-            "countdownText"
-        ).textContent =
+        document
+            .getElementById("hours")
+            .textContent = "00";
+
+        document
+            .getElementById("minutes")
+            .textContent = "00";
+
+        document
+            .getElementById("seconds")
+            .textContent = "00";
+
+        document
+            .getElementById("countdownText")
+            .textContent =
             "Cave Tag has released!";
 
         return;
@@ -2143,22 +2719,26 @@ function updateCountdown() {
         );
 
 
-    document.getElementById("days")
+    document
+        .getElementById("days")
         .textContent =
         String(days).padStart(2,"0");
 
 
-    document.getElementById("hours")
+    document
+        .getElementById("hours")
         .textContent =
         String(hours).padStart(2,"0");
 
 
-    document.getElementById("minutes")
+    document
+        .getElementById("minutes")
         .textContent =
         String(minutes).padStart(2,"0");
 
 
-    document.getElementById("seconds")
+    document
+        .getElementById("seconds")
         .textContent =
         String(seconds).padStart(2,"0");
 
@@ -2174,7 +2754,7 @@ setInterval(
 
 
 /* =========================================================
-   COPY DISCORD INVITE
+   COPY DISCORD
 ========================================================= */
 
 function copyInvite() {
@@ -2192,12 +2772,15 @@ function copyInvite() {
             button.textContent =
                 "COPIED!";
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                button.textContent =
-                    "COPY";
+                    button.textContent =
+                        "COPY";
 
-            }, 1800);
+                },
+                1800
+            );
 
         });
 
@@ -2223,9 +2806,11 @@ function toggleFAQ(button) {
 
             faq.classList.remove("active");
 
-            faq.querySelector(
-                ".faq-question span"
-            ).textContent = "+";
+            faq
+                .querySelector(
+                    ".faq-question span"
+                )
+                .textContent = "+";
 
         });
 
@@ -2234,9 +2819,9 @@ function toggleFAQ(button) {
 
         item.classList.add("active");
 
-        button.querySelector(
-            "span"
-        ).textContent = "−";
+        button
+            .querySelector("span")
+            .textContent = "−";
 
     }
 
@@ -2252,7 +2837,6 @@ const music =
 
 const musicButton =
     document.getElementById("musicButton");
-
 
 let musicPlaying = false;
 
@@ -2369,7 +2953,7 @@ revealElements.forEach(element => {
 
 
 /* =========================================================
-   FAKE COMMUNITY STAT COUNTER
+   COMMUNITY STAT COUNTER
 ========================================================= */
 
 const statNumbers =
@@ -2384,8 +2968,11 @@ const statObserver =
 
             entries.forEach(entry => {
 
-                if (!entry.isIntersecting)
+                if (
+                    !entry.isIntersecting
+                ) {
                     return;
+                }
 
 
                 const element =
@@ -2398,33 +2985,42 @@ const statObserver =
 
                 let current = 0;
 
+
                 const interval =
-                    setInterval(() => {
+                    setInterval(
+                        () => {
 
-                        current +=
-                            Math.ceil(
-                                target / 30
-                            );
-
-
-                        if (current >= target) {
-
-                            current = target;
-
-                            clearInterval(
-                                interval
-                            );
-
-                        }
+                            current +=
+                                Math.ceil(
+                                    target / 30
+                                );
 
 
-                        element.textContent =
-                            current +
-                            (target === 250
-                                ? "+"
-                                : "");
+                            if (
+                                current >= target
+                            ) {
 
-                    }, 35);
+                                current =
+                                    target;
+
+                                clearInterval(
+                                    interval
+                                );
+
+                            }
+
+
+                            element.textContent =
+                                current +
+                                (
+                                    target === 250
+                                    ? "+"
+                                    : ""
+                                );
+
+                        },
+                        35
+                    );
 
 
                 statObserver.unobserve(
@@ -2446,8 +3042,8 @@ statNumbers.forEach(stat => {
 
 });
 
-
 </script>
 
 </body>
 </html>
+```
