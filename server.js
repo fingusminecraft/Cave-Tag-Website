@@ -17,9 +17,9 @@ const FRONTEND_URL =
     "https://fingusminecraft.github.io/Cave-Tag-Website/";
 
 
-// =========================================================
+// =====================================================
 // DISCORD LOGIN
-// =========================================================
+// =====================================================
 
 app.get("/login", (req, res) => {
 
@@ -38,24 +38,26 @@ app.get("/login", (req, res) => {
 });
 
 
-// =========================================================
+// =====================================================
 // DISCORD CALLBACK
-// =========================================================
+// =====================================================
 
 app.get("/auth/discord/callback", async (req, res) => {
 
     const code = req.query.code;
 
     if (!code) {
+
         return res
             .status(400)
             .send("No Discord authorization code.");
+
     }
 
     try {
 
         // -------------------------------------------------
-        // Get Discord access token
+        // Exchange authorization code for access token
         // -------------------------------------------------
 
         const tokenResponse = await fetch(
@@ -78,6 +80,7 @@ app.get("/auth/discord/callback", async (req, res) => {
             }
         );
 
+
         const tokenData =
             await tokenResponse.json();
 
@@ -85,7 +88,7 @@ app.get("/auth/discord/callback", async (req, res) => {
         if (!tokenResponse.ok) {
 
             console.error(
-                "Token error:",
+                "Discord token error:",
                 tokenData
             );
 
@@ -97,7 +100,7 @@ app.get("/auth/discord/callback", async (req, res) => {
 
 
         // -------------------------------------------------
-        // Get Discord user
+        // Get Discord account
         // -------------------------------------------------
 
         const userResponse = await fetch(
@@ -118,338 +121,454 @@ app.get("/auth/discord/callback", async (req, res) => {
         if (!userResponse.ok) {
 
             console.error(
-                "User error:",
+                "Discord user error:",
                 user
             );
 
             return res
                 .status(500)
-                .send("Could not get Discord user.");
+                .send("Could not get your Discord account.");
 
         }
 
 
         console.log(
-            `Discord login: ${user.username} (${user.id})`
+            `Discord login successful: ${user.username} (${user.id})`
         );
+
+
+        // -------------------------------------------------
+        // Check configuration
+        // -------------------------------------------------
+
+        if (!BOT_TOKEN) {
+
+            console.error(
+                "DISCORD_BOT_TOKEN is missing."
+            );
+
+            return res
+                .status(500)
+                .send("Discord bot token is not configured.");
+
+        }
+
+
+        if (!GUILD_ID) {
+
+            console.error(
+                "DISCORD_GUILD_ID is missing."
+            );
+
+            return res
+                .status(500)
+                .send("Discord server ID is not configured.");
+
+        }
+
+
+        if (!BETA_ROLE_ID) {
+
+            console.error(
+                "DISCORD_BETA_ROLE_ID is missing."
+            );
+
+            return res
+                .status(500)
+                .send("Beta Tester role ID is not configured.");
+
+        }
 
 
         // -------------------------------------------------
         // Give Beta Tester role
         // -------------------------------------------------
 
-        if (
-            BOT_TOKEN &&
-            GUILD_ID &&
-            BETA_ROLE_ID
-        ) {
+        console.log(
+            `Attempting to give Beta Tester role to ${user.username}...`
+        );
 
-            const roleResponse = await fetch(
-                `https://discord.com/api/v10/guilds/${GUILD_ID}/members/${user.id}/roles/${BETA_ROLE_ID}`,
-                {
-                    method: "PUT",
 
-                    headers: {
-                        Authorization:
-                            `Bot ${BOT_TOKEN}`
-                    }
+        const roleResponse = await fetch(
+            `https://discord.com/api/v10/guilds/${GUILD_ID}/members/${user.id}/roles/${BETA_ROLE_ID}`,
+            {
+                method: "PUT",
+
+                headers: {
+                    Authorization:
+                        `Bot ${BOT_TOKEN}`
                 }
-            );
-
-
-            if (!roleResponse.ok) {
-
-                const roleError =
-                    await roleResponse.text();
-
-                console.error(
-                    "ROLE ASSIGNMENT FAILED:",
-                    roleResponse.status,
-                    roleError
-                );
-
-                return res.send(`
-                    <!DOCTYPE html>
-
-                    <html>
-
-                    <head>
-
-                        <title>Cave Tag</title>
-
-                        <style>
-
-                            body {
-                                margin: 0;
-                                min-height: 100vh;
-
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-
-                                background: #03070d;
-                                color: white;
-
-                                font-family: Arial, sans-serif;
-                                text-align: center;
-                            }
-
-                            .card {
-                                padding: 40px;
-
-                                width: min(450px, 85%);
-
-                                border-radius: 25px;
-
-                                background: #08111c;
-
-                                border:
-                                    1px solid
-                                    rgba(53,170,255,.2);
-
-                                box-shadow:
-                                    0 20px 70px
-                                    rgba(0,0,0,.5);
-                            }
-
-                            h1 {
-                                color: #35aaff;
-                            }
-
-                            .error {
-                                color: #ff6b6b;
-                                line-height: 1.6;
-                            }
-
-                            a {
-                                display: inline-block;
-
-                                margin-top: 20px;
-
-                                padding: 14px 20px;
-
-                                border-radius: 10px;
-
-                                background: #35aaff;
-
-                                color: #02070d;
-
-                                text-decoration: none;
-
-                                font-weight: 900;
-                            }
-
-                        </style>
-
-                    </head>
-
-                    <body>
-
-                        <div class="card">
-
-                            <h1>
-                                Login successful!
-                            </h1>
-
-                            <p>
-                                Welcome,
-                                ${escapeHtml(user.username)}!
-                            </p>
-
-                            <p class="error">
-                                Your Beta Tester role could not
-                                be assigned.
-                            </p>
-
-                            <p>
-                                Please make sure the Cave Tag bot
-                                is in the Discord server and has
-                                permission to manage the Beta Tester
-                                role.
-                            </p>
-
-                            <a href="${FRONTEND_URL}">
-                                Back to Cave Tag
-                            </a>
-
-                        </div>
-
-                    </body>
-
-                    </html>
-                `);
-
             }
+        );
 
 
-            console.log(
-                `Beta Tester role assigned to ${user.username}`
-            );
+        if (!roleResponse.ok) {
 
-        } else {
+            const roleError =
+                await roleResponse.text();
+
 
             console.error(
-                "Missing role environment variables."
+                "ROLE ASSIGNMENT FAILED:",
+                roleResponse.status,
+                roleError
             );
 
-            return res
-                .status(500)
-                .send(
-                    "Beta Tester role system is not configured."
-                );
+
+            return res.send(`
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cave Tag - Role Error</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(53,170,255,.15),
+                    transparent 40%
+                ),
+                #03070d;
+
+            color: white;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            text-align: center;
+        }
+
+        .card {
+            width: min(500px, 100%);
+
+            padding: 45px 30px;
+
+            border-radius: 25px;
+
+            background: #08111c;
+
+            border:
+                1px solid
+                rgba(53,170,255,.2);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.5);
+        }
+
+        .icon {
+            font-size: 55px;
+        }
+
+        h1 {
+            color: #35aaff;
+
+            margin:
+                15px 0;
+        }
+
+        p {
+            color: #8293a5;
+
+            line-height: 1.7;
+        }
+
+        .warning {
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,80,80,.08);
+
+            border:
+                1px solid
+                rgba(255,80,80,.2);
+
+            color: #ff9999;
+        }
+
+        a {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            padding: 14px 22px;
+
+            border-radius: 10px;
+
+            background: #35aaff;
+
+            color: #02070d;
+
+            text-decoration: none;
+
+            font-weight: 900;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="icon">
+            ⚠️
+        </div>
+
+        <h1>
+            Login worked!
+        </h1>
+
+        <p>
+            Welcome,
+            ${escapeHtml(user.username)}!
+        </p>
+
+        <div class="warning">
+
+            Your Discord login worked,
+            but the Beta Tester role could not
+            be added.
+
+        </div>
+
+        <p>
+            Please make sure the Cave Tag bot is
+            in the server, has <strong>Manage Roles</strong>,
+            and its role is above the Beta Tester role.
+        </p>
+
+        <a href="${FRONTEND_URL}">
+            Back to Cave Tag
+        </a>
+
+    </div>
+
+</body>
+
+</html>
+            `);
 
         }
 
 
         // -------------------------------------------------
-        // Success page
+        // Success
         // -------------------------------------------------
+
+        console.log(
+            `Beta Tester role assigned successfully to ${user.username}`
+        );
+
 
         res.send(`
 
-            <!DOCTYPE html>
+<!DOCTYPE html>
 
-            <html>
+<html>
 
-            <head>
+<head>
 
-                <title>Cave Tag Beta Tester</title>
+    <meta charset="UTF-8">
 
-                <style>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-                    body {
-                        margin: 0;
-                        min-height: 100vh;
+    <title>Cave Tag - Beta Tester</title>
 
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+    <style>
 
-                        background: #03070d;
+        * {
+            box-sizing: border-box;
+        }
 
-                        color: white;
+        body {
+            margin: 0;
+            min-height: 100vh;
 
-                        font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-                        text-align: center;
-                    }
+            padding: 20px;
 
-                    .card {
-                        padding: 45px;
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(53,170,255,.16),
+                    transparent 40%
+                ),
+                #03070d;
 
-                        width: min(450px, 85%);
+            color: white;
 
-                        border-radius: 25px;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-                        background: #08111c;
+            text-align: center;
+        }
 
-                        border:
-                            1px solid
-                            rgba(53,170,255,.25);
+        .card {
+            width: min(500px, 100%);
 
-                        box-shadow:
-                            0 20px 70px
-                            rgba(0,0,0,.5),
-                            0 0 50px
-                            rgba(53,170,255,.08);
-                    }
+            padding: 50px 30px;
 
-                    .icon {
-                        font-size: 55px;
-                    }
+            border-radius: 25px;
 
-                    h1 {
-                        color: #35aaff;
-                    }
+            background: #08111c;
 
-                    .username {
-                        font-size: 24px;
+            border:
+                1px solid
+                rgba(53,170,255,.25);
 
-                        font-weight: 900;
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.5),
 
-                        margin: 20px 0;
-                    }
+                0 0 50px
+                rgba(53,170,255,.08);
+        }
 
-                    .role {
-                        display: inline-block;
+        .icon {
+            font-size: 65px;
+        }
 
-                        padding: 10px 15px;
+        h1 {
+            color: #35aaff;
 
-                        border-radius: 999px;
+            margin:
+                15px 0;
+        }
 
-                        background:
-                            rgba(53,170,255,.1);
+        .username {
+            font-size: 24px;
 
-                        border:
-                            1px solid
-                            rgba(53,170,255,.3);
+            font-weight: 900;
 
-                        color: #35aaff;
+            margin:
+                20px 0;
+        }
 
-                        font-weight: 900;
-                    }
+        p {
+            color: #8293a5;
 
-                    a {
-                        display: inline-block;
+            line-height: 1.7;
+        }
 
-                        margin-top: 25px;
+        .role {
+            display: inline-block;
 
-                        padding: 14px 20px;
+            margin:
+                10px 0 15px;
 
-                        border-radius: 10px;
+            padding:
+                10px 18px;
 
-                        background: #35aaff;
+            border-radius: 999px;
 
-                        color: #02070d;
+            background:
+                rgba(53,170,255,.1);
 
-                        text-decoration: none;
+            border:
+                1px solid
+                rgba(53,170,255,.3);
 
-                        font-weight: 900;
-                    }
+            color: #35aaff;
 
-                </style>
+            font-weight: 900;
 
-            </head>
+            letter-spacing: 1px;
+        }
 
-            <body>
+        a {
+            display: inline-block;
 
-                <div class="card">
+            margin-top: 25px;
 
-                    <div class="icon">
-                        🧪
-                    </div>
+            padding: 14px 22px;
 
-                    <h1>
-                        You're a Beta Tester!
-                    </h1>
+            border-radius: 10px;
 
-                    <div class="username">
-                        ${escapeHtml(user.username)}
-                    </div>
+            background: #35aaff;
 
-                    <p>
-                        Discord login successful.
-                    </p>
+            color: #02070d;
 
-                    <div class="role">
-                        ✓ BETA TESTER
-                    </div>
+            text-decoration: none;
 
-                    <p>
-                        Your Beta Tester role has been
-                        successfully added to the Cave Tag
-                        Discord server.
-                    </p>
+            font-weight: 900;
+        }
 
-                    <a href="${FRONTEND_URL}">
-                        Back to Cave Tag
-                    </a>
+    </style>
 
-                </div>
+</head>
 
-            </body>
+<body>
 
-            </html>
+    <div class="card">
+
+        <div class="icon">
+            🧪
+        </div>
+
+        <h1>
+            Beta Tester Unlocked!
+        </h1>
+
+        <div class="username">
+            ${escapeHtml(user.username)}
+        </div>
+
+        <div class="role">
+            ✓ BETA TESTER
+        </div>
+
+        <p>
+            Your Discord account has been verified
+            and you've been given the Cave Tag
+            Beta Tester role!
+        </p>
+
+        <a href="${FRONTEND_URL}">
+            Return to Cave Tag
+        </a>
+
+    </div>
+
+</body>
+
+</html>
 
         `);
 
@@ -472,9 +591,9 @@ app.get("/auth/discord/callback", async (req, res) => {
 });
 
 
-// =========================================================
+// =====================================================
 // ESCAPE HTML
-// =========================================================
+// =====================================================
 
 function escapeHtml(text) {
 
@@ -488,9 +607,9 @@ function escapeHtml(text) {
 }
 
 
-// =========================================================
+// =====================================================
 // START SERVER
-// =========================================================
+// =====================================================
 
 app.listen(PORT, () => {
 
