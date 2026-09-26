@@ -7,33 +7,14 @@
 
 <title>Cave Tag | Official Website</title>
 
-<meta name="description" content="The official Cave Tag website.">
+<meta name="description" content="The official Cave Tag website. Enter the cave. Stay untagged.">
 
 <meta property="og:title" content="Cave Tag">
 <meta property="og:description" content="Enter the cave. Stay untagged.">
-<meta property="og:image" conten<a
-    href="https://cave-tag-discord-login.onrender.com/login"
-    class="discord-login"
->
+<meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
+<meta property="og:type" content="website">
 
 <style>
-
-   .discord-login {
-    display: inline-block;
-    padding: 10px 14px;
-    border-radius: 9px;
-    background: #5865F2;
-    color: white !important;
-    font-size: 11px;
-    font-weight: 900;
-    text-decoration: none;
-    transition: 0.25s;
-}
-
-.discord-login:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(88, 101, 242, 0.35);
-}
 
 /* =========================================================
    CAVE TAG — BLUE THEME
@@ -53,11 +34,6 @@
 
     --border: rgba(53,170,255,.16);
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     margin: 0;
@@ -106,9 +82,7 @@ body::after {
     position: fixed;
     inset: 0;
     z-index: -4;
-
     pointer-events: none;
-
     opacity: .12;
 
     background-image:
@@ -269,7 +243,7 @@ button {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 19px;
+    gap: 13px;
 }
 
 .nav-links a {
@@ -279,6 +253,8 @@ button {
     font-weight: 800;
 
     transition: .2s;
+
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -293,6 +269,34 @@ button {
     padding: 10px 14px;
 
     border-radius: 9px;
+}
+
+.discord-login {
+    display: inline-block;
+
+    padding: 10px 14px;
+
+    border-radius: 9px;
+
+    background: #5865F2;
+
+    color: white !important;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-decoration: none;
+
+    transition: .25s;
+}
+
+.discord-login:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(88,101,242,.35);
 }
 
 .mobile-menu {
@@ -469,8 +473,7 @@ button {
 }
 
 .btn:hover {
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
 .btn-blue {
@@ -755,7 +758,7 @@ button {
 .countdown-box {
     text-align: center;
 
-    padding: 65px 25px;
+    padding: 75px 25px;
 
     border-radius: 28px;
 
@@ -782,51 +785,34 @@ button {
 
 .countdown-box p {
     color: #737f8e;
+
+    font-size: 17px;
 }
 
-.countdown {
-    display: grid;
+.starting-soon {
+    margin-top: 30px;
 
-    grid-template-columns:
-        repeat(4,1fr);
+    display: inline-block;
 
-    gap: 12px;
+    padding: 16px 26px;
 
-    max-width: 720px;
+    border-radius: 999px;
 
-    margin:
-        35px auto 0;
-}
+    color: var(--blue);
 
-.time {
-    padding: 25px 10px;
-
-    background: #040a10;
+    background:
+        rgba(53,170,255,.07);
 
     border:
         1px solid
-        rgba(53,170,255,.11);
-
-    border-radius: 16px;
-}
-
-.time-number {
-    color: var(--blue);
-
-    font-size:
-        clamp(28px,5vw,44px);
+        rgba(53,170,255,.25);
 
     font-weight: 1000;
-}
 
-.time-label {
-    margin-top: 5px;
+    letter-spacing: 3px;
 
-    color: #596979;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
+    animation:
+        glow 2s ease-in-out infinite;
 }
 
 
@@ -1271,13 +1257,11 @@ button {
     font-size: 14px;
 }
 
-.faq-item.active
-.faq-answer {
+.faq-item.active .faq-answer {
     display: block;
 }
 
-.faq-item.active
-.faq-question {
+.faq-item.active .faq-question {
     color: var(--blue);
 }
 
@@ -1419,6 +1403,22 @@ footer strong {
 
 }
 
+@keyframes glow {
+
+    0%,100% {
+        box-shadow:
+            0 0 0
+            rgba(53,170,255,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px
+            rgba(53,170,255,.18);
+    }
+
+}
+
 .reveal {
     opacity: 0;
 
@@ -1523,11 +1523,6 @@ footer strong {
             1fr 1fr;
     }
 
-    .countdown {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
     .update {
         grid-template-columns: 1fr;
 
@@ -1613,16 +1608,17 @@ footer strong {
         <a
             href="https://discord.gg/WaK6ykHCbS"
             target="_blank"
+            rel="noopener"
             class="nav-discord"
-
-           <a
-    href="https://cave-tag-discord-login.onrender.com/login"
-    class="discord-login"
->
-    🔵 Login with Discord
-</a>
         >
             Discord
+        </a>
+
+        <a
+            href="https://cave-tag-discord-login.onrender.com/login"
+            class="discord-login"
+        >
+            🔵 Login
         </a>
 
     </nav>
@@ -1682,6 +1678,7 @@ footer strong {
             <a
                 href="https://discord.gg/WaK6ykHCbS"
                 target="_blank"
+                rel="noopener"
                 class="btn btn-dark"
             >
                 💬 JOIN DISCORD
@@ -1769,10 +1766,7 @@ footer strong {
      FEATURES
 ========================================================= -->
 
-<section
-    class="section"
-    id="features"
->
+<section class="section" id="features">
 
     <div class="section-label">
         THE EXPERIENCE
@@ -1794,13 +1788,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                🦍
-            </div>
+            <div class="feature-icon">🦍</div>
 
-            <h3>
-                Movement
-            </h3>
+            <h3>Movement</h3>
 
             <p>
                 Swing, climb and move around the cave
@@ -1812,13 +1802,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                🪨
-            </div>
+            <div class="feature-icon">🪨</div>
 
-            <h3>
-                Explore
-            </h3>
+            <h3>Explore</h3>
 
             <p>
                 Explore the cave and discover different
@@ -1830,13 +1816,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                🔥
-            </div>
+            <div class="feature-icon">🔥</div>
 
-            <h3>
-                Chaos
-            </h3>
+            <h3>Chaos</h3>
 
             <p>
                 Games can turn chaotic fast.
@@ -1848,13 +1830,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                👥
-            </div>
+            <div class="feature-icon">👥</div>
 
-            <h3>
-                Multiplayer
-            </h3>
+            <h3>Multiplayer</h3>
 
             <p>
                 Play with friends and turn every round
@@ -1866,13 +1844,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                🛠️
-            </div>
+            <div class="feature-icon">🛠️</div>
 
-            <h3>
-                Constant Updates
-            </h3>
+            <h3>Constant Updates</h3>
 
             <p>
                 New features, improvements and updates
@@ -1884,13 +1858,9 @@ footer strong {
 
         <article class="feature reveal">
 
-            <div class="feature-icon">
-                🌑
-            </div>
+            <div class="feature-icon">🌑</div>
 
-            <h3>
-                The Cave
-            </h3>
+            <h3>The Cave</h3>
 
             <p>
                 A dark environment full of places to
@@ -1909,10 +1879,7 @@ footer strong {
      LATEST UPDATES
 ========================================================= -->
 
-<section
-    class="section"
-    id="updates"
->
+<section class="section" id="updates">
 
     <div class="section-label">
         DEVELOPMENT
@@ -1965,7 +1932,7 @@ footer strong {
                 </h3>
 
                 <p>
-                    The credits page has been added along
+                    The credits section has been added along
                     with the official Cave Tag credits video.
                 </p>
 
@@ -2005,10 +1972,7 @@ footer strong {
      COUNTDOWN
 ========================================================= -->
 
-<section
-    class="section"
-    id="countdown"
->
+<section class="section" id="countdown">
 
     <div class="countdown-box reveal">
 
@@ -2020,76 +1984,12 @@ footer strong {
             Release Countdown
         </h2>
 
-        <p id="countdownText">
-            Counting down to the Cave Tag release.
+        <p>
+            The Cave Tag release date has not been announced yet.
         </p>
 
-
-        <div class="countdown">
-
-            <div class="time">
-
-                <div
-                    class="time-number"
-                    id="days"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    DAYS
-                </div>
-
-            </div>
-
-
-            <div class="time">
-
-                <div
-                    class="time-number"
-                    id="hours"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    HOURS
-                </div>
-
-            </div>
-
-
-            <div class="time">
-
-                <div
-                    class="time-number"
-                    id="minutes"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    MINUTES
-                </div>
-
-            </div>
-
-
-            <div class="time">
-
-                <div
-                    class="time-number"
-                    id="seconds"
-                >
-                    00
-                </div>
-
-                <div class="time-label">
-                    SECONDS
-                </div>
-
-            </div>
-
+        <div class="starting-soon">
+            STARTING SOON!
         </div>
 
     </div>
@@ -2102,10 +2002,7 @@ footer strong {
      GALLERY
 ========================================================= -->
 
-<section
-    class="section"
-    id="gallery"
->
+<section class="section" id="gallery">
 
     <div class="section-label">
         MEDIA
@@ -2116,7 +2013,7 @@ footer strong {
     </h2>
 
     <p class="section-description">
-
+        Screenshots and media from Cave Tag will appear here.
     </p>
 
 
@@ -2156,10 +2053,7 @@ footer strong {
      MOD APPLICATIONS
 ========================================================= -->
 
-<section
-    class="section"
-    id="applications"
->
+<section class="section" id="applications">
 
     <div class="application reveal">
 
@@ -2231,6 +2125,7 @@ footer strong {
         <a
             href="https://discord.gg/WaK6ykHCbS"
             target="_blank"
+            rel="noopener"
             class="btn btn-blue"
         >
             💬 JOIN DISCORD
@@ -2266,10 +2161,7 @@ footer strong {
      TEAM
 ========================================================= -->
 
-<section
-    class="section"
-    id="team"
->
+<section class="section" id="team">
 
     <div class="section-label">
         THE PEOPLE
@@ -2280,7 +2172,7 @@ footer strong {
     </h2>
 
     <p class="section-description">
-
+        Meet the people working on Cave Tag.
     </p>
 
 
@@ -2293,14 +2185,11 @@ footer strong {
             </div>
 
             <h3>
-                Team Member
+                Fingus
             </h3>
 
             <div class="member-role">
                 OWNER
-                Fingus
-                Vexo
-                Shazam
             </div>
 
         </article>
@@ -2313,12 +2202,11 @@ footer strong {
             </div>
 
             <h3>
-                Team Member
+                Shazam
             </h3>
 
             <div class="member-role">
                 DEVELOPER
-                Shazam
             </div>
 
         </article>
@@ -2331,14 +2219,62 @@ footer strong {
             </div>
 
             <h3>
-                Team Member
+                Pax
             </h3>
 
             <div class="member-role">
-                Modorator
-                Pax
+                MODERATOR
+            </div>
+
+        </article>
+
+
+        <article class="member reveal">
+
+            <div class="avatar">
+                🛡️
+            </div>
+
+            <h3>
                 Axolotl
+            </h3>
+
+            <div class="member-role">
+                MODERATOR
+            </div>
+
+        </article>
+
+
+        <article class="member reveal">
+
+            <div class="avatar">
+                🛡️
+            </div>
+
+            <h3>
                 Goofus
+            </h3>
+
+            <div class="member-role">
+                MODERATOR
+            </div>
+
+        </article>
+
+
+        <article class="member reveal">
+
+            <div class="avatar">
+                👑
+            </div>
+
+            <h3>
+                Vexo
+            </h3>
+
+            <div class="member-role">
+                OWNER
             </div>
 
         </article>
@@ -2353,10 +2289,7 @@ footer strong {
      CREDITS
 ========================================================= -->
 
-<section
-    class="section"
-    id="credits"
->
+<section class="section" id="credits">
 
     <div class="section-label">
         CREDITS
@@ -2442,9 +2375,9 @@ footer strong {
 
             <div class="faq-answer">
 
-                The release date will be announced by
-                the Cave Tag team. Once it is confirmed,
-                the countdown above can be updated.
+                The release date has not been announced yet.
+                The countdown will be activated once an official
+                release date is confirmed.
 
             </div>
 
@@ -2489,8 +2422,8 @@ footer strong {
 
             <div class="faq-answer">
 
-                Not currently. Applications are planned
-                for an upcoming update.
+                Not currently. Moderator applications are
+                coming soon.
 
             </div>
 
@@ -2606,28 +2539,6 @@ footer strong {
    SETTINGS
 ========================================================= */
 
-/*
-    CHANGE THIS TO YOUR REAL RELEASE DATE.
-
-    Example:
-
-    "2026-12-25T18:00:00"
-*/
-
-const RELEASE_DATE =
-    "2027-01-01T18:00:00";
-
-
-/*
-    When the game releases, change this
-    to the actual game link.
-
-    Example:
-
-    const GAME_LINK =
-        "https://your-game-link.com";
-*/
-
 const GAME_LINK = "#";
 
 
@@ -2676,111 +2587,6 @@ document
 
 
 /* =========================================================
-   COUNTDOWN
-========================================================= */
-
-function updateCountdown() {
-
-    const target =
-        new Date(RELEASE_DATE).getTime();
-
-    const now =
-        new Date().getTime();
-
-    const difference =
-        target - now;
-
-
-    if (difference <= 0) {
-
-        document
-            .getElementById("days")
-            .textContent = "00";
-
-        document
-            .getElementById("hours")
-            .textContent = "00";
-
-        document
-            .getElementById("minutes")
-            .textContent = "00";
-
-        document
-            .getElementById("seconds")
-            .textContent = "00";
-
-        document
-            .getElementById("countdownText")
-            .textContent =
-            "Cave Tag has released!";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
-        );
-
-
-    const minutes =
-        Math.floor(
-            (difference /
-            (1000 * 60)) % 60
-        );
-
-
-    const seconds =
-        Math.floor(
-            (difference / 1000) % 60
-        );
-
-
-    document
-        .getElementById("days")
-        .textContent =
-        String(days).padStart(2,"0");
-
-
-    document
-        .getElementById("hours")
-        .textContent =
-        String(hours).padStart(2,"0");
-
-
-    document
-        .getElementById("minutes")
-        .textContent =
-        String(minutes).padStart(2,"0");
-
-
-    document
-        .getElementById("seconds")
-        .textContent =
-        String(seconds).padStart(2,"0");
-
-}
-
-
-updateCountdown();
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =========================================================
    COPY DISCORD
 ========================================================= */
 
@@ -2792,6 +2598,29 @@ function copyInvite() {
     navigator.clipboard
         .writeText(input.value)
         .then(() => {
+
+            const button =
+                document.getElementById("copyButton");
+
+            button.textContent =
+                "COPIED!";
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        "COPY";
+
+                },
+                1800
+            );
+
+        })
+        .catch(() => {
+
+            input.select();
+
+            document.execCommand("copy");
 
             const button =
                 document.getElementById("copyButton");
@@ -2888,7 +2717,7 @@ function toggleMusic() {
             .catch(() => {
 
                 alert(
-                    "Add your music file as 'music.mp3' next to this HTML file first!"
+                    "Add a file named music.mp3 next to this HTML file first."
                 );
 
             });
