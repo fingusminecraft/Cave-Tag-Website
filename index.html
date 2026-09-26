@@ -2987,6 +2987,71 @@ statNumbers.forEach(stat => {
 
 });
 
+/* =========================================================
+   CODE REDEMPTION
+========================================================= */
+
+const CODE_REDEEM_URL =
+    "https://cave-tag-discord-login.onrender.com/redeem";
+
+
+function redeemCode() {
+
+    const input =
+        document.getElementById(
+            "codeInput"
+        );
+
+    const button =
+        document.getElementById(
+            "redeemButton"
+        );
+
+    const result =
+        document.getElementById(
+            "codeResult"
+        );
+
+
+    const code =
+        input.value
+            .trim()
+            .toUpperCase();
+
+
+    if (!code) {
+
+        result.textContent =
+            "❌ Enter a code first.";
+
+        result.style.color =
+            "#ff5555";
+
+        return;
+
+    }
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "CHECKING...";
+
+
+    result.textContent =
+        "Taking you to Discord...";
+
+    result.style.color =
+        "#7d8fa3";
+
+
+    window.location.href =
+        CODE_REDEEM_URL +
+        "?code=" +
+        encodeURIComponent(code);
+
+}
+
 </script>
 
 </body>
