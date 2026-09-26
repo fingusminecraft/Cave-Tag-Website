@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cave Tag | Official Fan Game</title>
 
+    <meta property="og:title" content="Cave Tag">
+    <meta property="og:description" content="The official Cave Tag website.">
+    <meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
+    <meta property="og:type" content="website">
+
     <style>
         * {
             margin: 0;
@@ -23,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* Ambient cave lighting */
         body::before {
             content: "";
             position: fixed;
@@ -72,13 +76,15 @@
 
         .nav-links {
             display: flex;
-            gap: 28px;
+            gap: 22px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .nav-links a {
             color: #c6ccc7;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             transition: .2s;
         }
 
@@ -243,7 +249,7 @@
         }
 
         .community {
-            margin: 50px auto 100px;
+            margin: 50px auto 70px;
             max-width: 1100px;
             padding: 65px 30px;
             text-align: center;
@@ -261,15 +267,6 @@
             color: #9ba49d;
             margin-bottom: 28px;
         }
-
-        footer {
-            text-align: center;
-            padding: 32px;
-            border-top: 1px solid rgba(255,255,255,.06);
-            color: #687168;
-            font-size: 13px;
-        }
-
 
         .credits {
             margin-top: 40px;
@@ -294,7 +291,57 @@
             border: 0;
         }
 
+        /* COMING SOON SECTIONS */
+
+        .coming-soon {
+            margin: 70px auto;
+            max-width: 1100px;
+            padding: 70px 30px;
+            text-align: center;
+            border-radius: 25px;
+            background: linear-gradient(145deg, rgba(24,32,25,.98), rgba(10,14,11,.98));
+            border: 1px solid rgba(156,255,77,.16);
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .coming-soon h2 {
+            font-size: 42px;
+            margin-bottom: 14px;
+        }
+
+        .coming-soon p {
+            color: #9ba49d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(156,255,77,.1);
+            border: 1px solid rgba(156,255,77,.25);
+            color: #9cff4d;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            border-top: 1px solid rgba(255,255,255,.06);
+            color: #687168;
+            font-size: 13px;
+        }
+
         @media (max-width: 800px) {
+
+            nav {
+                height: auto;
+                min-height: 72px;
+                padding: 15px 5%;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -314,6 +361,10 @@
             .section-heading h2 {
                 font-size: 34px;
             }
+
+            .coming-soon h2 {
+                font-size: 34px;
+            }
         }
     </style>
 </head>
@@ -321,24 +372,57 @@
 <body>
 
     <nav>
-        <div class="logo">CAVE TAG</div>
+
+        <div class="logo">
+            CAVE TAG
+        </div>
 
         <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#features">Features</a>
-            <a href="#community">Discord</a>
-            <a href="#credits">Credits</a>
-            <a href="Cave%20Tag%20Admins.html">Admins</a>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#community">
+                Discord
+            </a>
+
+            <a href="#credits">
+                Credits
+            </a>
+
+            <a href="#applications">
+                Applications
+            </a>
+
+            <a href="#countdown">
+                Release Countdown
+            </a>
+
+            <a href="Cave%20Tag%20Admins.html">
+                Admins
+            </a>
+
         </div>
+
     </nav>
+
 
     <main id="home">
 
         <section class="hero">
+
             <div class="cave-light"></div>
 
             <div class="hero-content">
-                <div class="eyebrow">THE CAVE IS WAITING</div>
+
+                <div class="eyebrow">
+                    THE CAVE IS WAITING
+                </div>
 
                 <h1>
                     CAVE<br>
@@ -352,94 +436,192 @@
                 </p>
 
                 <div class="buttons">
-                    <a class="btn btn-main" href="#features">ENTER THE CAVE →</a>
 
-                    <a class="btn btn-dark"
-                       href="https://discord.gg/WaK6ykHCbS"
-                       target="_blank"
-                       rel="noopener">
+                    <a class="btn btn-main" href="#features">
+                        ENTER THE CAVE →
+                    </a>
+
+                    <a
+                        class="btn btn-dark"
+                        href="https://discord.gg/WaK6ykHCbS"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         💬 JOIN DISCORD
                     </a>
+
                 </div>
+
             </div>
+
         </section>
 
+
         <section class="section" id="features">
+
             <div class="section-heading">
-                <small>WELCOME TO CAVE TAG</small>
-                <h2>What's inside?</h2>
+
+                <small>
+                    WELCOME TO CAVE TAG
+                </small>
+
+                <h2>
+                    What's inside?
+                </h2>
+
             </div>
 
+
             <div class="cards">
+
                 <div class="card">
-                    <div class="card-icon">🦍</div>
-                    <h3>Fast Movement</h3>
+
+                    <div class="card-icon">
+                        🦍
+                    </div>
+
+                    <h3>
+                        Fast Movement
+                    </h3>
+
                     <p>
                         Swing, climb and move through the caves while
                         trying to avoid getting tagged.
                     </p>
+
                 </div>
 
+
                 <div class="card">
-                    <div class="card-icon">🪨</div>
-                    <h3>Explore the Cave</h3>
+
+                    <div class="card-icon">
+                        🪨
+                    </div>
+
+                    <h3>
+                        Explore the Cave
+                    </h3>
+
                     <p>
                         Discover the world of Cave Tag and see what
                         secrets and surprises are waiting inside.
                     </p>
+
                 </div>
 
+
                 <div class="card">
-                    <div class="card-icon">🔥</div>
-                    <h3>Play With Friends</h3>
+
+                    <div class="card-icon">
+                        🔥
+                    </div>
+
+                    <h3>
+                        Play With Friends
+                    </h3>
+
                     <p>
                         Bring your friends into the chaos and find out
                         who can stay untagged the longest.
                     </p>
+
                 </div>
+
             </div>
+
         </section>
 
+
         <section class="community" id="community">
-            <h2>Join the Cave Tag community</h2>
+
+            <h2>
+                Join the Cave Tag community
+            </h2>
+
             <p>
                 Get updates, chat with other players and keep up with
                 everything happening in Cave Tag.
             </p>
 
-            <a class="btn btn-main"
-               href="https://discord.gg/WaK6ykHCbS"
-               target="_blank"
-               rel="noopener">
+            <a
+                class="btn btn-main"
+                href="https://discord.gg/WaK6ykHCbS"
+                target="_blank"
+                rel="noopener"
+            >
                 JOIN THE DISCORD
             </a>
-        </section>
 
-    </main>
+        </section>
 
 
         <section class="community credits" id="credits">
-            <h2>🎬 Cave Tag Credits</h2>
-            <p>Check out the Cave Tag credits video.</p>
+
+            <h2>
+                🎬 Cave Tag Credits
+            </h2>
+
+            <p>
+                Check out the Cave Tag credits video.
+            </p>
 
             <div class="video-wrap">
+
                 <iframe
                     src="https://www.youtube.com/embed/3njvlNQcNLg"
                     title="Cave Tag Credits"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
+
             </div>
+
         </section>
+
+
+        <!-- APPLICATIONS -->
+
+        <section class="coming-soon" id="applications">
+
+            <h2>
+                🛡️ Applications
+            </h2>
+
+            <p>
+                Moderator applications will be available here soon.
+            </p>
+
+            <div class="status">
+                COMING SOON!
+            </div>
+
+        </section>
+
+
+        <!-- RELEASE COUNTDOWN -->
+
+        <section class="coming-soon" id="countdown">
+
+            <h2>
+                ⏳ Release Countdown
+            </h2>
+
+            <p>
+                The official Cave Tag release countdown is being prepared.
+            </p>
+
+            <div class="status">
+                STARTING SOON!
+            </div>
+
+        </section>
+
+    </main>
+
 
     <footer>
         © 2026 Cave Tag • Fan-made project
     </footer>
-
-    <meta property="og:title" content="Cave Tag">
-<meta property="og:description" content="The official Cave Tag website.">
-<meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
-<meta property="og:type" content="website">
 
 </body>
 </html>
