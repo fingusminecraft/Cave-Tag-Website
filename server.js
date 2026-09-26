@@ -1,4 +1,4 @@
-
+```js
 const express = require("express");
 
 const app = express();
@@ -7,6 +7,10 @@ const PORT = process.env.PORT || 3000;
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI;
+
+const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
+const GUILD_ID = process.env.DISCORD_GUILD_ID;
+const BETA_ROLE_ID = process.env.BETA_ROLE_ID;
 
 const FRONTEND_URL =
     "https://fingusminecraft.github.io/Cave-Tag-Website/";
@@ -47,7 +51,10 @@ app.get("/auth/discord/callback", async (req, res) => {
 
     try {
 
-        // Exchange Discord code for access token
+        // ================================
+        // GET DISCORD ACCESS TOKEN
+        // ================================
+
         const tokenResponse = await fetch(
             "https://discord.com/api/oauth2/token",
             {
@@ -68,7 +75,8 @@ app.get("/auth/discord/callback", async (req, res) => {
             }
         );
 
-        const tokenData = await tokenResponse.json();
+        const tokenData =
+            await tokenResponse.json();
 
         if (!tokenResponse.ok) {
 
@@ -84,7 +92,10 @@ app.get("/auth/discord/callback", async (req, res) => {
         }
 
 
-        // Get Discord user
+        // ================================
+        // GET DISCORD USER
+        // ================================
+
         const userResponse = await fetch(
             "https://discord.com/api/users/@me",
             {
@@ -97,7 +108,8 @@ app.get("/auth/discord/callback", async (req, res) => {
             }
         );
 
-        const user = await userResponse.json();
+        const user =
+            await userResponse.json();
 
         if (!userResponse.ok) {
 
@@ -114,15 +126,71 @@ app.get("/auth/discord/callback", async (req, res) => {
 
 
         // ================================
+        // GIVE BETA TESTER ROLE
+        // ================================
+
+        const roleURL =
+            "https://discord.com/api/v10/guilds/" +
+            GUILD_ID +
+            "/members/" +
+            user.id +
+            "/roles/" +
+            BETA_ROLE_ID;
+
+
+        const roleResponse = await fetch(
+            roleURL,
+            {
+                method: "PUT",
+
+                headers: {
+                    Authorization:
+                        "Bot " + BOT_TOKEN
+                }
+            }
+        );
+
+
+        if (!roleResponse.ok) {
+
+            const roleError =
+                await roleResponse.text();
+
+            console.error(
+                "Could not give Beta Tester role:",
+                roleError
+            );
+
+            return res
+                .status(500)
+                .send(
+                    "You logged in successfully, " +
+                    "but I couldn't give you the Beta Tester role. " +
+                    "Please contact the Cave Tag team."
+                );
+
+        }
+
+
+        console.log(
+            "Beta Tester role given to:",
+            user.username,
+            user.id
+        );
+
+
+        // ================================
         // SUCCESS PAGE
         // ================================
 
         const username =
             escapeHtml(user.username);
 
+
         res.send(
             "<!DOCTYPE html>" +
             "<html>" +
+
             "<head>" +
 
             "<meta charset='UTF-8'>" +
@@ -130,7 +198,7 @@ app.get("/auth/discord/callback", async (req, res) => {
             "<meta name='viewport' " +
             "content='width=device-width, initial-scale=1.0'>" +
 
-            "<title>Cave Tag Login</title>" +
+            "<title>Cave Tag Beta Testing</title>" +
 
             "<style>" +
 
@@ -165,6 +233,12 @@ app.get("/auth/discord/callback", async (req, res) => {
             "margin:20px 0;" +
             "}" +
 
+            ".success {" +
+            "color:#35aaff;" +
+            "font-weight:900;" +
+            "margin:20px 0;" +
+            "}" +
+
             "a {" +
             "display:inline-block;" +
             "padding:14px 20px;" +
@@ -189,8 +263,12 @@ app.get("/auth/discord/callback", async (req, res) => {
             username +
             "</div>" +
 
+            "<div class='success'>" +
+            "✓ Beta Tester role added!" +
+            "</div>" +
+
             "<p>" +
-            "You successfully logged in with Discord." +
+            "You're officially registered for Cave Tag Beta Testing." +
             "</p>" +
 
             "<br>" +
@@ -207,6 +285,7 @@ app.get("/auth/discord/callback", async (req, res) => {
 
             "</html>"
         );
+
 
     } catch (error) {
 
@@ -225,7 +304,7 @@ app.get("/auth/discord/callback", async (req, res) => {
 
 
 // ================================
-// SECURITY
+// ESCAPE HTML
 // ================================
 
 function escapeHtml(text) {
@@ -252,3 +331,4 @@ app.listen(PORT, () => {
     );
 
 });
+```
