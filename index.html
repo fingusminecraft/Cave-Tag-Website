@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -15,25 +15,38 @@
 <meta property="og:type" content="website">
 
 <style>
-
 /* =========================================================
-   CAVE TAG — BLUE THEME
+   CAVE TAG — FUTURISTIC BLUE
 ========================================================= */
 
 :root {
-    --blue: #35aaff;
-    --blue2: #168cff;
-    --blue3: #006eff;
+    --blue: #38b6ff;
+    --blue-bright: #69caff;
+    --blue-dark: #087cff;
+    --cyan: #00e5ff;
 
-    --dark: #03070d;
-    --panel: #08111c;
-    --panel2: #0d1926;
+    --bg: #02060b;
+    --bg2: #050b12;
+    --panel: rgba(7, 17, 28, .78);
+    --panel-solid: #07111c;
 
-    --text: #f4f8ff;
-    --muted: #7d8fa3;
+    --text: #f5faff;
+    --muted: #7890a5;
+    --muted2: #52697d;
 
-    --border: rgba(53,170,255,.16);
+    --border: rgba(77, 190, 255, .16);
+    --border-hover: rgba(77, 190, 255, .42);
+
+    --danger: #ff5364;
+    --success: #45e6a5;
+
+    --radius: 22px;
+    --nav-height: 70px;
 }
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     margin: 0;
@@ -43,37 +56,58 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 120px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--dark);
-    color: var(--text);
+    min-height: 100vh;
     overflow-x: hidden;
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--text);
+    background: var(--bg);
 }
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -5;
+    z-index: -10;
+    pointer-events: none;
 
     background:
         radial-gradient(
-            circle at 15% 10%,
-            rgba(53,170,255,.13),
-            transparent 30%
+            circle at 15% 15%,
+            rgba(56, 182, 255, .13),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 90% 45%,
-            rgba(0,110,255,.08),
+            circle at 85% 35%,
+            rgba(0, 229, 255, .07),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(8, 124, 255, .10),
             transparent 30%
         ),
         linear-gradient(
-            120deg,
-            #03070d,
-            #07111c 50%,
-            #02050a
+            135deg,
+            #02060b,
+            #06111b 50%,
+            #010409
         );
 }
 
@@ -81,19 +115,35 @@ body::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -4;
+    z-index: -9;
     pointer-events: none;
-    opacity: .12;
+
+    opacity: .20;
 
     background-image:
-        radial-gradient(#ffffff 1px, transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
 
-    background-size: 45px 45px;
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
 }
 
 ::selection {
     background: var(--blue);
-    color: #02070d;
+    color: #00101b;
 }
 
 ::-webkit-scrollbar {
@@ -101,12 +151,12 @@ body::after {
 }
 
 ::-webkit-scrollbar-track {
-    background: #03070d;
+    background: #02060b;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #1b334a;
-    border-radius: 20px;
+    background: #17364c;
+    border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -118,8 +168,9 @@ a {
     text-decoration: none;
 }
 
-button {
-    font-family: inherit;
+button,
+input {
+    font: inherit;
 }
 
 /* =========================================================
@@ -128,187 +179,228 @@ button {
 
 .announcement {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0 0 auto 0;
 
-    width: 100%;
-    min-height: 34px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #168cff,
-            #35aaff,
-            #168cff
-        );
-
-    color: #02070d;
-
-    z-index: 2000;
+    min-height: 36px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 8px 45px 8px 15px;
+    padding: 9px 55px 9px 20px;
 
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: .8px;
+    z-index: 3000;
 
+    color: #00101a;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue-dark),
+            var(--blue-bright),
+            var(--blue-dark)
+        );
+
+    background-size: 200% 100%;
+
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 1.4px;
     text-align: center;
+
+    animation: announcementFlow 6s linear infinite;
 }
 
 .announcement button {
     position: absolute;
-    right: 15px;
+    right: 16px;
     top: 50%;
+
+    width: 28px;
+    height: 28px;
 
     transform: translateY(-50%);
 
     border: 0;
-    background: transparent;
+    border-radius: 8px;
 
-    font-size: 18px;
+    color: #00101a;
+    background: rgba(255,255,255,.18);
+
     cursor: pointer;
 
-    color: #02070d;
+    font-size: 18px;
+    line-height: 1;
+
+    transition: .2s;
+}
+
+.announcement button:hover {
+    background: rgba(255,255,255,.35);
+    transform: translateY(-50%) rotate(90deg);
 }
 
 /* =========================================================
-   NAVIGATION
+   NAV
 ========================================================= */
 
 .navbar {
     position: fixed;
 
-    top: 50px;
+    top: 54px;
     left: 50%;
 
+    width: min(1200px, calc(100% - 30px));
+    min-height: var(--nav-height);
+
     transform: translateX(-50%);
-
-    width: min(1200px, 94%);
-    min-height: 68px;
-
-    padding: 10px 18px;
-
-    border-radius: 18px;
-
-    background: rgba(3,8,14,.80);
-
-    border: 1px solid var(--border);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    z-index: 1000;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    padding: 10px 13px 10px 20px;
+
+    z-index: 2000;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 18px;
+
+    background:
+        rgba(2, 8, 14, .78);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
     box-shadow:
-        0 20px 70px rgba(0,0,0,.45),
-        0 0 40px rgba(0,110,255,.03);
+        0 25px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+    transition: .3s;
+}
+
+.navbar.scrolled {
+    top: 44px;
+
+    background:
+        rgba(2, 8, 14, .93);
+
+    border-color:
+        rgba(56,182,255,.25);
 }
 
 .logo {
     display: flex;
     align-items: center;
+    gap: 11px;
 
-    gap: 10px;
+    flex-shrink: 0;
 
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 1000;
-
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
 }
 
-.logo-dot {
-    width: 10px;
-    height: 10px;
+.logo-mark {
+    width: 12px;
+    height: 12px;
 
-    background: var(--blue);
+    border-radius: 4px;
 
-    border-radius: 50%;
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            var(--blue-dark)
+        );
 
     box-shadow:
-        0 0 20px var(--blue);
+        0 0 20px rgba(56,182,255,.8);
 
-    animation: pulse 1.7s infinite;
+    transform: rotate(45deg);
+
+    animation: logoPulse 2s ease-in-out infinite;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 13px;
+    gap: 4px;
 }
 
 .nav-links a {
-    color: #8999aa;
+    padding: 10px 9px;
 
-    font-size: 11px;
-    font-weight: 800;
+    color: #8297a9;
 
-    transition: .2s;
+    font-size: 10px;
+    font-weight: 850;
 
     white-space: nowrap;
+
+    border-radius: 8px;
+
+    transition: .2s;
 }
 
 .nav-links a:hover {
-    color: var(--blue);
+    color: var(--blue-bright);
+    background: rgba(56,182,255,.06);
 }
 
 .nav-discord {
-    background: var(--blue);
+    color: #03101a !important;
 
-    color: #02070d !important;
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue-bright),
+            var(--blue)
+        ) !important;
 
-    padding: 10px 14px;
-
-    border-radius: 9px;
+    margin-left: 4px;
 }
 
 .discord-login {
-    display: inline-block;
-
-    padding: 10px 14px;
-
-    border-radius: 9px;
-
-    background: #5865F2;
-
     color: white !important;
 
-    font-size: 11px;
+    background:
+        linear-gradient(
+            135deg,
+            #6874ff,
+            #5865f2
+        ) !important;
 
-    font-weight: 900;
-
-    text-decoration: none;
-
-    transition: .25s;
+    box-shadow:
+        0 8px 25px rgba(88,101,242,.15);
 }
 
 .discord-login:hover {
-    transform: translateY(-3px);
+    color: white !important;
+
+    transform: translateY(-2px);
 
     box-shadow:
-        0 10px 30px
-        rgba(88,101,242,.35);
+        0 12px 30px rgba(88,101,242,.32);
 }
 
 .mobile-menu {
     display: none;
 
-    border: 1px solid #20384d;
+    width: 42px;
+    height: 42px;
 
-    background: #091421;
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 11px;
 
     color: white;
-
-    border-radius: 9px;
-
-    padding: 9px 12px;
+    background: rgba(255,255,255,.03);
 
     cursor: pointer;
 }
@@ -320,17 +412,18 @@ button {
 .hero {
     min-height: 100vh;
 
-    padding:
-        180px 20px 100px;
+    position: relative;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
+    padding:
+        190px 20px 100px;
+
     text-align: center;
 
-    position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -338,135 +431,167 @@ button {
 
     position: absolute;
 
-    width: 700px;
-    height: 450px;
+    width: 850px;
+    height: 500px;
 
     left: 50%;
-    bottom: -180px;
+    bottom: -280px;
 
     transform: translateX(-50%);
 
     background:
         radial-gradient(
             ellipse,
-            rgba(53,170,255,.16),
-            transparent 70%
+            rgba(56,182,255,.19),
+            transparent 68%
         );
 
-    filter: blur(40px);
+    filter: blur(35px);
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(56,182,255,.045),
+            transparent 35%
+        );
+
+    pointer-events: none;
 }
 
 .hero-content {
-    max-width: 1000px;
-
     position: relative;
-
     z-index: 2;
+
+    width: min(1050px, 100%);
 }
 
 .status-pill {
     display: inline-flex;
-
     align-items: center;
-
     gap: 9px;
 
-    padding: 9px 16px;
+    padding: 9px 15px;
+
+    margin-bottom: 30px;
 
     border:
         1px solid
-        rgba(53,170,255,.25);
+        rgba(56,182,255,.25);
 
     border-radius: 999px;
 
-    background:
-        rgba(53,170,255,.06);
+    color: #9cdbff;
+    background: rgba(56,182,255,.055);
 
-    color: #8ed2ff;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
+    font-size: 9px;
+    font-weight: 950;
     letter-spacing: 2px;
 
-    margin-bottom: 28px;
+    box-shadow:
+        0 0 30px rgba(56,182,255,.04);
 }
 
 .status-dot {
     width: 7px;
     height: 7px;
 
-    background: var(--blue);
-
     border-radius: 50%;
 
+    background: var(--blue);
+
     box-shadow:
-        0 0 15px var(--blue);
+        0 0 16px var(--blue);
+
+    animation: statusPulse 1.7s infinite;
 }
 
 .hero h1 {
     font-size:
-        clamp(75px, 15vw, 180px);
+        clamp(82px, 16vw, 190px);
 
-    line-height: .78;
+    line-height: .76;
 
-    letter-spacing: -11px;
+    letter-spacing:
+        clamp(-12px, -1vw, -6px);
 
     font-weight: 1000;
 
+    text-transform: uppercase;
+
     text-shadow:
-        0 25px 80px rgba(0,0,0,.85);
+        0 30px 100px rgba(0,0,0,.8);
 }
 
 .hero h1 span {
-    color: var(--blue);
+    color: transparent;
 
-    text-shadow:
-        0 0 60px rgba(53,170,255,.35);
+    background:
+        linear-gradient(
+            180deg,
+            #7bd7ff,
+            var(--blue),
+            #087cff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    filter:
+        drop-shadow(
+            0 0 40px
+            rgba(56,182,255,.25)
+        );
 }
 
 .hero-description {
     max-width: 680px;
 
-    margin:
-        40px auto 30px;
+    margin: 42px auto 30px;
 
-    color: #8999aa;
+    color: #8195a8;
 
-    font-size: 17px;
-
+    font-size: 16px;
     line-height: 1.8;
 }
 
 .buttons {
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 11px;
 }
 
 .btn {
-    display: inline-flex;
+    min-height: 48px;
 
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    padding: 15px 23px;
+    padding: 0 21px;
 
     border-radius: 12px;
 
-    font-size: 12px;
-
-    font-weight: 900;
+    font-size: 11px;
+    font-weight: 950;
 
     cursor: pointer;
 
-    transition: .25s;
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
 }
 
 .btn:hover {
@@ -474,33 +599,41 @@ button {
 }
 
 .btn-blue {
-    color: #02070d;
+    color: #01101a;
 
-    background: var(--blue);
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue-bright),
+            var(--blue)
+        );
 
     box-shadow:
-        0 12px 40px
-        rgba(53,170,255,.12);
+        0 12px 35px rgba(56,182,255,.12);
 }
 
 .btn-blue:hover {
     box-shadow:
-        0 18px 55px
-        rgba(53,170,255,.30);
+        0 18px 50px rgba(56,182,255,.28);
 }
 
 .btn-dark {
-    color: white;
-
-    background: #09121c;
+    color: #eaf7ff;
 
     border:
-        1px solid #20384d;
+        1px solid
+        #1d3b52;
+
+    background:
+        rgba(8,18,29,.8);
 }
 
 .btn-dark:hover {
     border-color:
-        rgba(53,170,255,.5);
+        rgba(56,182,255,.45);
+
+    background:
+        rgba(56,182,255,.055);
 }
 
 /* =========================================================
@@ -508,104 +641,109 @@ button {
 ========================================================= */
 
 .stats {
-    width: min(1100px, 90%);
+    width: min(1100px, calc(100% - 35px));
 
-    margin:
-        -25px auto 0;
+    margin: -25px auto 0;
+
+    position: relative;
+    z-index: 10;
 
     display: grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap: 1px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border:
-        1px solid
-        rgba(255,255,255,.05);
-
-    border-radius: 20px;
+    grid-template-columns: repeat(4, 1fr);
 
     overflow: hidden;
 
-    position: relative;
+    border:
+        1px solid
+        rgba(255,255,255,.06);
 
-    z-index: 10;
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.28);
 }
 
 .stat {
-    padding: 25px 15px;
+    padding: 26px 15px;
 
     text-align: center;
 
     background:
-        rgba(5,10,16,.94);
+        rgba(4,10,16,.86);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+.stat:last-child {
+    border-right: 0;
 }
 
 .stat-number {
+    margin-bottom: 7px;
+
     color: var(--blue);
 
-    font-size: 24px;
-
+    font-size: 25px;
     font-weight: 1000;
-
-    margin-bottom: 7px;
 }
 
 .stat-label {
-    color: #627386;
+    color: #61778a;
 
-    font-size: 9px;
+    font-size: 8px;
+    font-weight: 850;
 
     letter-spacing: 2px;
-
     text-transform: uppercase;
 }
 
 /* =========================================================
-   GENERAL SECTIONS
+   SECTIONS
 ========================================================= */
 
 .section {
-    width: min(1150px, 90%);
+    width: min(1150px, calc(100% - 35px));
 
     margin: auto;
 
-    padding: 120px 0;
+    padding: 115px 0;
 }
 
 .section-label {
+    margin-bottom: 12px;
+
     color: var(--blue);
 
-    font-size: 10px;
-
+    font-size: 9px;
     font-weight: 1000;
 
     letter-spacing: 3px;
-
-    margin-bottom: 12px;
 }
 
 .section-title {
+    margin-bottom: 14px;
+
     font-size:
-        clamp(40px,6vw,65px);
+        clamp(40px, 6vw, 65px);
+
+    line-height: .95;
 
     letter-spacing: -3px;
-
-    margin-bottom: 15px;
 }
 
 .section-description {
-    color: #708196;
-
     max-width: 650px;
 
-    line-height: 1.8;
+    margin-bottom: 43px;
 
-    margin-bottom: 45px;
+    color: var(--muted);
+
+    line-height: 1.8;
 }
 
 /* =========================================================
@@ -614,72 +752,103 @@ button {
 
 .feature-grid {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
+    gap: 14px;
 }
 
 .feature {
-    min-height: 250px;
+    position: relative;
 
-    padding: 30px;
+    min-height: 245px;
 
-    border-radius: 22px;
+    padding: 29px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(56,182,255,.08);
+
+    border-radius: var(--radius);
 
     background:
         linear-gradient(
             145deg,
-            #0e1a27,
-            #050a10
+            rgba(14,31,47,.9),
+            rgba(3,9,15,.9)
         );
 
-    border:
-        1px solid
-        rgba(53,170,255,.08);
+    transition:
+        transform .35s,
+        border-color .35s,
+        box-shadow .35s;
+}
 
-    position: relative;
+.feature::before {
+    content: "";
 
-    overflow: hidden;
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -80px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(56,182,255,.10);
+
+    filter: blur(35px);
 
     transition: .35s;
 }
 
 .feature:hover {
     transform:
-        translateY(-9px)
-        scale(1.01);
+        translateY(-8px);
 
     border-color:
-        rgba(53,170,255,.38);
+        var(--border-hover);
 
     box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.4),
+        0 25px 70px rgba(0,0,0,.35),
+        0 0 35px rgba(56,182,255,.055);
+}
 
-        0 0 35px
-        rgba(53,170,255,.05);
+.feature:hover::before {
+    background:
+        rgba(56,182,255,.2);
 }
 
 .feature-icon {
-    font-size: 38px;
+    position: relative;
+    z-index: 1;
 
     margin-bottom: 35px;
+
+    font-size: 35px;
 }
 
 .feature h3 {
-    font-size: 21px;
+    position: relative;
+    z-index: 1;
 
-    margin-bottom: 11px;
+    margin-bottom: 10px;
+
+    font-size: 20px;
 }
 
 .feature p {
-    color: #707f90;
+    position: relative;
+    z-index: 1;
 
-    font-size: 14px;
+    color: #718599;
 
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.75;
 }
 
 /* =========================================================
@@ -688,34 +857,31 @@ button {
 
 .changelog {
     display: grid;
-
-    gap: 12px;
+    gap: 11px;
 }
 
 .update {
     display: grid;
-
-    grid-template-columns:
-        130px 1fr;
-
+    grid-template-columns: 125px 1fr;
     gap: 25px;
 
-    padding: 25px;
-
-    border-radius: 18px;
-
-    background: #07101a;
+    padding: 24px;
 
     border:
         1px solid
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.055);
+
+    border-radius: 17px;
+
+    background:
+        rgba(6,16,26,.75);
 
     transition: .25s;
 }
 
 .update:hover {
     border-color:
-        rgba(53,170,255,.3);
+        rgba(56,182,255,.28);
 
     transform:
         translateX(5px);
@@ -724,81 +890,115 @@ button {
 .update-date {
     color: var(--blue);
 
-    font-size: 11px;
-
+    font-size: 9px;
     font-weight: 1000;
-
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
 .update h3 {
     margin-bottom: 7px;
+    font-size: 17px;
 }
 
 .update p {
-    color: #68798a;
-
-    line-height: 1.6;
+    color: #667b8e;
 
     font-size: 13px;
+    line-height: 1.65;
 }
 
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
-.countdown-box {
+.countdown-box,
+.play-card {
+    position: relative;
+
+    overflow: hidden;
+
     text-align: center;
 
     padding: 75px 25px;
+
+    border:
+        1px solid
+        rgba(56,182,255,.18);
 
     border-radius: 28px;
 
     background:
         radial-gradient(
             circle at 50% 0%,
-            rgba(53,170,255,.14),
-            transparent 45%
+            rgba(56,182,255,.15),
+            transparent 42%
         ),
+        #06101a;
 
-        #07101a;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03);
+}
 
-    border:
-        1px solid
-        rgba(53,170,255,.18);
+.countdown-box::before,
+.play-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(56,182,255,.035),
+            transparent
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        scan 5s linear infinite;
+}
+
+.countdown-box > *,
+.play-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .countdown-box h2 {
-    font-size:
-        clamp(35px,5vw,55px);
-
     margin-bottom: 12px;
+
+    font-size:
+        clamp(35px, 5vw, 55px);
 }
 
-.countdown-box p {
-    color: #737f8e;
-
-    font-size: 17px;
+.countdown-box p,
+.play-card p {
+    color: #74879a;
 }
 
 .starting-soon {
-    margin-top: 30px;
-
     display: inline-block;
 
-    padding: 16px 26px;
+    margin-top: 30px;
+
+    padding: 15px 25px;
+
+    border:
+        1px solid
+        rgba(56,182,255,.25);
 
     border-radius: 999px;
 
     color: var(--blue);
 
     background:
-        rgba(53,170,255,.07);
+        rgba(56,182,255,.055);
 
-    border:
-        1px solid
-        rgba(53,170,255,.25);
-
+    font-size: 10px;
     font-weight: 1000;
 
     letter-spacing: 3px;
@@ -808,279 +1008,244 @@ button {
 }
 
 /* =========================================================
-   APPLICATIONS
-========================================================= */
-
-.application {
-    display: grid;
-
-    grid-template-columns:
-        1fr 300px;
-
-    gap: 30px;
-
-    padding: 45px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(53,170,255,.10),
-            #050b11
-        );
-
-    border:
-        1px solid
-        rgba(53,170,255,.18);
-}
-
-.application h2 {
-    font-size: 38px;
-
-    margin-bottom: 12px;
-}
-
-.application p {
-    color: #707f90;
-
-    line-height: 1.8;
-}
-
-.application-side {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
-.coming-badge {
-    display: inline-block;
-
-    padding: 13px 20px;
-
-    color: var(--blue);
-
-    border-radius: 999px;
-
-    background:
-        rgba(53,170,255,.06);
-
-    border:
-        1px solid
-        rgba(53,170,255,.22);
-
-    font-size: 11px;
-
-    font-weight: 1000;
-
-    letter-spacing: 2px;
-}
-
-/* =========================================================
    GALLERY
 ========================================================= */
 
 .gallery {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
+    gap: 14px;
 }
 
 .gallery-card {
-    height: 250px;
+    position: relative;
 
-    border-radius: 20px;
+    height: 245px;
 
     overflow: hidden;
 
-    position: relative;
-
     border:
         1px solid
-        rgba(53,170,255,.1);
+        rgba(56,182,255,.1);
+
+    border-radius: 20px;
 
     background:
         radial-gradient(
-            circle at 50% 35%,
-            rgba(53,170,255,.15),
-            transparent 30%
+            circle at 50% 40%,
+            rgba(56,182,255,.18),
+            transparent 25%
         ),
-
         linear-gradient(
             145deg,
-            #102031,
-            #050a10
+            #102437,
+            #04090f
         );
 
     transition: .35s;
-}
-
-.gallery-card:hover {
-    transform:
-        translateY(-8px)
-        scale(1.015);
-
-    border-color:
-        rgba(53,170,255,.35);
 }
 
 .gallery-card::before {
     content: "CAVE TAG";
 
     position: absolute;
-
-    top: 50%;
     left: 50%;
+    top: 50%;
 
     transform:
-        translate(-50%,-50%);
+        translate(-50%, -50%);
 
     color:
-        rgba(53,170,255,.25);
+        rgba(56,182,255,.23);
 
-    font-size: 28px;
-
+    font-size: 25px;
     font-weight: 1000;
 
     letter-spacing: 3px;
 }
 
-.gallery-card span {
+.gallery-card::after {
+    content: "";
+
     position: absolute;
-
-    bottom: 15px;
-    left: 15px;
-
-    padding: 7px 10px;
-
-    border-radius: 7px;
-
-    background:
-        rgba(0,0,0,.65);
-
-    color: #b5c2cf;
-
-    font-size: 10px;
-
-    font-weight: 800;
-}
-
-/* =========================================================
-   CODES
-========================================================= */
-
-#codes .application {
-    margin-top: 20px;
-}
-
-#codeResult {
-    margin-top: 15px;
-    min-height: 20px;
-    font-weight: 900;
-}
-
-.code-note {
-    margin-top: 12px;
-    color: #58697a;
-    font-size: 12px;
-}
-
-/* =========================================================
-   DISCORD
-========================================================= */
-
-.discord {
-    text-align: center;
-
-    padding: 75px 30px;
-
-    border-radius: 28px;
+    inset: 0;
 
     background:
         linear-gradient(
             135deg,
-            rgba(53,170,255,.13),
-            rgba(3,8,14,.97)
+            transparent 40%,
+            rgba(56,182,255,.07),
+            transparent 60%
         );
+
+    transform:
+        translateX(-100%);
+
+    transition: .6s;
+}
+
+.gallery-card:hover {
+    transform:
+        translateY(-7px)
+        scale(1.01);
+
+    border-color:
+        rgba(56,182,255,.35);
+}
+
+.gallery-card:hover::after {
+    transform:
+        translateX(100%);
+}
+
+.gallery-card span {
+    position: absolute;
+
+    left: 14px;
+    bottom: 14px;
+
+    z-index: 2;
+
+    padding: 7px 10px;
 
     border:
         1px solid
-        rgba(53,170,255,.2);
-}
+        rgba(255,255,255,.08);
 
-.discord h2 {
-    font-size:
-        clamp(35px,5vw,58px);
+    border-radius: 7px;
 
-    margin-bottom: 14px;
-}
+    color: #b4c4d2;
+    background: rgba(0,0,0,.58);
 
-.discord p {
-    max-width: 620px;
-
-    margin:
-        auto auto 30px;
-
-    color: #737f8e;
-
-    line-height: 1.7;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 /* =========================================================
-   INVITE / CODE BOX
+   APPLICATION / CODE
+========================================================= */
+
+.application {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 30px;
+
+    padding: 44px;
+
+    border:
+        1px solid
+        rgba(56,182,255,.17);
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56,182,255,.09),
+            rgba(4,10,16,.9)
+        );
+}
+
+.application h2 {
+    margin-bottom: 12px;
+
+    font-size: 36px;
+}
+
+.application p {
+    color: #718497;
+
+    line-height: 1.8;
+}
+
+.application-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coming-badge {
+    display: inline-block;
+
+    padding: 13px 19px;
+
+    color: var(--blue);
+
+    border:
+        1px solid
+        rgba(56,182,255,.23);
+
+    border-radius: 999px;
+
+    background:
+        rgba(56,182,255,.055);
+
+    font-size: 9px;
+    font-weight: 1000;
+
+    letter-spacing: 2px;
+}
+
+/* =========================================================
+   INPUTS
 ========================================================= */
 
 .invite-box {
+    display: flex;
+    gap: 9px;
+
     max-width: 700px;
 
-    margin:
-        30px auto 0;
+    margin: 28px auto 0;
+}
 
-    display: flex;
-
-    gap: 10px;
+.application .invite-box {
+    margin-left: 0;
 }
 
 .invite-input {
     flex: 1;
-
     min-width: 0;
 
-    padding: 14px;
+    height: 48px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid
+        #1c384d;
 
     border-radius: 10px;
 
-    background: #040a10;
-
-    color: #72c6ff;
-
-    border:
-        1px solid #20384d;
-
     outline: none;
+
+    color: #76ccff;
+    background: #030910;
+
+    transition: .2s;
 }
 
 .invite-input:focus {
-    border-color: var(--blue);
+    border-color:
+        var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(56,182,255,.07);
 }
 
 .copy-btn {
-    border: 0;
+    min-width: 85px;
 
+    border: 0;
     border-radius: 10px;
 
-    padding: 0 18px;
-
+    color: #01101a;
     background: var(--blue);
 
-    color: #02070d;
-
-    font-weight: 900;
+    font-size: 10px;
+    font-weight: 1000;
 
     cursor: pointer;
 
@@ -1088,13 +1253,70 @@ button {
 }
 
 .copy-btn:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .copy-btn:disabled {
-    opacity: .6;
+    opacity: .55;
     cursor: not-allowed;
+}
+
+#codeResult {
+    min-height: 22px;
+
+    margin-top: 14px;
+
+    font-size: 13px;
+    font-weight: 850;
+}
+
+.code-note {
+    margin-top: 10px;
+
+    color: #526678 !important;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   DISCORD
+========================================================= */
+
+.discord {
+    padding: 75px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(56,182,255,.18);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(56,182,255,.11),
+            rgba(3,8,14,.96)
+        );
+}
+
+.discord h2 {
+    margin-bottom: 14px;
+
+    font-size:
+        clamp(35px, 5vw, 58px);
+}
+
+.discord > p {
+    max-width: 620px;
+
+    margin:
+        0 auto 30px;
+
+    color: #74879a;
+
+    line-height: 1.7;
 }
 
 /* =========================================================
@@ -1103,11 +1325,9 @@ button {
 
 .team {
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
+    gap: 14px;
 }
 
 .member {
@@ -1115,55 +1335,57 @@ button {
 
     text-align: center;
 
-    border-radius: 22px;
+    border:
+        1px solid
+        rgba(56,182,255,.09);
+
+    border-radius: 21px;
 
     background:
         linear-gradient(
             145deg,
-            #0e1a27,
-            #050a10
+            rgba(14,29,44,.9),
+            rgba(3,9,15,.9)
         );
-
-    border:
-        1px solid
-        rgba(53,170,255,.1);
 
     transition: .3s;
 }
 
 .member:hover {
     transform:
-        translateY(-8px);
+        translateY(-7px);
 
     border-color:
-        rgba(53,170,255,.3);
+        rgba(56,182,255,.3);
 }
 
 .avatar {
-    width: 85px;
-    height: 85px;
-
-    margin:
-        0 auto 20px;
-
-    border-radius: 50%;
+    width: 82px;
+    height: 82px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
-    background: #0c1a28;
+    margin: 0 auto 18px;
 
     border:
-        2px solid
-        rgba(53,170,255,.25);
+        1px solid
+        rgba(56,182,255,.25);
 
-    font-size: 32px;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #10283b,
+            #07121d
+        );
+
+    font-size: 30px;
 
     box-shadow:
-        0 0 30px
-        rgba(53,170,255,.05);
+        0 0 35px rgba(56,182,255,.05);
 }
 
 .member h3 {
@@ -1173,9 +1395,8 @@ button {
 .member-role {
     color: var(--blue);
 
-    font-size: 10px;
-
-    font-weight: 900;
+    font-size: 8px;
+    font-weight: 1000;
 
     letter-spacing: 2px;
 }
@@ -1187,17 +1408,16 @@ button {
 .video {
     overflow: hidden;
 
+    border:
+        1px solid
+        rgba(56,182,255,.17);
+
     border-radius: 24px;
 
     background: #000;
 
-    border:
-        1px solid
-        rgba(53,170,255,.18);
-
     box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.4);
+        0 30px 80px rgba(0,0,0,.4);
 }
 
 .video iframe {
@@ -1205,7 +1425,7 @@ button {
 
     width: 100%;
 
-    aspect-ratio: 16/9;
+    aspect-ratio: 16 / 9;
 
     border: 0;
 }
@@ -1216,108 +1436,108 @@ button {
 
 .faq {
     display: grid;
-
-    gap: 10px;
+    gap: 9px;
 }
 
 .faq-item {
     overflow: hidden;
 
-    border-radius: 15px;
-
-    background: #07101a;
-
     border:
         1px solid
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.055);
+
+    border-radius: 14px;
+
+    background:
+        rgba(6,16,26,.78);
+
+    transition: .2s;
+}
+
+.faq-item.active {
+    border-color:
+        rgba(56,182,255,.25);
 }
 
 .faq-question {
     width: 100%;
 
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 19px 20px;
 
     border: 0;
 
-    background: transparent;
-
     color: white;
-
-    cursor: pointer;
-
-    display: flex;
-
-    justify-content: space-between;
+    background: transparent;
 
     text-align: left;
 
+    cursor: pointer;
+
+    font-size: 13px;
     font-weight: 900;
 }
 
-.faq-question:hover {
-    color: var(--blue);
-}
-
-.faq-answer {
-    display: none;
-
-    padding:
-        0 20px 20px;
-
-    color: #707f90;
-
-    line-height: 1.7;
-
-    font-size: 14px;
-}
-
-.faq-item.active .faq-answer {
-    display: block;
-}
-
+.faq-question:hover,
 .faq-item.active .faq-question {
     color: var(--blue);
 }
 
+.faq-question span {
+    color: var(--blue);
+    font-size: 19px;
+
+    transition: .2s;
+}
+
+.faq-item.active .faq-question span {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+
+    padding: 0 20px;
+
+    color: #708396;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    transition:
+        max-height .3s ease,
+        padding .3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+
+    padding:
+        0 20px 20px;
+}
+
 /* =========================================================
-   PLAY NOW
+   PLAY
 ========================================================= */
 
 .play-section {
     text-align: center;
 }
 
-.play-card {
-    padding: 80px 25px;
-
-    border-radius: 30px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(53,170,255,.16),
-            transparent 45%
-        ),
-
-        #07101a;
-
-    border:
-        1px solid
-        rgba(53,170,255,.2);
-}
-
 .play-card h2 {
+    margin-bottom: 15px;
+
     font-size:
-        clamp(40px,6vw,70px);
+        clamp(40px, 6vw, 70px);
 
     letter-spacing: -3px;
-
-    margin-bottom: 15px;
 }
 
 .play-card p {
-    color: #737f8e;
-
     margin-bottom: 30px;
 }
 
@@ -1331,29 +1551,25 @@ button {
     right: 20px;
     bottom: 20px;
 
+    z-index: 1500;
+
     width: 50px;
     height: 50px;
 
-    border-radius: 50%;
-
     border:
         1px solid
-        rgba(53,170,255,.25);
+        rgba(56,182,255,.25);
 
-    background:
-        rgba(7,14,22,.92);
+    border-radius: 50%;
 
     color: white;
+    background:
+        rgba(5,13,21,.93);
 
     cursor: pointer;
 
-    z-index: 1500;
-
-    font-size: 19px;
-
     box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.4);
+        0 12px 35px rgba(0,0,0,.4);
 
     transition: .25s;
 }
@@ -1367,10 +1583,8 @@ button {
 }
 
 .music-toggle.on {
-    color: #02070d;
-
-    background:
-        var(--blue);
+    color: #00101a;
+    background: var(--blue);
 }
 
 /* =========================================================
@@ -1380,60 +1594,30 @@ button {
 footer {
     padding: 50px 20px;
 
-    text-align: center;
-
-    color: #4f6070;
-
     border-top:
         1px solid
         rgba(255,255,255,.05);
 
-    font-size: 12px;
+    color: #4e6274;
+
+    text-align: center;
+
+    font-size: 11px;
 }
 
 footer strong {
-    color: #778b9e;
+    color: #7890a3;
 }
 
 /* =========================================================
-   ANIMATIONS
+   REVEAL
 ========================================================= */
-
-@keyframes pulse {
-
-    0%,100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: .45;
-        transform: scale(.75);
-    }
-
-}
-
-@keyframes glow {
-
-    0%,100% {
-        box-shadow:
-            0 0 0
-            rgba(53,170,255,0);
-    }
-
-    50% {
-        box-shadow:
-            0 0 30px
-            rgba(53,170,255,.18);
-    }
-
-}
 
 .reveal {
     opacity: 0;
 
     transform:
-        translateY(25px);
+        translateY(24px);
 
     transition:
         opacity .7s ease,
@@ -1442,40 +1626,119 @@ footer strong {
 
 .reveal.show {
     opacity: 1;
+    transform: translateY(0);
+}
 
-    transform:
-        translateY(0);
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes announcementFlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 12px rgba(56,182,255,.45);
+    }
+
+    50% {
+        box-shadow:
+            0 0 28px rgba(56,182,255,.95);
+    }
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .45;
+        transform: scale(.7);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow:
+            0 0 0 rgba(56,182,255,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(56,182,255,.17);
+    }
+}
+
+@keyframes scan {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    45%, 100% {
+        transform: translateX(100%);
+    }
 }
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media(max-width: 900px) {
+@media (max-width: 1050px) {
+    .nav-links {
+        gap: 0;
+    }
+
+    .nav-links a {
+        padding-inline: 7px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        width: calc(100% - 24px);
+    }
+
+    .mobile-menu {
+        display: block;
+    }
 
     .nav-links {
-        display: none;
-
         position: absolute;
 
-        top: 75px;
+        top: calc(100% + 9px);
         left: 0;
+        right: 0;
 
-        width: 100%;
+        display: none;
 
-        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
 
-        border-radius: 15px;
-
-        background: #07101a;
+        padding: 10px;
 
         border:
             1px solid
             var(--border);
 
-        flex-direction: column;
+        border-radius: 16px;
 
-        align-items: stretch;
+        background:
+            rgba(3,10,17,.97);
+
+        backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,.45);
     }
 
     .nav-links.open {
@@ -1483,16 +1746,87 @@ footer strong {
     }
 
     .nav-links a {
-        padding: 12px;
-    }
-
-    .mobile-menu {
-        display: block;
+        padding: 13px;
     }
 
     .stats {
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    .stat:nth-child(-n+2) {
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.05);
+    }
+
+    .feature-grid,
+    .gallery,
+    .team {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .application {
+        grid-template-columns: 1fr;
+    }
+
+    .application-side {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 620px) {
+    .announcement {
+        min-height: 34px;
+
+        padding:
+            8px 48px 8px 12px;
+
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .navbar {
+        top: 45px;
+    }
+
+    .navbar.scrolled {
+        top: 40px;
+    }
+
+    .hero {
+        padding:
+            165px 17px 90px;
+    }
+
+    .hero h1 {
+        letter-spacing: -6px;
+    }
+
+    .hero-description {
+        margin-top: 32px;
+
+        font-size: 14px;
+    }
+
+    .section {
+        width: calc(100% - 30px);
+        padding: 85px 0;
+    }
+
+    .stats {
+        width: calc(100% - 24px);
+    }
+
+    .stat {
+        padding: 21px 10px;
+    }
+
+    .stat-number {
+        font-size: 21px;
     }
 
     .feature-grid,
@@ -1501,41 +1835,25 @@ footer strong {
         grid-template-columns: 1fr;
     }
 
-    .application {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-    }
-
-}
-
-@media(max-width: 600px) {
-
-    .announcement {
-        font-size: 9px;
-    }
-
-    .navbar {
-        top: 45px;
-    }
-
-    .hero {
-        padding-top: 170px;
-    }
-
-    .hero h1 {
-        letter-spacing: -6px;
-    }
-
-    .stats {
-        grid-template-columns:
-            1fr 1fr;
+    .feature {
+        min-height: 215px;
     }
 
     .update {
         grid-template-columns: 1fr;
+        gap: 9px;
+    }
 
-        gap: 10px;
+    .application {
+        padding: 30px 20px;
+    }
+
+    .application h2 {
+        font-size: 30px;
+    }
+
+    .application-side {
+        justify-content: center;
     }
 
     .invite-box {
@@ -1546,14 +1864,29 @@ footer strong {
         min-height: 48px;
     }
 
-    .application {
-        padding: 30px 20px;
+    .discord {
+        padding:
+            60px 18px;
     }
 
+    .music-toggle {
+        right: 14px;
+        bottom: 14px;
+    }
 }
 
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
 </style>
-
 </head>
 
 <body>
@@ -1563,76 +1896,69 @@ footer strong {
 ========================================================= -->
 
 <div class="announcement" id="announcement">
+    🔔 CAVE TAG WEBSITE REVAMPED • CHECK OUT THE LATEST UPDATES
 
-```
-🔔 CAVE TAG WEBSITE REVAMPED • CHECK OUT THE LATEST UPDATES
-
-<button onclick="closeAnnouncement()">×</button>
-```
-
+    <button
+        type="button"
+        onclick="closeAnnouncement()"
+        aria-label="Close announcement"
+    >
+        ×
+    </button>
 </div>
 
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
 
-<header class="navbar">
+<header class="navbar" id="navbar">
 
-```
-<a href="#home" class="logo">
-
-    <span class="logo-dot"></span>
-
-    CAVE TAG
-
-</a>
-
-<button
-    class="mobile-menu"
-    onclick="toggleMenu()"
->
-    ☰
-</button>
-
-<nav class="nav-links" id="navLinks">
-
-    <a href="#home">Home</a>
-
-    <a href="#features">Features</a>
-
-    <a href="#updates">Updates</a>
-
-    <a href="#countdown">Countdown</a>
-
-    <a href="#gallery">Gallery</a>
-
-    <a href="#applications">Applications</a>
-
-    <a href="#codes">Codes</a>
-
-    <a href="#team">Team</a>
-
-    <a href="#credits">Credits</a>
-
-    <a
-        href="https://discord.gg/WaK6ykHCbS"
-        target="_blank"
-        rel="noopener"
-        class="nav-discord"
-    >
-        Discord
+    <a href="#home" class="logo">
+        <span class="logo-mark"></span>
+        CAVE TAG
     </a>
 
-    <a
-        href="https://cave-tag-discord-login.onrender.com/login"
-        class="discord-login"
+    <button
+        class="mobile-menu"
+        id="mobileMenu"
+        type="button"
+        onclick="toggleMenu()"
+        aria-label="Open navigation"
+        aria-expanded="false"
     >
-        🔵 Login
-    </a>
+        ☰
+    </button>
 
-</nav>
-```
+    <nav class="nav-links" id="navLinks">
 
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#updates">Updates</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#applications">Applications</a>
+        <a href="#codes">Codes</a>
+        <a href="#team">Team</a>
+        <a href="#credits">Credits</a>
+
+        <a
+            href="https://discord.gg/WaK6ykHCbS"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-discord"
+        >
+            Discord
+        </a>
+
+        <!-- KEEPING YOUR EXISTING LOGIN URL -->
+        <a
+            href="https://cave-tag-discord-login.onrender.com/login"
+            class="discord-login"
+        >
+            🔵 Login
+        </a>
+
+    </nav>
 </header>
 
 <!-- =========================================================
@@ -1643,120 +1969,74 @@ footer strong {
 
 <section class="hero">
 
-```
-<div class="hero-content">
+    <div class="hero-content">
 
-    <div class="status-pill">
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            CAVE TAG • IN DEVELOPMENT
+        </div>
 
-        <span class="status-dot"></span>
+        <h1>
+            CAVE<br>
+            <span>TAG</span>
+        </h1>
 
-        CAVE TAG • IN DEVELOPMENT
+        <p class="hero-description">
+            A fan-made Gorilla Tag-inspired experience
+            built around movement, exploration, chaos,
+            and playing with friends.
+        </p>
 
-    </div>
+        <div class="buttons">
 
-    <h1>
-        CAVE<br>
-        <span>TAG</span>
-    </h1>
+            <a
+                href="#"
+                class="btn btn-blue"
+                onclick="playButton(event)"
+            >
+                🕹️ PLAY NOW
+            </a>
 
-    <p class="hero-description">
+            <a
+                href="https://discord.gg/WaK6ykHCbS"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-dark"
+            >
+                💬 JOIN DISCORD
+            </a>
 
-        A fan-made Gorilla Tag-inspired experience
-        built around movement, exploration, chaos,
-        and playing with friends.
-
-    </p>
-
-    <div class="buttons">
-
-        <a
-            href="#"
-            class="btn btn-blue"
-            onclick="playButton(event)"
-        >
-            🕹️ PLAY NOW
-        </a>
-
-        <a
-            href="https://discord.gg/WaK6ykHCbS"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-dark"
-        >
-            💬 JOIN DISCORD
-        </a>
+        </div>
 
     </div>
-
-</div>
-```
 
 </section>
 
 <!-- =========================================================
-     COMMUNITY STATS
+     STATS
 ========================================================= -->
 
 <section class="stats reveal">
 
-```
-<div class="stat">
-
-    <div
-        class="stat-number"
-        data-target="250"
-    >
-        0+
+    <div class="stat">
+        <div class="stat-number" data-target="250">0+</div>
+        <div class="stat-label">Community Members</div>
     </div>
 
-    <div class="stat-label">
-        Community Members
+    <div class="stat">
+        <div class="stat-number" data-target="3">0</div>
+        <div class="stat-label">Team Members</div>
     </div>
 
-</div>
-
-<div class="stat">
-
-    <div
-        class="stat-number"
-        data-target="3"
-    >
-        0
+    <div class="stat">
+        <div class="stat-number" data-target="6">0</div>
+        <div class="stat-label">Planned Features</div>
     </div>
 
-    <div class="stat-label">
-        Team Members
+    <div class="stat">
+        <div class="stat-number">SOON</div>
+        <div class="stat-label">Game Release</div>
     </div>
-
-</div>
-
-<div class="stat">
-
-    <div
-        class="stat-number"
-        data-target="6"
-    >
-        0
-    </div>
-
-    <div class="stat-label">
-        Planned Features
-    </div>
-
-</div>
-
-<div class="stat">
-
-    <div class="stat-number">
-        SOON
-    </div>
-
-    <div class="stat-label">
-        Game Release
-    </div>
-
-</div>
-```
 
 </section>
 
@@ -1766,195 +2046,139 @@ footer strong {
 
 <section class="section" id="features">
 
-```
-<div class="section-label">
-    THE EXPERIENCE
-</div>
+    <div class="section-label">
+        THE EXPERIENCE
+    </div>
 
-<h2 class="section-title">
-    Built for chaos.
-</h2>
+    <h2 class="section-title">
+        Built for chaos.
+    </h2>
 
-<p class="section-description">
+    <p class="section-description">
+        Everything Cave Tag is being built around:
+        movement, exploration and having fun with friends.
+    </p>
 
-    Everything Cave Tag is being built around:
-    movement, exploration and having fun with friends.
+    <div class="feature-grid">
 
-</p>
+        <article class="feature reveal">
+            <div class="feature-icon">🦍</div>
+            <h3>Movement</h3>
+            <p>
+                Swing, climb and move around the cave
+                while trying not to get tagged.
+            </p>
+        </article>
 
-<div class="feature-grid">
+        <article class="feature reveal">
+            <div class="feature-icon">🪨</div>
+            <h3>Explore</h3>
+            <p>
+                Explore the cave and discover different
+                areas throughout the game.
+            </p>
+        </article>
 
-    <article class="feature reveal">
+        <article class="feature reveal">
+            <div class="feature-icon">🔥</div>
+            <h3>Chaos</h3>
+            <p>
+                Games can turn chaotic fast.
+                Keep moving and don't get caught.
+            </p>
+        </article>
 
-        <div class="feature-icon">🦍</div>
+        <article class="feature reveal">
+            <div class="feature-icon">👥</div>
+            <h3>Multiplayer</h3>
+            <p>
+                Play with friends and turn every round
+                into a giant game of tag.
+            </p>
+        </article>
 
-        <h3>Movement</h3>
+        <article class="feature reveal">
+            <div class="feature-icon">🛠️</div>
+            <h3>Constant Updates</h3>
+            <p>
+                New features, improvements and updates
+                are planned as development continues.
+            </p>
+        </article>
 
-        <p>
-            Swing, climb and move around the cave
-            while trying not to get tagged.
-        </p>
+        <article class="feature reveal">
+            <div class="feature-icon">🌑</div>
+            <h3>The Cave</h3>
+            <p>
+                A dark environment full of places to
+                climb, hide and explore.
+            </p>
+        </article>
 
-    </article>
-
-    <article class="feature reveal">
-
-        <div class="feature-icon">🪨</div>
-
-        <h3>Explore</h3>
-
-        <p>
-            Explore the cave and discover different
-            areas throughout the game.
-        </p>
-
-    </article>
-
-    <article class="feature reveal">
-
-        <div class="feature-icon">🔥</div>
-
-        <h3>Chaos</h3>
-
-        <p>
-            Games can turn chaotic fast.
-            Keep moving and don't get caught.
-        </p>
-
-    </article>
-
-    <article class="feature reveal">
-
-        <div class="feature-icon">👥</div>
-
-        <h3>Multiplayer</h3>
-
-        <p>
-            Play with friends and turn every round
-            into a giant game of tag.
-        </p>
-
-    </article>
-
-    <article class="feature reveal">
-
-        <div class="feature-icon">🛠️</div>
-
-        <h3>Constant Updates</h3>
-
-        <p>
-            New features, improvements and updates
-            are planned as development continues.
-        </p>
-
-    </article>
-
-    <article class="feature reveal">
-
-        <div class="feature-icon">🌑</div>
-
-        <h3>The Cave</h3>
-
-        <p>
-            A dark environment full of places to
-            climb, hide and explore.
-        </p>
-
-    </article>
-
-</div>
-```
-
+    </div>
 </section>
 
 <!-- =========================================================
-     LATEST UPDATES
+     UPDATES
 ========================================================= -->
 
 <section class="section" id="updates">
 
-```
-<div class="section-label">
-    DEVELOPMENT
-</div>
+    <div class="section-label">
+        DEVELOPMENT
+    </div>
 
-<h2 class="section-title">
-    Latest updates.
-</h2>
+    <h2 class="section-title">
+        Latest updates.
+    </h2>
 
-<p class="section-description">
-    Here's what's been happening with Cave Tag.
-</p>
+    <p class="section-description">
+        Here's what's been happening with Cave Tag.
+    </p>
 
-<div class="changelog">
+    <div class="changelog">
 
-    <article class="update reveal">
+        <article class="update reveal">
+            <div class="update-date">LATEST</div>
 
-        <div class="update-date">
-            LATEST
-        </div>
+            <div>
+                <h3>Website Overhaul</h3>
 
-        <div>
+                <p>
+                    The Cave Tag website has been completely
+                    revamped with a new futuristic design,
+                    animations, sections and mobile support.
+                </p>
+            </div>
+        </article>
 
-            <h3>
-                Website Overhaul
-            </h3>
+        <article class="update reveal">
+            <div class="update-date">RECENT</div>
 
-            <p>
-                The Cave Tag website has been completely
-                revamped with a new design, animations,
-                sections and mobile support.
-            </p>
+            <div>
+                <h3>Credits Added</h3>
 
-        </div>
+                <p>
+                    The credits section has been added along
+                    with the official Cave Tag credits video.
+                </p>
+            </div>
+        </article>
 
-    </article>
+        <article class="update reveal">
+            <div class="update-date">NEXT</div>
 
-    <article class="update reveal">
+            <div>
+                <h3>Mod Applications</h3>
 
-        <div class="update-date">
-            RECENT
-        </div>
+                <p>
+                    Moderator applications are planned
+                    for an upcoming update.
+                </p>
+            </div>
+        </article>
 
-        <div>
-
-            <h3>
-                Credits Added
-            </h3>
-
-            <p>
-                The credits section has been added along
-                with the official Cave Tag credits video.
-            </p>
-
-        </div>
-
-    </article>
-
-    <article class="update reveal">
-
-        <div class="update-date">
-            NEXT
-        </div>
-
-        <div>
-
-            <h3>
-                Mod Applications
-            </h3>
-
-            <p>
-                Moderator applications are planned
-                for an upcoming update.
-            </p>
-
-        </div>
-
-    </article>
-
-</div>
-```
-
+    </div>
 </section>
 
 <!-- =========================================================
@@ -1963,27 +2187,23 @@ footer strong {
 
 <section class="section" id="countdown">
 
-```
-<div class="countdown-box reveal">
+    <div class="countdown-box reveal">
 
-    <div class="section-label">
-        RELEASE
+        <div class="section-label">
+            RELEASE
+        </div>
+
+        <h2>Release Countdown</h2>
+
+        <p>
+            The Cave Tag release date has not been announced yet.
+        </p>
+
+        <div class="starting-soon">
+            STARTING SOON!
+        </div>
+
     </div>
-
-    <h2>
-        Release Countdown
-    </h2>
-
-    <p>
-        The Cave Tag release date has not been announced yet.
-    </p>
-
-    <div class="starting-soon">
-        STARTING SOON!
-    </div>
-
-</div>
-```
 
 </section>
 
@@ -1993,177 +2213,164 @@ footer strong {
 
 <section class="section" id="gallery">
 
-```
-<div class="section-label">
-    MEDIA
-</div>
-
-<h2 class="section-title">
-    Cave Tag Gallery.
-</h2>
-
-<p class="section-description">
-    Screenshots and media from Cave Tag will appear here.
-</p>
-
-<div class="gallery">
-
-    <div class="gallery-card reveal">
-        <span>GAMEPLAY</span>
+    <div class="section-label">
+        MEDIA
     </div>
 
-    <div class="gallery-card reveal">
-        <span>THE CAVE</span>
-    </div>
+    <h2 class="section-title">
+        Cave Tag Gallery.
+    </h2>
 
-    <div class="gallery-card reveal">
-        <span>COMING SOON</span>
-    </div>
+    <p class="section-description">
+        Screenshots and media from Cave Tag will appear here.
+    </p>
 
-    <div class="gallery-card reveal">
-        <span>MAPS</span>
-    </div>
+    <div class="gallery">
 
-    <div class="gallery-card reveal">
-        <span>COMMUNITY</span>
-    </div>
+        <div class="gallery-card reveal">
+            <span>GAMEPLAY</span>
+        </div>
 
-    <div class="gallery-card reveal">
-        <span>DEVELOPMENT</span>
-    </div>
+        <div class="gallery-card reveal">
+            <span>THE CAVE</span>
+        </div>
 
-</div>
-```
+        <div class="gallery-card reveal">
+            <span>COMING SOON</span>
+        </div>
+
+        <div class="gallery-card reveal">
+            <span>MAPS</span>
+        </div>
+
+        <div class="gallery-card reveal">
+            <span>COMMUNITY</span>
+        </div>
+
+        <div class="gallery-card reveal">
+            <span>DEVELOPMENT</span>
+        </div>
+
+    </div>
 
 </section>
 
 <!-- =========================================================
-     MOD APPLICATIONS
+     APPLICATIONS
 ========================================================= -->
 
 <section class="section" id="applications">
 
-```
-<div class="application reveal">
+    <div class="application reveal">
 
-    <div>
+        <div>
 
-        <div class="section-label">
-            STAFF
+            <div class="section-label">
+                STAFF
+            </div>
+
+            <h2>Moderator Applications</h2>
+
+            <p>
+                Want to help out with Cave Tag?
+                Moderator applications are currently
+                being worked on and will open in a
+                future update.
+
+                Keep an eye on the Discord for the
+                announcement when applications go live.
+            </p>
+
         </div>
 
-        <h2>
-            Moderator Applications
-        </h2>
+        <div class="application-side">
 
-        <p>
+            <span class="coming-badge">
+                COMING SOON!
+            </span>
 
-            Want to help out with Cave Tag?
-
-            Moderator applications are currently
-            being worked on and will open in a
-            future update.
-
-            Keep an eye on the Discord for the
-            announcement when applications go live.
-
-        </p>
+        </div>
 
     </div>
-
-    <div class="application-side">
-
-        <span class="coming-badge">
-            COMING SOON!
-        </span>
-
-    </div>
-
-</div>
-```
 
 </section>
 
 <!-- =========================================================
-     CAVE TAG CODES
+     CODES
 ========================================================= -->
 
 <section class="section" id="codes">
 
-```
-<div class="section-label">
-    REWARDS
-</div>
-
-<h2 class="section-title">
-    Cave Tag Codes.
-</h2>
-
-<p class="section-description">
-    Got a code? Enter it below to redeem your Cave Tag
-    Discord reward.
-</p>
-
-<div class="application reveal">
-
-    <div>
-
-        <div class="section-label">
-            CODE REDEMPTION
-        </div>
-
-        <h2>
-            Redeem a Code
-        </h2>
-
-        <p>
-            Enter your code below. If the code is valid,
-            you'll be taken through the Discord login
-            process so the reward can be added to your account.
-        </p>
-
-        <div class="invite-box">
-
-            <input
-                class="invite-input"
-                id="codeInput"
-                type="text"
-                placeholder="Enter your code..."
-                maxlength="50"
-                autocomplete="off"
-                spellcheck="false"
-                onkeydown="handleCodeKey(event)"
-            >
-
-            <button
-                class="copy-btn"
-                id="redeemButton"
-                type="button"
-                onclick="redeemCode()"
-            >
-                REDEEM
-            </button>
-
-        </div>
-
-        <p id="codeResult"></p>
-
-        <p class="code-note">
-            Never share your Discord password or bot credentials.
-        </p>
-
+    <div class="section-label">
+        REWARDS
     </div>
 
-    <div class="application-side">
+    <h2 class="section-title">
+        Cave Tag Codes.
+    </h2>
 
-        <span class="coming-badge">
-            🎁 REWARDS
-        </span>
+    <p class="section-description">
+        Got a code? Enter it below to redeem your Cave Tag
+        Discord reward.
+    </p>
+
+    <div class="application reveal">
+
+        <div>
+
+            <div class="section-label">
+                CODE REDEMPTION
+            </div>
+
+            <h2>Redeem a Code</h2>
+
+            <p>
+                Enter your code below. If the code is valid,
+                you'll be taken through the Discord login
+                process so the reward can be added to your account.
+            </p>
+
+            <div class="invite-box">
+
+                <input
+                    class="invite-input"
+                    id="codeInput"
+                    type="text"
+                    placeholder="Enter your code..."
+                    maxlength="50"
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Cave Tag code"
+                >
+
+                <button
+                    class="copy-btn"
+                    id="redeemButton"
+                    type="button"
+                    onclick="redeemCode()"
+                >
+                    REDEEM
+                </button>
+
+            </div>
+
+            <p id="codeResult" aria-live="polite"></p>
+
+            <p class="code-note">
+                Never share your Discord password or bot credentials.
+            </p>
+
+        </div>
+
+        <div class="application-side">
+
+            <span class="coming-badge">
+                🎁 REWARDS
+            </span>
+
+        </div>
 
     </div>
-
-</div>
-```
 
 </section>
 
@@ -2173,56 +2380,53 @@ footer strong {
 
 <section class="section">
 
-```
-<div class="discord reveal">
+    <div class="discord reveal">
 
-    <div class="section-label">
-        COMMUNITY
-    </div>
+        <div class="section-label">
+            COMMUNITY
+        </div>
 
-    <h2>
-        Join the Cave Tag Discord.
-    </h2>
+        <h2>
+            Join the Cave Tag Discord.
+        </h2>
 
-    <p>
+        <p>
+            Get announcements, development updates,
+            talk with other players and keep up with
+            everything happening with Cave Tag.
+        </p>
 
-        Get announcements, development updates,
-        talk with other players and keep up with
-        everything happening with Cave Tag.
-
-    </p>
-
-    <a
-        href="https://discord.gg/WaK6ykHCbS"
-        target="_blank"
-        rel="noopener"
-        class="btn btn-blue"
-    >
-        💬 JOIN DISCORD
-    </a>
-
-    <div class="invite-box">
-
-        <input
-            class="invite-input"
-            id="invite"
-            value="https://discord.gg/WaK6ykHCbS"
-            readonly
+        <a
+            href="https://discord.gg/WaK6ykHCbS"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-blue"
         >
+            💬 JOIN DISCORD
+        </a>
 
-        <button
-            class="copy-btn"
-            onclick="copyInvite()"
-            id="copyButton"
-            type="button"
-        >
-            COPY
-        </button>
+        <div class="invite-box">
+
+            <input
+                class="invite-input"
+                id="invite"
+                value="https://discord.gg/WaK6ykHCbS"
+                readonly
+                aria-label="Discord invite"
+            >
+
+            <button
+                class="copy-btn"
+                onclick="copyInvite()"
+                id="copyButton"
+                type="button"
+            >
+                COPY
+            </button>
+
+        </div>
 
     </div>
-
-</div>
-```
 
 </section>
 
@@ -2232,119 +2436,57 @@ footer strong {
 
 <section class="section" id="team">
 
-```
-<div class="section-label">
-    THE PEOPLE
-</div>
+    <div class="section-label">
+        THE PEOPLE
+    </div>
 
-<h2 class="section-title">
-    Cave Tag Team.
-</h2>
+    <h2 class="section-title">
+        Cave Tag Team.
+    </h2>
 
-<p class="section-description">
-    Meet the people working on Cave Tag.
-</p>
+    <p class="section-description">
+        Meet the people working on Cave Tag.
+    </p>
 
-<div class="team">
+    <div class="team">
 
-    <article class="member reveal">
+        <article class="member reveal">
+            <div class="avatar">👑</div>
+            <h3>Fingus</h3>
+            <div class="member-role">OWNER</div>
+        </article>
 
-        <div class="avatar">
-            👑
-        </div>
+        <article class="member reveal">
+            <div class="avatar">🛠️</div>
+            <h3>Shazam</h3>
+            <div class="member-role">DEVELOPER</div>
+        </article>
 
-        <h3>
-            Fingus
-        </h3>
+        <article class="member reveal">
+            <div class="avatar">🛡️</div>
+            <h3>Pax</h3>
+            <div class="member-role">MODERATOR</div>
+        </article>
 
-        <div class="member-role">
-            OWNER
-        </div>
+        <article class="member reveal">
+            <div class="avatar">🛡️</div>
+            <h3>Axolotl</h3>
+            <div class="member-role">MODERATOR</div>
+        </article>
 
-    </article>
+        <article class="member reveal">
+            <div class="avatar">🛡️</div>
+            <h3>Goofus</h3>
+            <div class="member-role">MODERATOR</div>
+        </article>
 
-    <article class="member reveal">
+        <article class="member reveal">
+            <div class="avatar">👑</div>
+            <h3>Vexo</h3>
+            <div class="member-role">OWNER</div>
+        </article>
 
-        <div class="avatar">
-            🛠️
-        </div>
-
-        <h3>
-            Shazam
-        </h3>
-
-        <div class="member-role">
-            DEVELOPER
-        </div>
-
-    </article>
-
-    <article class="member reveal">
-
-        <div class="avatar">
-            🛡️
-        </div>
-
-        <h3>
-            Pax
-        </h3>
-
-        <div class="member-role">
-            MODERATOR
-        </div>
-
-    </article>
-
-    <article class="member reveal">
-
-        <div class="avatar">
-            🛡️
-        </div>
-
-        <h3>
-            Axolotl
-        </h3>
-
-        <div class="member-role">
-            MODERATOR
-        </div>
-
-    </article>
-
-    <article class="member reveal">
-
-        <div class="avatar">
-            🛡️
-        </div>
-
-        <h3>
-            Goofus
-        </h3>
-
-        <div class="member-role">
-            MODERATOR
-        </div>
-
-    </article>
-
-    <article class="member reveal">
-
-        <div class="avatar">
-            👑
-        </div>
-
-        <h3>
-            Vexo
-        </h3>
-
-        <div class="member-role">
-            OWNER
-        </div>
-
-    </article>
-
-</div>
-```
+    </div>
 
 </section>
 
@@ -2354,30 +2496,29 @@ footer strong {
 
 <section class="section" id="credits">
 
-```
-<div class="section-label">
-    CREDITS
-</div>
+    <div class="section-label">
+        CREDITS
+    </div>
 
-<h2 class="section-title">
-    The people behind Cave Tag.
-</h2>
+    <h2 class="section-title">
+        The people behind Cave Tag.
+    </h2>
 
-<p class="section-description">
-    Check out the Cave Tag credits video.
-</p>
+    <p class="section-description">
+        Check out the Cave Tag credits video.
+    </p>
 
-<div class="video reveal">
+    <div class="video reveal">
 
-    <iframe
-        src="https://www.youtube.com/embed/3njvlNQcNLg"
-        title="Cave Tag Credits"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-    </iframe>
+        <iframe
+            src="https://www.youtube.com/embed/3njvlNQcNLg"
+            title="Cave Tag Credits"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
 
-</div>
-```
+    </div>
 
 </section>
 
@@ -2387,131 +2528,114 @@ footer strong {
 
 <section class="section">
 
-```
-<div class="section-label">
-    FAQ
-</div>
+    <div class="section-label">
+        FAQ
+    </div>
 
-<h2 class="section-title">
-    Frequently asked questions.
-</h2>
+    <h2 class="section-title">
+        Frequently asked questions.
+    </h2>
 
-<div class="faq">
+    <div class="faq">
 
-    <div class="faq-item reveal">
+        <div class="faq-item reveal">
 
-        <button
-            class="faq-question"
-            onclick="toggleFAQ(this)"
-        >
+            <button
+                class="faq-question"
+                type="button"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+            >
+                <span>What is Cave Tag?</span>
+                <span>+</span>
+            </button>
 
-            What is Cave Tag?
+            <div class="faq-answer">
+                Cave Tag is a fan-made Gorilla Tag-inspired
+                game focused on movement, tag gameplay,
+                exploration and playing with friends.
+            </div>
 
-            <span>+</span>
+        </div>
 
-        </button>
+        <div class="faq-item reveal">
 
-        <div class="faq-answer">
+            <button
+                class="faq-question"
+                type="button"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+            >
+                <span>When does Cave Tag release?</span>
+                <span>+</span>
+            </button>
 
-            Cave Tag is a fan-made Gorilla Tag-inspired
-            game focused on movement, tag gameplay,
-            exploration and playing with friends.
+            <div class="faq-answer">
+                The release date has not been announced yet.
+                The countdown will be activated once an official
+                release date is confirmed.
+            </div>
+
+        </div>
+
+        <div class="faq-item reveal">
+
+            <button
+                class="faq-question"
+                type="button"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+            >
+                <span>Where can I get updates?</span>
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                Join the Cave Tag Discord for announcements,
+                development news and community updates.
+            </div>
+
+        </div>
+
+        <div class="faq-item reveal">
+
+            <button
+                class="faq-question"
+                type="button"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+            >
+                <span>Are moderator applications open?</span>
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                Not currently. Moderator applications are
+                coming soon.
+            </div>
+
+        </div>
+
+        <div class="faq-item reveal">
+
+            <button
+                class="faq-question"
+                type="button"
+                onclick="toggleFAQ(this)"
+                aria-expanded="false"
+            >
+                <span>Is this the official Gorilla Tag website?</span>
+                <span>+</span>
+            </button>
+
+            <div class="faq-answer">
+                No. Cave Tag is a fan-made project and
+                is not the official Gorilla Tag website.
+            </div>
 
         </div>
 
     </div>
-
-    <div class="faq-item reveal">
-
-        <button
-            class="faq-question"
-            onclick="toggleFAQ(this)"
-        >
-
-            When does Cave Tag release?
-
-            <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-            The release date has not been announced yet.
-            The countdown will be activated once an official
-            release date is confirmed.
-
-        </div>
-
-    </div>
-
-    <div class="faq-item reveal">
-
-        <button
-            class="faq-question"
-            onclick="toggleFAQ(this)"
-        >
-
-            Where can I get updates?
-
-            <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-            Join the Cave Tag Discord for announcements,
-            development news and community updates.
-
-        </div>
-
-    </div>
-
-    <div class="faq-item reveal">
-
-        <button
-            class="faq-question"
-            onclick="toggleFAQ(this)"
-        >
-
-            Are moderator applications open?
-
-            <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-            Not currently. Moderator applications are
-            coming soon.
-
-        </div>
-
-    </div>
-
-    <div class="faq-item reveal">
-
-        <button
-            class="faq-question"
-            onclick="toggleFAQ(this)"
-        >
-
-            Is this the official Gorilla Tag website?
-
-            <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-            No. Cave Tag is a fan-made project and
-            is not the official Gorilla Tag website.
-
-        </div>
-
-    </div>
-
-</div>
-```
 
 </section>
 
@@ -2521,31 +2645,29 @@ footer strong {
 
 <section class="section play-section">
 
-```
-<div class="play-card reveal">
+    <div class="play-card reveal">
 
-    <div class="section-label">
-        READY?
+        <div class="section-label">
+            READY?
+        </div>
+
+        <h2>
+            Enter the cave.
+        </h2>
+
+        <p>
+            Cave Tag is coming soon.
+        </p>
+
+        <a
+            href="#"
+            class="btn btn-blue"
+            onclick="playButton(event)"
+        >
+            🕹️ PLAY NOW
+        </a>
+
     </div>
-
-    <h2>
-        Enter the cave.
-    </h2>
-
-    <p>
-        Cave Tag is coming soon.
-    </p>
-
-    <a
-        href="#"
-        class="btn btn-blue"
-        onclick="playButton(event)"
-    >
-        🕹️ PLAY NOW
-    </a>
-
-</div>
-```
 
 </section>
 
@@ -2555,30 +2677,19 @@ footer strong {
      MUSIC
 ========================================================= -->
 
-<audio id="music" loop>
-
-```
-<source
-    src="music.mp3"
-    type="audio/mpeg"
->
-```
-
+<audio id="music" loop preload="none">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button
-class="music-toggle"
-id="musicButton"
-onclick="toggleMusic()"
-title="Toggle music"
-type="button"
-
+    class="music-toggle"
+    id="musicButton"
+    onclick="toggleMusic()"
+    title="Toggle music"
+    type="button"
+    aria-label="Toggle background music"
 >
-
-```
-🔇
-```
-
+    🔇
 </button>
 
 <!-- =========================================================
@@ -2586,24 +2697,48 @@ type="button"
 ========================================================= -->
 
 <footer>
-
-```
-© 2026 <strong>Cave Tag</strong>
-• Fan-made project
-```
-
+    © 2026 <strong>Cave Tag</strong> • Fan-made project
 </footer>
 
 <script>
-
 /* =========================================================
    SETTINGS
 ========================================================= */
 
+/*
+ * KEEP THIS AS "#" UNTIL THE GAME HAS A REAL URL.
+ */
 const GAME_LINK = "#";
+
+/*
+ * YOUR EXISTING BACKEND.
+ *
+ * This is intentionally unchanged so the Discord
+ * authentication/redeem flow doesn't get broken.
+ */
+const LOGIN_URL =
+    "https://cave-tag-discord-login.onrender.com/login";
 
 const CODE_REDEEM_URL =
     "https://cave-tag-discord-login.onrender.com/redeem";
+
+const DISCORD_URL =
+    "https://discord.gg/WaK6ykHCbS";
+
+
+/* =========================================================
+   DOM READY
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    setupCodeInput();
+    setupScrollEffects();
+    setupRevealAnimations();
+    setupStatCounters();
+    setupNavigation();
+
+});
 
 
 /* =========================================================
@@ -2615,49 +2750,126 @@ function closeAnnouncement() {
     const announcement =
         document.getElementById("announcement");
 
-    if (announcement) {
-        announcement.style.display = "none";
+    if (!announcement) {
+        return;
     }
+
+    announcement.style.display = "none";
 
 }
 
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE NAVIGATION
 ========================================================= */
 
 function toggleMenu() {
 
-    document
-        .getElementById("navLinks")
-        .classList.toggle("open");
+    const nav =
+        document.getElementById("navLinks");
+
+    const button =
+        document.getElementById("mobileMenu");
+
+    if (!nav || !button) {
+        return;
+    }
+
+    const isOpen =
+        nav.classList.toggle("open");
+
+    button.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+
+    button.textContent =
+        isOpen ? "✕" : "☰";
 
 }
 
 
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
+function closeMenu() {
 
-        link.addEventListener(
-            "click",
-            () => {
+    const nav =
+        document.getElementById("navLinks");
 
-                document
-                    .getElementById("navLinks")
-                    .classList.remove("open");
+    const button =
+        document.getElementById("mobileMenu");
 
-            }
-        );
+    if (!nav || !button) {
+        return;
+    }
 
-    });
+    nav.classList.remove("open");
+
+    button.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    button.textContent = "☰";
+
+}
+
+
+function setupNavigation() {
+
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                closeMenu
+            );
+
+        });
+
+}
+
+
+/* =========================================================
+   NAV SCROLL EFFECT
+========================================================= */
+
+function setupScrollEffects() {
+
+    const navbar =
+        document.getElementById("navbar");
+
+    if (!navbar) {
+        return;
+    }
+
+    const updateNavbar =
+        () => {
+
+            navbar.classList.toggle(
+                "scrolled",
+                window.scrollY > 80
+            );
+
+        };
+
+    updateNavbar();
+
+    window.addEventListener(
+        "scroll",
+        updateNavbar,
+        {
+            passive: true
+        }
+    );
+
+}
 
 
 /* =========================================================
    COPY DISCORD
 ========================================================= */
 
-function copyInvite() {
+async function copyInvite() {
 
     const input =
         document.getElementById("invite");
@@ -2669,36 +2881,54 @@ function copyInvite() {
         return;
     }
 
-    navigator.clipboard
-        .writeText(input.value)
-        .then(() => {
+    const originalText =
+        button.textContent;
 
-            button.textContent = "COPIED!";
+    try {
 
-            setTimeout(
-                () => {
-                    button.textContent = "COPY";
-                },
-                1800
+        if (
+            navigator.clipboard &&
+            window.isSecureContext
+        ) {
+
+            await navigator.clipboard.writeText(
+                input.value
             );
 
-        })
-        .catch(() => {
+        } else {
 
+            input.focus();
             input.select();
 
-            document.execCommand("copy");
+            const successful =
+                document.execCommand("copy");
 
-            button.textContent = "COPIED!";
+            if (!successful) {
+                throw new Error("Copy failed");
+            }
 
-            setTimeout(
-                () => {
-                    button.textContent = "COPY";
-                },
-                1800
-            );
+        }
 
-        });
+        button.textContent = "COPIED!";
+
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 1800);
+
+    } catch (error) {
+
+        console.error(
+            "Clipboard error:",
+            error
+        );
+
+        button.textContent = "FAILED";
+
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 1800);
+
+    }
 
 }
 
@@ -2709,8 +2939,16 @@ function copyInvite() {
 
 function toggleFAQ(button) {
 
+    if (!button) {
+        return;
+    }
+
     const item =
-        button.parentElement;
+        button.closest(".faq-item");
+
+    if (!item) {
+        return;
+    }
 
     const wasOpen =
         item.classList.contains("active");
@@ -2722,13 +2960,21 @@ function toggleFAQ(button) {
 
             faq.classList.remove("active");
 
-            const span =
-                faq.querySelector(
-                    ".faq-question span"
-                );
+            const question =
+                faq.querySelector(".faq-question");
 
-            if (span) {
-                span.textContent = "+";
+            if (question) {
+                question.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+            }
+
+            const spans =
+                question?.querySelectorAll("span");
+
+            if (spans && spans[1]) {
+                spans[1].textContent = "+";
             }
 
         });
@@ -2738,11 +2984,16 @@ function toggleFAQ(button) {
 
         item.classList.add("active");
 
-        const span =
-            button.querySelector("span");
+        button.setAttribute(
+            "aria-expanded",
+            "true"
+        );
 
-        if (span) {
-            span.textContent = "−";
+        const spans =
+            button.querySelectorAll("span");
+
+        if (spans[1]) {
+            spans[1].textContent = "−";
         }
 
     }
@@ -2763,45 +3014,50 @@ const musicButton =
 let musicPlaying = false;
 
 
-function toggleMusic() {
+async function toggleMusic() {
+
+    if (!music || !musicButton) {
+        return;
+    }
+
 
     if (!musicPlaying) {
 
-        music.play()
-            .then(() => {
+        try {
 
-                musicPlaying = true;
+            await music.play();
 
-                musicButton.textContent =
-                    "🔊";
+            musicPlaying = true;
 
-                musicButton.classList.add(
-                    "on"
-                );
+            musicButton.textContent = "🔊";
 
-            })
-            .catch(() => {
+            musicButton.classList.add("on");
 
-                alert(
-                    "Add a file named music.mp3 next to this HTML file first."
-                );
+        } catch (error) {
 
-            });
+            console.error(
+                "Music playback error:",
+                error
+            );
 
-    } else {
+            alert(
+                "Add a file named music.mp3 next to this HTML file first."
+            );
 
-        music.pause();
+        }
 
-        musicPlaying = false;
-
-        musicButton.textContent =
-            "🔇";
-
-        musicButton.classList.remove(
-            "on"
-        );
+        return;
 
     }
+
+
+    music.pause();
+
+    musicPlaying = false;
+
+    musicButton.textContent = "🔇";
+
+    musicButton.classList.remove("on");
 
 }
 
@@ -2812,7 +3068,15 @@ function toggleMusic() {
 
 function playButton(event) {
 
-    if (GAME_LINK === "#") {
+    if (!event) {
+        return;
+    }
+
+
+    if (
+        !GAME_LINK ||
+        GAME_LINK === "#"
+    ) {
 
         event.preventDefault();
 
@@ -2824,6 +3088,7 @@ function playButton(event) {
 
     }
 
+
     event.currentTarget.href =
         GAME_LINK;
 
@@ -2831,34 +3096,52 @@ function playButton(event) {
 
 
 /* =========================================================
-   SCROLL REVEAL
+   REVEAL ANIMATIONS
 ========================================================= */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+function setupRevealAnimations() {
+
+    const elements =
+        document.querySelectorAll(".reveal");
 
 
-if ("IntersectionObserver" in window) {
+    if (!elements.length) {
+        return;
+    }
 
-    const revealObserver =
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        elements.forEach(element => {
+            element.classList.add("show");
+        });
+
+        return;
+
+    }
+
+
+    const observer =
         new IntersectionObserver(
             entries => {
 
                 entries.forEach(entry => {
 
                     if (
-                        entry.isIntersecting
+                        !entry.isIntersecting
                     ) {
-
-                        entry.target.classList.add(
-                            "show"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
+                        return;
                     }
+
+                    entry.target.classList.add(
+                        "show"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 });
 
@@ -2869,34 +3152,52 @@ if ("IntersectionObserver" in window) {
         );
 
 
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-} else {
-
-    revealElements.forEach(element => {
-        element.classList.add("show");
+    elements.forEach(element => {
+        observer.observe(element);
     });
 
 }
 
 
 /* =========================================================
-   COMMUNITY STAT COUNTER
+   STAT COUNTERS
 ========================================================= */
 
-const statNumbers =
-    document.querySelectorAll(
-        ".stat-number[data-target]"
-    );
+function setupStatCounters() {
+
+    const stats =
+        document.querySelectorAll(
+            ".stat-number[data-target]"
+        );
 
 
-if ("IntersectionObserver" in window) {
+    if (!stats.length) {
+        return;
+    }
 
-    const statObserver =
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        stats.forEach(stat => {
+
+            const target =
+                Number(
+                    stat.dataset.target
+                );
+
+            stat.textContent =
+                formatStat(target);
+
+        });
+
+        return;
+
+    }
+
+
+    const observer =
         new IntersectionObserver(
             entries => {
 
@@ -2917,47 +3218,14 @@ if ("IntersectionObserver" in window) {
                             element.dataset.target
                         );
 
-                    let current = 0;
+
+                    animateNumber(
+                        element,
+                        target
+                    );
 
 
-                    const interval =
-                        setInterval(
-                            () => {
-
-                                current +=
-                                    Math.ceil(
-                                        target / 30
-                                    );
-
-
-                                if (
-                                    current >= target
-                                ) {
-
-                                    current =
-                                        target;
-
-                                    clearInterval(
-                                        interval
-                                    );
-
-                                }
-
-
-                                element.textContent =
-                                    current +
-                                    (
-                                        target === 250
-                                        ? "+"
-                                        : ""
-                                    );
-
-                            },
-                            35
-                        );
-
-
-                    statObserver.unobserve(
+                    observer.unobserve(
                         element
                     );
 
@@ -2970,45 +3238,114 @@ if ("IntersectionObserver" in window) {
         );
 
 
-    statNumbers.forEach(stat => {
-
-        statObserver.observe(stat);
-
-    });
-
-} else {
-
-    statNumbers.forEach(stat => {
-
-        const target =
-            Number(stat.dataset.target);
-
-        stat.textContent =
-            target +
-            (
-                target === 250
-                ? "+"
-                : ""
-            );
-
+    stats.forEach(stat => {
+        observer.observe(stat);
     });
 
 }
 
 
-/* =========================================================
-   CODE ENTER KEY
-========================================================= */
+function animateNumber(
+    element,
+    target
+) {
 
-function handleCodeKey(event) {
+    const duration = 850;
 
-    if (event.key === "Enter") {
+    const start =
+        performance.now();
 
-        event.preventDefault();
 
-        redeemCode();
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) / duration,
+                1
+            );
+
+
+        /*
+         * Ease-out curve.
+         */
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        const current =
+            Math.round(
+                target * eased
+            );
+
+
+        element.textContent =
+            formatStat(current);
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
 
     }
+
+
+    requestAnimationFrame(update);
+
+}
+
+
+function formatStat(number) {
+
+    return (
+        number +
+        (
+            number === 250
+                ? "+"
+                : ""
+        )
+    );
+
+}
+
+
+/* =========================================================
+   CODE INPUT
+========================================================= */
+
+function setupCodeInput() {
+
+    const input =
+        document.getElementById("codeInput");
+
+    if (!input) {
+        return;
+    }
+
+
+    input.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                event.preventDefault();
+
+                redeemCode();
+
+            }
+
+        }
+    );
 
 }
 
@@ -3029,7 +3366,11 @@ async function redeemCode() {
         document.getElementById("codeResult");
 
 
-    if (!input || !button || !result) {
+    if (
+        !input ||
+        !button ||
+        !result
+    ) {
         return;
     }
 
@@ -3042,11 +3383,34 @@ async function redeemCode() {
 
     if (!code) {
 
-        result.textContent =
-            "❌ Enter a code first.";
+        setCodeResult(
+            result,
+            "❌ Enter a code first.",
+            "error"
+        );
 
-        result.style.color =
-            "#ff5555";
+        input.focus();
+
+        return;
+
+    }
+
+
+    /*
+     * Basic client-side validation.
+     * The server remains responsible for actually
+     * deciding whether a code is valid.
+     */
+    if (
+        code.length < 2 ||
+        code.length > 50
+    ) {
+
+        setCodeResult(
+            result,
+            "❌ Please enter a valid code.",
+            "error"
+        );
 
         return;
 
@@ -3058,35 +3422,56 @@ async function redeemCode() {
     button.textContent =
         "CHECKING...";
 
-    result.textContent =
-        "Checking your code...";
 
-    result.style.color =
-        "#7d8fa3";
+    setCodeResult(
+        result,
+        "Checking your code...",
+        "normal"
+    );
 
 
     try {
 
+        const url =
+            CODE_REDEEM_URL +
+            "?code=" +
+            encodeURIComponent(code);
+
+
         const response =
             await fetch(
-                CODE_REDEEM_URL +
-                "?code=" +
-                encodeURIComponent(code),
+                url,
                 {
                     method: "GET",
+
                     headers: {
-                        "Accept": "application/json"
-                    }
+                        "Accept":
+                            "application/json"
+                    },
+
+                    /*
+                     * Prevent a request hanging forever
+                     * if the Render server is asleep.
+                     */
+                    signal:
+                        AbortSignal.timeout(
+                            15000
+                        )
                 }
             );
 
 
         const contentType =
-            response.headers.get(
-                "content-type"
-            ) || "";
+            (
+                response.headers.get(
+                    "content-type"
+                ) || ""
+            ).toLowerCase();
 
 
+        /*
+         * JSON response.
+         */
         if (
             contentType.includes(
                 "application/json"
@@ -3097,48 +3482,61 @@ async function redeemCode() {
                 await response.json();
 
 
-            if (response.ok && data.valid) {
+            if (
+                response.ok &&
+                data.valid
+            ) {
 
-                result.textContent =
-                    "✅ Code accepted! Redirecting to Discord...";
+                setCodeResult(
+                    result,
+                    "✅ Code accepted! Redirecting to Discord...",
+                    "success"
+                );
 
-                result.style.color =
-                    "#35aaff";
 
+                /*
+                 * If your backend supplies a redirect,
+                 * trust that redirect.
+                 */
+                if (
+                    data.redirect
+                ) {
 
-                if (data.redirect) {
+                    window.location.assign(
+                        data.redirect
+                    );
 
-                    window.location.href =
-                        data.redirect;
-
-                } else {
-
-                    window.location.href =
-                        "https://cave-tag-discord-login.onrender.com/login?code=" +
-                        encodeURIComponent(code);
+                    return;
 
                 }
+
+
+                /*
+                 * Fallback to your existing login flow.
+                 */
+                window.location.assign(
+                    LOGIN_URL +
+                    "?code=" +
+                    encodeURIComponent(code)
+                );
 
                 return;
 
             }
 
 
-            result.textContent =
+            setCodeResult(
+                result,
                 "❌ " +
                 (
                     data.message ||
                     "That code is invalid or has already been used."
-                );
+                ),
+                "error"
+            );
 
-            result.style.color =
-                "#ff5555";
 
-
-            button.disabled = false;
-
-            button.textContent =
-                "REDEEM";
+            resetRedeemButton(button);
 
             return;
 
@@ -3146,16 +3544,17 @@ async function redeemCode() {
 
 
         /*
-         * If the backend returns an HTML redirect/page
-         * instead of JSON, navigate to it directly.
+         * Non-JSON backend response.
+         *
+         * Keep compatibility with the previous
+         * implementation in case your Render server
+         * returns an HTML page or redirect.
          */
-
         if (response.ok) {
 
-            window.location.href =
-                CODE_REDEEM_URL +
-                "?code=" +
-                encodeURIComponent(code);
+            window.location.assign(
+                url
+            );
 
             return;
 
@@ -3163,7 +3562,8 @@ async function redeemCode() {
 
 
         throw new Error(
-            "Server returned an error."
+            "Server returned HTTP " +
+            response.status
         );
 
     } catch (error) {
@@ -3174,23 +3574,135 @@ async function redeemCode() {
         );
 
 
-        result.textContent =
+        let message =
             "❌ Couldn't connect to the Cave Tag server. Please try again.";
 
-        result.style.color =
-            "#ff5555";
+
+        if (
+            error?.name === "TimeoutError" ||
+            error?.name === "AbortError"
+        ) {
+
+            message =
+                "❌ The Cave Tag server took too long to respond. Please try again.";
+
+        }
 
 
-        button.disabled = false;
+        setCodeResult(
+            result,
+            message,
+            "error"
+        );
 
-        button.textContent =
-            "REDEEM";
+
+        resetRedeemButton(button);
 
     }
 
 }
 
+
+function resetRedeemButton(button) {
+
+    button.disabled = false;
+
+    button.textContent =
+        "REDEEM";
+
+}
+
+
+function setCodeResult(
+    element,
+    message,
+    type
+) {
+
+    element.textContent =
+        message;
+
+
+    if (type === "success") {
+
+        element.style.color =
+            "var(--success)";
+
+    } else if (type === "error") {
+
+        element.style.color =
+            "var(--danger)";
+
+    } else {
+
+        element.style.color =
+            "var(--muted)";
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const navbar =
+            document.getElementById("navbar");
+
+        const nav =
+            document.getElementById("navLinks");
+
+        const menu =
+            document.getElementById("mobileMenu");
+
+
+        if (
+            !navbar ||
+            !nav ||
+            !menu
+        ) {
+            return;
+        }
+
+
+        if (
+            nav.classList.contains("open") &&
+            !navbar.contains(event.target)
+        ) {
+
+            closeMenu();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeMenu();
+
+        }
+
+    }
+);
 </script>
 
 </body>
 </html>
+```
