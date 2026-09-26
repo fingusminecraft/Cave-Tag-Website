@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -122,7 +122,6 @@ button {
     font-family: inherit;
 }
 
-
 /* =========================================================
    ANNOUNCEMENT
 ========================================================= */
@@ -175,7 +174,6 @@ button {
 
     color: #02070d;
 }
-
 
 /* =========================================================
    NAVIGATION
@@ -314,7 +312,6 @@ button {
 
     cursor: pointer;
 }
-
 
 /* =========================================================
    HERO
@@ -506,7 +503,6 @@ button {
         rgba(53,170,255,.5);
 }
 
-
 /* =========================================================
    STATS
 ========================================================= */
@@ -569,7 +565,6 @@ button {
     text-transform: uppercase;
 }
 
-
 /* =========================================================
    GENERAL SECTIONS
 ========================================================= */
@@ -612,7 +607,6 @@ button {
 
     margin-bottom: 45px;
 }
-
 
 /* =========================================================
    FEATURES
@@ -688,7 +682,6 @@ button {
     line-height: 1.7;
 }
 
-
 /* =========================================================
    CHANGELOG
 ========================================================= */
@@ -749,7 +742,6 @@ button {
 
     font-size: 13px;
 }
-
 
 /* =========================================================
    COUNTDOWN
@@ -814,7 +806,6 @@ button {
     animation:
         glow 2s ease-in-out infinite;
 }
-
 
 /* =========================================================
    APPLICATIONS
@@ -886,7 +877,6 @@ button {
 
     letter-spacing: 2px;
 }
-
 
 /* =========================================================
    GALLERY
@@ -980,91 +970,25 @@ button {
     font-weight: 800;
 }
 
-   <!-- =========================================================
-     CAVE TAG CODES
-========================================================= -->
+/* =========================================================
+   CODES
+========================================================= */
 
-<section class="section" id="codes">
+#codes .application {
+    margin-top: 20px;
+}
 
-    <div class="section-label">
-        REWARDS
-    </div>
+#codeResult {
+    margin-top: 15px;
+    min-height: 20px;
+    font-weight: 900;
+}
 
-    <h2 class="section-title">
-        Cave Tag Codes.
-    </h2>
-
-    <p class="section-description">
-        Got a code? Enter it below to unlock a special
-        Cave Tag Discord reward.
-    </p>
-
-    <div class="application reveal">
-
-        <div>
-
-            <div class="section-label">
-                CODE REDEMPTION
-            </div>
-
-            <h2>
-                Redeem a Code
-            </h2>
-
-            <p>
-                Normal codes are available for a limited time.
-                Limited codes remain active until every available
-                redemption has been claimed.
-            </p>
-
-            <div class="invite-box">
-
-                <input
-                    class="invite-input"
-                    id="codeInput"
-                    type="text"
-                    placeholder="Enter your code..."
-                    maxlength="50"
-                    autocomplete="off"
-                    onkeydown="
-                        if(event.key === 'Enter')
-                            redeemCode();
-                    "
-                >
-
-                <button
-                    class="copy-btn"
-                    id="redeemButton"
-                    onclick="redeemCode()"
-                >
-                    REDEEM
-                </button>
-
-            </div>
-
-            <p
-                id="codeResult"
-                style="
-                    margin-top:15px;
-                    min-height:20px;
-                    font-weight:900;
-                "
-            ></p>
-
-        </div>
-
-        <div class="application-side">
-
-            <span class="coming-badge">
-                🎁 REWARDS
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
+.code-note {
+    margin-top: 12px;
+    color: #58697a;
+    font-size: 12px;
+}
 
 /* =========================================================
    DISCORD
@@ -1107,9 +1031,8 @@ button {
     line-height: 1.7;
 }
 
-
 /* =========================================================
-   INVITE BOX
+   INVITE / CODE BOX
 ========================================================= */
 
 .invite-box {
@@ -1142,6 +1065,10 @@ button {
     outline: none;
 }
 
+.invite-input:focus {
+    border-color: var(--blue);
+}
+
 .copy-btn {
     border: 0;
 
@@ -1165,6 +1092,10 @@ button {
         translateY(-2px);
 }
 
+.copy-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
 
 /* =========================================================
    TEAM
@@ -1249,9 +1180,8 @@ button {
     letter-spacing: 2px;
 }
 
-
 /* =========================================================
-   CREDITS VIDEO
+   VIDEO
 ========================================================= */
 
 .video {
@@ -1279,7 +1209,6 @@ button {
 
     border: 0;
 }
-
 
 /* =========================================================
    FAQ
@@ -1350,7 +1279,6 @@ button {
     color: var(--blue);
 }
 
-
 /* =========================================================
    PLAY NOW
 ========================================================= */
@@ -1392,7 +1320,6 @@ button {
 
     margin-bottom: 30px;
 }
-
 
 /* =========================================================
    MUSIC
@@ -1446,7 +1373,6 @@ button {
         var(--blue);
 }
 
-
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1468,7 +1394,6 @@ footer {
 footer strong {
     color: #778b9e;
 }
-
 
 /* =========================================================
    ANIMATIONS
@@ -1521,7 +1446,6 @@ footer strong {
     transform:
         translateY(0);
 }
-
 
 /* =========================================================
    MOBILE
@@ -1629,11 +1553,10 @@ footer strong {
 }
 
 </style>
+
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      ANNOUNCEMENT
@@ -1641,13 +1564,13 @@ footer strong {
 
 <div class="announcement" id="announcement">
 
-    🔔 CAVE TAG WEBSITE REVAMPED • CHECK OUT THE LATEST UPDATES
+```
+🔔 CAVE TAG WEBSITE REVAMPED • CHECK OUT THE LATEST UPDATES
 
-    <button onclick="closeAnnouncement()">×</button>
+<button onclick="closeAnnouncement()">×</button>
+```
 
 </div>
-
-
 
 <!-- =========================================================
      NAVIGATION
@@ -1655,66 +1578,62 @@ footer strong {
 
 <header class="navbar">
 
-    <a href="#home" class="logo">
+```
+<a href="#home" class="logo">
 
-        <span class="logo-dot"></span>
+    <span class="logo-dot"></span>
 
-        CAVE TAG
+    CAVE TAG
 
+</a>
+
+<button
+    class="mobile-menu"
+    onclick="toggleMenu()"
+>
+    ☰
+</button>
+
+<nav class="nav-links" id="navLinks">
+
+    <a href="#home">Home</a>
+
+    <a href="#features">Features</a>
+
+    <a href="#updates">Updates</a>
+
+    <a href="#countdown">Countdown</a>
+
+    <a href="#gallery">Gallery</a>
+
+    <a href="#applications">Applications</a>
+
+    <a href="#codes">Codes</a>
+
+    <a href="#team">Team</a>
+
+    <a href="#credits">Credits</a>
+
+    <a
+        href="https://discord.gg/WaK6ykHCbS"
+        target="_blank"
+        rel="noopener"
+        class="nav-discord"
+    >
+        Discord
     </a>
 
-
-    <button
-        class="mobile-menu"
-        onclick="toggleMenu()"
+    <a
+        href="https://cave-tag-discord-login.onrender.com/login"
+        class="discord-login"
     >
-        ☰
-    </button>
+        🔵 Login
+    </a>
 
-
-    <nav class="nav-links" id="navLinks">
-
-        <a href="#home">Home</a>
-
-        <a href="#features">Features</a>
-
-        <a href="#updates">Updates</a>
-
-        <a href="#countdown">Countdown</a>
-
-        <a href="#gallery">Gallery</a>
-
-        <a href="#applications">Applications</a>
-
-       <a href="#codes">Codes</a>
-
-       
-
-        <a href="#team">Team</a>
-
-        <a href="#credits">Credits</a>
-
-        <a
-            href="https://discord.gg/WaK6ykHCbS"
-            target="_blank"
-            rel="noopener"
-            class="nav-discord"
-        >
-            Discord
-        </a>
-
-        <a
-            href="https://cave-tag-discord-login.onrender.com/login"
-            class="discord-login"
-        >
-            🔵 Login
-        </a>
-
-    </nav>
+</nav>
+```
 
 </header>
-
-
 
 <!-- =========================================================
      HERO
@@ -1724,849 +1643,31 @@ footer strong {
 
 <section class="hero">
 
-    <div class="hero-content">
+```
+<div class="hero-content">
 
-        <div class="status-pill">
+    <div class="status-pill">
 
-            <span class="status-dot"></span>
+        <span class="status-dot"></span>
 
-            CAVE TAG • IN DEVELOPMENT
-
-        </div>
-
-
-        <h1>
-
-            CAVE<br>
-
-            <span>TAG</span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-            A fan-made Gorilla Tag-inspired experience
-            built around movement, exploration, chaos,
-            and playing with friends.
-
-        </p>
-
-
-        <div class="buttons">
-
-            <a
-                href="#"
-                class="btn btn-blue"
-                onclick="playButton(event)"
-            >
-                🕹️ PLAY NOW
-            </a>
-
-
-            <a
-                href="https://discord.gg/WaK6ykHCbS"
-                target="_blank"
-                rel="noopener"
-                class="btn btn-dark"
-            >
-                💬 JOIN DISCORD
-            </a>
-
-        </div>
+        CAVE TAG • IN DEVELOPMENT
 
     </div>
 
-</section>
+    <h1>
+        CAVE<br>
+        <span>TAG</span>
+    </h1>
 
+    <p class="hero-description">
 
-
-<!-- =========================================================
-     COMMUNITY STATS
-========================================================= -->
-
-<section class="stats reveal">
-
-    <div class="stat">
-
-        <div
-            class="stat-number"
-            data-target="250"
-        >
-            0+
-        </div>
-
-        <div class="stat-label">
-            Community Members
-        </div>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div
-            class="stat-number"
-            data-target="3"
-        >
-            0
-        </div>
-
-        <div class="stat-label">
-            Team Members
-        </div>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div
-            class="stat-number"
-            data-target="6"
-        >
-            0
-        </div>
-
-        <div class="stat-label">
-            Planned Features
-        </div>
-
-    </div>
-
-
-    <div class="stat">
-
-        <div class="stat-number">
-            SOON
-        </div>
-
-        <div class="stat-label">
-            Game Release
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FEATURES
-========================================================= -->
-
-<section class="section" id="features">
-
-    <div class="section-label">
-        THE EXPERIENCE
-    </div>
-
-    <h2 class="section-title">
-        Built for chaos.
-    </h2>
-
-    <p class="section-description">
-
-        Everything Cave Tag is being built around:
-        movement, exploration and having fun with friends.
+        A fan-made Gorilla Tag-inspired experience
+        built around movement, exploration, chaos,
+        and playing with friends.
 
     </p>
 
-
-    <div class="feature-grid">
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">🦍</div>
-
-            <h3>Movement</h3>
-
-            <p>
-                Swing, climb and move around the cave
-                while trying not to get tagged.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">🪨</div>
-
-            <h3>Explore</h3>
-
-            <p>
-                Explore the cave and discover different
-                areas throughout the game.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">🔥</div>
-
-            <h3>Chaos</h3>
-
-            <p>
-                Games can turn chaotic fast.
-                Keep moving and don't get caught.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">👥</div>
-
-            <h3>Multiplayer</h3>
-
-            <p>
-                Play with friends and turn every round
-                into a giant game of tag.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">🛠️</div>
-
-            <h3>Constant Updates</h3>
-
-            <p>
-                New features, improvements and updates
-                are planned as development continues.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">🌑</div>
-
-            <h3>The Cave</h3>
-
-            <p>
-                A dark environment full of places to
-                climb, hide and explore.
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     LATEST UPDATES
-========================================================= -->
-
-<section class="section" id="updates">
-
-    <div class="section-label">
-        DEVELOPMENT
-    </div>
-
-    <h2 class="section-title">
-        Latest updates.
-    </h2>
-
-    <p class="section-description">
-        Here's what's been happening with Cave Tag.
-    </p>
-
-
-    <div class="changelog">
-
-        <article class="update reveal">
-
-            <div class="update-date">
-                LATEST
-            </div>
-
-            <div>
-
-                <h3>
-                    Website Overhaul
-                </h3>
-
-                <p>
-                    The Cave Tag website has been completely
-                    revamped with a new design, animations,
-                    sections and mobile support.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="update reveal">
-
-            <div class="update-date">
-                RECENT
-            </div>
-
-            <div>
-
-                <h3>
-                    Credits Added
-                </h3>
-
-                <p>
-                    The credits section has been added along
-                    with the official Cave Tag credits video.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <article class="update reveal">
-
-            <div class="update-date">
-                NEXT
-            </div>
-
-            <div>
-
-                <h3>
-                    Mod Applications
-                </h3>
-
-                <p>
-                    Moderator applications are planned
-                    for an upcoming update.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     COUNTDOWN
-========================================================= -->
-
-<section class="section" id="countdown">
-
-    <div class="countdown-box reveal">
-
-        <div class="section-label">
-            RELEASE
-        </div>
-
-        <h2>
-            Release Countdown
-        </h2>
-
-        <p>
-            The Cave Tag release date has not been announced yet.
-        </p>
-
-        <div class="starting-soon">
-            STARTING SOON!
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     GALLERY
-========================================================= -->
-
-<section class="section" id="gallery">
-
-    <div class="section-label">
-        MEDIA
-    </div>
-
-    <h2 class="section-title">
-        Cave Tag Gallery.
-    </h2>
-
-    <p class="section-description">
-        Screenshots and media from Cave Tag will appear here.
-    </p>
-
-
-    <div class="gallery">
-
-        <div class="gallery-card reveal">
-            <span>GAMEPLAY</span>
-        </div>
-
-        <div class="gallery-card reveal">
-            <span>THE CAVE</span>
-        </div>
-
-        <div class="gallery-card reveal">
-            <span>COMING SOON</span>
-        </div>
-
-        <div class="gallery-card reveal">
-            <span>MAPS</span>
-        </div>
-
-        <div class="gallery-card reveal">
-            <span>COMMUNITY</span>
-        </div>
-
-        <div class="gallery-card reveal">
-            <span>DEVELOPMENT</span>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     MOD APPLICATIONS
-========================================================= -->
-
-<section class="section" id="applications">
-
-    <div class="application reveal">
-
-        <div>
-
-            <div class="section-label">
-                STAFF
-            </div>
-
-            <h2>
-                Moderator Applications
-            </h2>
-
-            <p>
-
-                Want to help out with Cave Tag?
-
-                Moderator applications are currently
-                being worked on and will open in a
-                future update.
-
-                Keep an eye on the Discord for the
-                announcement when applications go live.
-
-            </p>
-
-        </div>
-
-
-        <div class="application-side">
-
-            <span class="coming-badge">
-                COMING SOON!
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     DISCORD
-========================================================= -->
-
-<section class="section">
-
-    <div class="discord reveal">
-
-        <div class="section-label">
-            COMMUNITY
-        </div>
-
-        <h2>
-            Join the Cave Tag Discord.
-        </h2>
-
-        <p>
-
-            Get announcements, development updates,
-            talk with other players and keep up with
-            everything happening with Cave Tag.
-
-        </p>
-
-
-        <a
-            href="https://discord.gg/WaK6ykHCbS"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-blue"
-        >
-            💬 JOIN DISCORD
-        </a>
-
-
-        <div class="invite-box">
-
-            <input
-                class="invite-input"
-                id="invite"
-                value="https://discord.gg/WaK6ykHCbS"
-                readonly
-            >
-
-            <button
-                class="copy-btn"
-                onclick="copyInvite()"
-                id="copyButton"
-            >
-                COPY
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     TEAM
-========================================================= -->
-
-<section class="section" id="team">
-
-    <div class="section-label">
-        THE PEOPLE
-    </div>
-
-    <h2 class="section-title">
-        Cave Tag Team.
-    </h2>
-
-    <p class="section-description">
-        Meet the people working on Cave Tag.
-    </p>
-
-
-    <div class="team">
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                👑
-            </div>
-
-            <h3>
-                Fingus
-            </h3>
-
-            <div class="member-role">
-                OWNER
-            </div>
-
-        </article>
-
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                🛠️
-            </div>
-
-            <h3>
-                Shazam
-            </h3>
-
-            <div class="member-role">
-                DEVELOPER
-            </div>
-
-        </article>
-
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                🛡️
-            </div>
-
-            <h3>
-                Pax
-            </h3>
-
-            <div class="member-role">
-                MODERATOR
-            </div>
-
-        </article>
-
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                🛡️
-            </div>
-
-            <h3>
-                Axolotl
-            </h3>
-
-            <div class="member-role">
-                MODERATOR
-            </div>
-
-        </article>
-
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                🛡️
-            </div>
-
-            <h3>
-                Goofus
-            </h3>
-
-            <div class="member-role">
-                MODERATOR
-            </div>
-
-        </article>
-
-
-        <article class="member reveal">
-
-            <div class="avatar">
-                👑
-            </div>
-
-            <h3>
-                Vexo
-            </h3>
-
-            <div class="member-role">
-                OWNER
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CREDITS
-========================================================= -->
-
-<section class="section" id="credits">
-
-    <div class="section-label">
-        CREDITS
-    </div>
-
-    <h2 class="section-title">
-        The people behind Cave Tag.
-    </h2>
-
-    <p class="section-description">
-        Check out the Cave Tag credits video.
-    </p>
-
-
-    <div class="video reveal">
-
-        <iframe
-            src="https://www.youtube.com/embed/3njvlNQcNLg"
-            title="Cave Tag Credits"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     FAQ
-========================================================= -->
-
-<section class="section">
-
-    <div class="section-label">
-        FAQ
-    </div>
-
-    <h2 class="section-title">
-        Frequently asked questions.
-    </h2>
-
-
-    <div class="faq">
-
-        <div class="faq-item reveal">
-
-            <button
-                class="faq-question"
-                onclick="toggleFAQ(this)"
-            >
-
-                What is Cave Tag?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                Cave Tag is a fan-made Gorilla Tag-inspired
-                game focused on movement, tag gameplay,
-                exploration and playing with friends.
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item reveal">
-
-            <button
-                class="faq-question"
-                onclick="toggleFAQ(this)"
-            >
-
-                When does Cave Tag release?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                The release date has not been announced yet.
-                The countdown will be activated once an official
-                release date is confirmed.
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item reveal">
-
-            <button
-                class="faq-question"
-                onclick="toggleFAQ(this)"
-            >
-
-                Where can I get updates?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                Join the Cave Tag Discord for announcements,
-                development news and community updates.
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item reveal">
-
-            <button
-                class="faq-question"
-                onclick="toggleFAQ(this)"
-            >
-
-                Are moderator applications open?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                Not currently. Moderator applications are
-                coming soon.
-
-            </div>
-
-        </div>
-
-
-        <div class="faq-item reveal">
-
-            <button
-                class="faq-question"
-                onclick="toggleFAQ(this)"
-            >
-
-                Is this the official Gorilla Tag website?
-
-                <span>+</span>
-
-            </button>
-
-            <div class="faq-answer">
-
-                No. Cave Tag is a fan-made project and
-                is not the official Gorilla Tag website.
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     PLAY NOW
-========================================================= -->
-
-<section class="section play-section">
-
-    <div class="play-card reveal">
-
-        <div class="section-label">
-            READY?
-        </div>
-
-        <h2>
-            Enter the cave.
-        </h2>
-
-        <p>
-            Cave Tag is coming soon.
-        </p>
-
+    <div class="buttons">
 
         <a
             href="#"
@@ -2576,13 +1677,879 @@ footer strong {
             🕹️ PLAY NOW
         </a>
 
+        <a
+            href="https://discord.gg/WaK6ykHCbS"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-dark"
+        >
+            💬 JOIN DISCORD
+        </a>
+
     </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     COMMUNITY STATS
+========================================================= -->
+
+<section class="stats reveal">
+
+```
+<div class="stat">
+
+    <div
+        class="stat-number"
+        data-target="250"
+    >
+        0+
+    </div>
+
+    <div class="stat-label">
+        Community Members
+    </div>
+
+</div>
+
+<div class="stat">
+
+    <div
+        class="stat-number"
+        data-target="3"
+    >
+        0
+    </div>
+
+    <div class="stat-label">
+        Team Members
+    </div>
+
+</div>
+
+<div class="stat">
+
+    <div
+        class="stat-number"
+        data-target="6"
+    >
+        0
+    </div>
+
+    <div class="stat-label">
+        Planned Features
+    </div>
+
+</div>
+
+<div class="stat">
+
+    <div class="stat-number">
+        SOON
+    </div>
+
+    <div class="stat-label">
+        Game Release
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
+
+<section class="section" id="features">
+
+```
+<div class="section-label">
+    THE EXPERIENCE
+</div>
+
+<h2 class="section-title">
+    Built for chaos.
+</h2>
+
+<p class="section-description">
+
+    Everything Cave Tag is being built around:
+    movement, exploration and having fun with friends.
+
+</p>
+
+<div class="feature-grid">
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">🦍</div>
+
+        <h3>Movement</h3>
+
+        <p>
+            Swing, climb and move around the cave
+            while trying not to get tagged.
+        </p>
+
+    </article>
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">🪨</div>
+
+        <h3>Explore</h3>
+
+        <p>
+            Explore the cave and discover different
+            areas throughout the game.
+        </p>
+
+    </article>
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">🔥</div>
+
+        <h3>Chaos</h3>
+
+        <p>
+            Games can turn chaotic fast.
+            Keep moving and don't get caught.
+        </p>
+
+    </article>
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">👥</div>
+
+        <h3>Multiplayer</h3>
+
+        <p>
+            Play with friends and turn every round
+            into a giant game of tag.
+        </p>
+
+    </article>
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">🛠️</div>
+
+        <h3>Constant Updates</h3>
+
+        <p>
+            New features, improvements and updates
+            are planned as development continues.
+        </p>
+
+    </article>
+
+    <article class="feature reveal">
+
+        <div class="feature-icon">🌑</div>
+
+        <h3>The Cave</h3>
+
+        <p>
+            A dark environment full of places to
+            climb, hide and explore.
+        </p>
+
+    </article>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     LATEST UPDATES
+========================================================= -->
+
+<section class="section" id="updates">
+
+```
+<div class="section-label">
+    DEVELOPMENT
+</div>
+
+<h2 class="section-title">
+    Latest updates.
+</h2>
+
+<p class="section-description">
+    Here's what's been happening with Cave Tag.
+</p>
+
+<div class="changelog">
+
+    <article class="update reveal">
+
+        <div class="update-date">
+            LATEST
+        </div>
+
+        <div>
+
+            <h3>
+                Website Overhaul
+            </h3>
+
+            <p>
+                The Cave Tag website has been completely
+                revamped with a new design, animations,
+                sections and mobile support.
+            </p>
+
+        </div>
+
+    </article>
+
+    <article class="update reveal">
+
+        <div class="update-date">
+            RECENT
+        </div>
+
+        <div>
+
+            <h3>
+                Credits Added
+            </h3>
+
+            <p>
+                The credits section has been added along
+                with the official Cave Tag credits video.
+            </p>
+
+        </div>
+
+    </article>
+
+    <article class="update reveal">
+
+        <div class="update-date">
+            NEXT
+        </div>
+
+        <div>
+
+            <h3>
+                Mod Applications
+            </h3>
+
+            <p>
+                Moderator applications are planned
+                for an upcoming update.
+            </p>
+
+        </div>
+
+    </article>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     COUNTDOWN
+========================================================= -->
+
+<section class="section" id="countdown">
+
+```
+<div class="countdown-box reveal">
+
+    <div class="section-label">
+        RELEASE
+    </div>
+
+    <h2>
+        Release Countdown
+    </h2>
+
+    <p>
+        The Cave Tag release date has not been announced yet.
+    </p>
+
+    <div class="starting-soon">
+        STARTING SOON!
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section class="section" id="gallery">
+
+```
+<div class="section-label">
+    MEDIA
+</div>
+
+<h2 class="section-title">
+    Cave Tag Gallery.
+</h2>
+
+<p class="section-description">
+    Screenshots and media from Cave Tag will appear here.
+</p>
+
+<div class="gallery">
+
+    <div class="gallery-card reveal">
+        <span>GAMEPLAY</span>
+    </div>
+
+    <div class="gallery-card reveal">
+        <span>THE CAVE</span>
+    </div>
+
+    <div class="gallery-card reveal">
+        <span>COMING SOON</span>
+    </div>
+
+    <div class="gallery-card reveal">
+        <span>MAPS</span>
+    </div>
+
+    <div class="gallery-card reveal">
+        <span>COMMUNITY</span>
+    </div>
+
+    <div class="gallery-card reveal">
+        <span>DEVELOPMENT</span>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     MOD APPLICATIONS
+========================================================= -->
+
+<section class="section" id="applications">
+
+```
+<div class="application reveal">
+
+    <div>
+
+        <div class="section-label">
+            STAFF
+        </div>
+
+        <h2>
+            Moderator Applications
+        </h2>
+
+        <p>
+
+            Want to help out with Cave Tag?
+
+            Moderator applications are currently
+            being worked on and will open in a
+            future update.
+
+            Keep an eye on the Discord for the
+            announcement when applications go live.
+
+        </p>
+
+    </div>
+
+    <div class="application-side">
+
+        <span class="coming-badge">
+            COMING SOON!
+        </span>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     CAVE TAG CODES
+========================================================= -->
+
+<section class="section" id="codes">
+
+```
+<div class="section-label">
+    REWARDS
+</div>
+
+<h2 class="section-title">
+    Cave Tag Codes.
+</h2>
+
+<p class="section-description">
+    Got a code? Enter it below to redeem your Cave Tag
+    Discord reward.
+</p>
+
+<div class="application reveal">
+
+    <div>
+
+        <div class="section-label">
+            CODE REDEMPTION
+        </div>
+
+        <h2>
+            Redeem a Code
+        </h2>
+
+        <p>
+            Enter your code below. If the code is valid,
+            you'll be taken through the Discord login
+            process so the reward can be added to your account.
+        </p>
+
+        <div class="invite-box">
+
+            <input
+                class="invite-input"
+                id="codeInput"
+                type="text"
+                placeholder="Enter your code..."
+                maxlength="50"
+                autocomplete="off"
+                spellcheck="false"
+                onkeydown="handleCodeKey(event)"
+            >
+
+            <button
+                class="copy-btn"
+                id="redeemButton"
+                type="button"
+                onclick="redeemCode()"
+            >
+                REDEEM
+            </button>
+
+        </div>
+
+        <p id="codeResult"></p>
+
+        <p class="code-note">
+            Never share your Discord password or bot credentials.
+        </p>
+
+    </div>
+
+    <div class="application-side">
+
+        <span class="coming-badge">
+            🎁 REWARDS
+        </span>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     DISCORD
+========================================================= -->
+
+<section class="section">
+
+```
+<div class="discord reveal">
+
+    <div class="section-label">
+        COMMUNITY
+    </div>
+
+    <h2>
+        Join the Cave Tag Discord.
+    </h2>
+
+    <p>
+
+        Get announcements, development updates,
+        talk with other players and keep up with
+        everything happening with Cave Tag.
+
+    </p>
+
+    <a
+        href="https://discord.gg/WaK6ykHCbS"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-blue"
+    >
+        💬 JOIN DISCORD
+    </a>
+
+    <div class="invite-box">
+
+        <input
+            class="invite-input"
+            id="invite"
+            value="https://discord.gg/WaK6ykHCbS"
+            readonly
+        >
+
+        <button
+            class="copy-btn"
+            onclick="copyInvite()"
+            id="copyButton"
+            type="button"
+        >
+            COPY
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     TEAM
+========================================================= -->
+
+<section class="section" id="team">
+
+```
+<div class="section-label">
+    THE PEOPLE
+</div>
+
+<h2 class="section-title">
+    Cave Tag Team.
+</h2>
+
+<p class="section-description">
+    Meet the people working on Cave Tag.
+</p>
+
+<div class="team">
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            👑
+        </div>
+
+        <h3>
+            Fingus
+        </h3>
+
+        <div class="member-role">
+            OWNER
+        </div>
+
+    </article>
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            🛠️
+        </div>
+
+        <h3>
+            Shazam
+        </h3>
+
+        <div class="member-role">
+            DEVELOPER
+        </div>
+
+    </article>
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            🛡️
+        </div>
+
+        <h3>
+            Pax
+        </h3>
+
+        <div class="member-role">
+            MODERATOR
+        </div>
+
+    </article>
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            🛡️
+        </div>
+
+        <h3>
+            Axolotl
+        </h3>
+
+        <div class="member-role">
+            MODERATOR
+        </div>
+
+    </article>
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            🛡️
+        </div>
+
+        <h3>
+            Goofus
+        </h3>
+
+        <div class="member-role">
+            MODERATOR
+        </div>
+
+    </article>
+
+    <article class="member reveal">
+
+        <div class="avatar">
+            👑
+        </div>
+
+        <h3>
+            Vexo
+        </h3>
+
+        <div class="member-role">
+            OWNER
+        </div>
+
+    </article>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     CREDITS
+========================================================= -->
+
+<section class="section" id="credits">
+
+```
+<div class="section-label">
+    CREDITS
+</div>
+
+<h2 class="section-title">
+    The people behind Cave Tag.
+</h2>
+
+<p class="section-description">
+    Check out the Cave Tag credits video.
+</p>
+
+<div class="video reveal">
+
+    <iframe
+        src="https://www.youtube.com/embed/3njvlNQcNLg"
+        title="Cave Tag Credits"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section class="section">
+
+```
+<div class="section-label">
+    FAQ
+</div>
+
+<h2 class="section-title">
+    Frequently asked questions.
+</h2>
+
+<div class="faq">
+
+    <div class="faq-item reveal">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)"
+        >
+
+            What is Cave Tag?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Cave Tag is a fan-made Gorilla Tag-inspired
+            game focused on movement, tag gameplay,
+            exploration and playing with friends.
+
+        </div>
+
+    </div>
+
+    <div class="faq-item reveal">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)"
+        >
+
+            When does Cave Tag release?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            The release date has not been announced yet.
+            The countdown will be activated once an official
+            release date is confirmed.
+
+        </div>
+
+    </div>
+
+    <div class="faq-item reveal">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)"
+        >
+
+            Where can I get updates?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Join the Cave Tag Discord for announcements,
+            development news and community updates.
+
+        </div>
+
+    </div>
+
+    <div class="faq-item reveal">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)"
+        >
+
+            Are moderator applications open?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            Not currently. Moderator applications are
+            coming soon.
+
+        </div>
+
+    </div>
+
+    <div class="faq-item reveal">
+
+        <button
+            class="faq-question"
+            onclick="toggleFAQ(this)"
+        >
+
+            Is this the official Gorilla Tag website?
+
+            <span>+</span>
+
+        </button>
+
+        <div class="faq-answer">
+
+            No. Cave Tag is a fan-made project and
+            is not the official Gorilla Tag website.
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- =========================================================
+     PLAY NOW
+========================================================= -->
+
+<section class="section play-section">
+
+```
+<div class="play-card reveal">
+
+    <div class="section-label">
+        READY?
+    </div>
+
+    <h2>
+        Enter the cave.
+    </h2>
+
+    <p>
+        Cave Tag is coming soon.
+    </p>
+
+    <a
+        href="#"
+        class="btn btn-blue"
+        onclick="playButton(event)"
+    >
+        🕹️ PLAY NOW
+    </a>
+
+</div>
+```
 
 </section>
 
 </main>
-
-
 
 <!-- =========================================================
      MUSIC
@@ -2590,24 +2557,29 @@ footer strong {
 
 <audio id="music" loop>
 
-    <source
-        src="music.mp3"
-        type="audio/mpeg"
-    >
+```
+<source
+    src="music.mp3"
+    type="audio/mpeg"
+>
+```
 
 </audio>
 
-
 <button
-    class="music-toggle"
-    id="musicButton"
-    onclick="toggleMusic()"
-    title="Toggle music"
+class="music-toggle"
+id="musicButton"
+onclick="toggleMusic()"
+title="Toggle music"
+type="button"
+
 >
-    🔇
+
+```
+🔇
+```
+
 </button>
-
-
 
 <!-- =========================================================
      FOOTER
@@ -2615,12 +2587,12 @@ footer strong {
 
 <footer>
 
-    © 2026 <strong>Cave Tag</strong>
-    • Fan-made project
+```
+© 2026 <strong>Cave Tag</strong>
+• Fan-made project
+```
 
 </footer>
-
-
 
 <script>
 
@@ -2630,6 +2602,9 @@ footer strong {
 
 const GAME_LINK = "#";
 
+const CODE_REDEEM_URL =
+    "https://cave-tag-discord-login.onrender.com/redeem";
+
 
 /* =========================================================
    ANNOUNCEMENT
@@ -2637,9 +2612,12 @@ const GAME_LINK = "#";
 
 function closeAnnouncement() {
 
-    document
-        .getElementById("announcement")
-        .style.display = "none";
+    const announcement =
+        document.getElementById("announcement");
+
+    if (announcement) {
+        announcement.style.display = "none";
+    }
 
 }
 
@@ -2684,22 +2662,22 @@ function copyInvite() {
     const input =
         document.getElementById("invite");
 
+    const button =
+        document.getElementById("copyButton");
+
+    if (!input || !button) {
+        return;
+    }
+
     navigator.clipboard
         .writeText(input.value)
         .then(() => {
 
-            const button =
-                document.getElementById("copyButton");
-
-            button.textContent =
-                "COPIED!";
+            button.textContent = "COPIED!";
 
             setTimeout(
                 () => {
-
-                    button.textContent =
-                        "COPY";
-
+                    button.textContent = "COPY";
                 },
                 1800
             );
@@ -2711,18 +2689,11 @@ function copyInvite() {
 
             document.execCommand("copy");
 
-            const button =
-                document.getElementById("copyButton");
-
-            button.textContent =
-                "COPIED!";
+            button.textContent = "COPIED!";
 
             setTimeout(
                 () => {
-
-                    button.textContent =
-                        "COPY";
-
+                    button.textContent = "COPY";
                 },
                 1800
             );
@@ -2751,11 +2722,14 @@ function toggleFAQ(button) {
 
             faq.classList.remove("active");
 
-            faq
-                .querySelector(
+            const span =
+                faq.querySelector(
                     ".faq-question span"
-                )
-                .textContent = "+";
+                );
+
+            if (span) {
+                span.textContent = "+";
+            }
 
         });
 
@@ -2764,9 +2738,12 @@ function toggleFAQ(button) {
 
         item.classList.add("active");
 
-        button
-            .querySelector("span")
-            .textContent = "−";
+        const span =
+            button.querySelector("span");
+
+        if (span) {
+            span.textContent = "−";
+        }
 
     }
 
@@ -2861,40 +2838,50 @@ const revealElements =
     document.querySelectorAll(".reveal");
 
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
+if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
-                if (
-                    entry.isIntersecting
-                ) {
+                entries.forEach(entry => {
 
-                    entry.target.classList.add(
-                        "show"
-                    );
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                        entry.target.classList.add(
+                            "show"
+                        );
 
-                }
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-            });
+                    }
 
-        },
-        {
-            threshold: .12
-        }
-    );
+                });
+
+            },
+            {
+                threshold: .12
+            }
+        );
 
 
-revealElements.forEach(element => {
+    revealElements.forEach(element => {
 
-    revealObserver.observe(element);
+        revealObserver.observe(element);
 
-});
+    });
+
+} else {
+
+    revealElements.forEach(element => {
+        element.classList.add("show");
+    });
+
+}
 
 
 /* =========================================================
@@ -2907,110 +2894,144 @@ const statNumbers =
     );
 
 
-const statObserver =
-    new IntersectionObserver(
-        entries => {
+if ("IntersectionObserver" in window) {
 
-            entries.forEach(entry => {
+    const statObserver =
+        new IntersectionObserver(
+            entries => {
 
-                if (
-                    !entry.isIntersecting
-                ) {
-                    return;
-                }
+                entries.forEach(entry => {
+
+                    if (
+                        !entry.isIntersecting
+                    ) {
+                        return;
+                    }
 
 
-                const element =
-                    entry.target;
+                    const element =
+                        entry.target;
 
-                const target =
-                    Number(
-                        element.dataset.target
+                    const target =
+                        Number(
+                            element.dataset.target
+                        );
+
+                    let current = 0;
+
+
+                    const interval =
+                        setInterval(
+                            () => {
+
+                                current +=
+                                    Math.ceil(
+                                        target / 30
+                                    );
+
+
+                                if (
+                                    current >= target
+                                ) {
+
+                                    current =
+                                        target;
+
+                                    clearInterval(
+                                        interval
+                                    );
+
+                                }
+
+
+                                element.textContent =
+                                    current +
+                                    (
+                                        target === 250
+                                        ? "+"
+                                        : ""
+                                    );
+
+                            },
+                            35
+                        );
+
+
+                    statObserver.unobserve(
+                        element
                     );
 
-                let current = 0;
+                });
+
+            },
+            {
+                threshold: .5
+            }
+        );
 
 
-                const interval =
-                    setInterval(
-                        () => {
+    statNumbers.forEach(stat => {
 
-                            current +=
-                                Math.ceil(
-                                    target / 30
-                                );
+        statObserver.observe(stat);
 
+    });
 
-                            if (
-                                current >= target
-                            ) {
+} else {
 
-                                current =
-                                    target;
+    statNumbers.forEach(stat => {
 
-                                clearInterval(
-                                    interval
-                                );
+        const target =
+            Number(stat.dataset.target);
 
-                            }
+        stat.textContent =
+            target +
+            (
+                target === 250
+                ? "+"
+                : ""
+            );
 
+    });
 
-                            element.textContent =
-                                current +
-                                (
-                                    target === 250
-                                    ? "+"
-                                    : ""
-                                );
-
-                        },
-                        35
-                    );
+}
 
 
-                statObserver.unobserve(
-                    element
-                );
+/* =========================================================
+   CODE ENTER KEY
+========================================================= */
 
-            });
+function handleCodeKey(event) {
 
-        },
-        {
-            threshold: .5
-        }
-    );
+    if (event.key === "Enter") {
 
+        event.preventDefault();
 
-statNumbers.forEach(stat => {
+        redeemCode();
 
-    statObserver.observe(stat);
+    }
 
-});
+}
+
 
 /* =========================================================
    CODE REDEMPTION
 ========================================================= */
 
-const CODE_REDEEM_URL =
-    "https://cave-tag-discord-login.onrender.com/redeem";
-
-
-function redeemCode() {
+async function redeemCode() {
 
     const input =
-        document.getElementById(
-            "codeInput"
-        );
+        document.getElementById("codeInput");
 
     const button =
-        document.getElementById(
-            "redeemButton"
-        );
+        document.getElementById("redeemButton");
 
     const result =
-        document.getElementById(
-            "codeResult"
-        );
+        document.getElementById("codeResult");
+
+
+    if (!input || !button || !result) {
+        return;
+    }
 
 
     const code =
@@ -3037,18 +3058,135 @@ function redeemCode() {
     button.textContent =
         "CHECKING...";
 
-
     result.textContent =
-        "Taking you to Discord...";
+        "Checking your code...";
 
     result.style.color =
         "#7d8fa3";
 
 
-    window.location.href =
-        CODE_REDEEM_URL +
-        "?code=" +
-        encodeURIComponent(code);
+    try {
+
+        const response =
+            await fetch(
+                CODE_REDEEM_URL +
+                "?code=" +
+                encodeURIComponent(code),
+                {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+
+        const contentType =
+            response.headers.get(
+                "content-type"
+            ) || "";
+
+
+        if (
+            contentType.includes(
+                "application/json"
+            )
+        ) {
+
+            const data =
+                await response.json();
+
+
+            if (response.ok && data.valid) {
+
+                result.textContent =
+                    "✅ Code accepted! Redirecting to Discord...";
+
+                result.style.color =
+                    "#35aaff";
+
+
+                if (data.redirect) {
+
+                    window.location.href =
+                        data.redirect;
+
+                } else {
+
+                    window.location.href =
+                        "https://cave-tag-discord-login.onrender.com/login?code=" +
+                        encodeURIComponent(code);
+
+                }
+
+                return;
+
+            }
+
+
+            result.textContent =
+                "❌ " +
+                (
+                    data.message ||
+                    "That code is invalid or has already been used."
+                );
+
+            result.style.color =
+                "#ff5555";
+
+
+            button.disabled = false;
+
+            button.textContent =
+                "REDEEM";
+
+            return;
+
+        }
+
+
+        /*
+         * If the backend returns an HTML redirect/page
+         * instead of JSON, navigate to it directly.
+         */
+
+        if (response.ok) {
+
+            window.location.href =
+                CODE_REDEEM_URL +
+                "?code=" +
+                encodeURIComponent(code);
+
+            return;
+
+        }
+
+
+        throw new Error(
+            "Server returned an error."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Code redemption error:",
+            error
+        );
+
+
+        result.textContent =
+            "❌ Couldn't connect to the Cave Tag server. Please try again.";
+
+        result.style.color =
+            "#ff5555";
+
+
+        button.disabled = false;
+
+        button.textContent =
+            "REDEEM";
+
+    }
 
 }
 
@@ -3056,4 +3194,3 @@ function redeemCode() {
 
 </body>
 </html>
-```
