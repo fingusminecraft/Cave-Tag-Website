@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cave Tag | Official Fan Game</title>
 
+    <title>Cave Tag | Official Website</title>
+
+    <!-- Discord / Website Preview -->
     <meta property="og:title" content="Cave Tag">
-    <meta property="og:description" content="The official Cave Tag website.">
+    <meta property="og:description" content="Enter the cave. Stay untagged.">
     <meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
     <meta property="og:type" content="website">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -23,361 +30,774 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #080b09;
-            color: #ffffff;
+            background: #050706;
+            color: white;
             overflow-x: hidden;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           BACKGROUND
+        ========================= */
 
         body::before {
             content: "";
             position: fixed;
             inset: 0;
-            pointer-events: none;
+            z-index: -5;
+
             background:
-                radial-gradient(circle at 20% 15%, rgba(140,255,0,.12), transparent 28%),
-                radial-gradient(circle at 85% 55%, rgba(0,210,130,.08), transparent 30%);
-            z-index: -2;
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(142,255,62,0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(0,255,170,0.07),
+                    transparent 30%
+                ),
+                #050706;
         }
 
         body::after {
             content: "";
             position: fixed;
             inset: 0;
+            z-index: -4;
             pointer-events: none;
-            opacity: .16;
-            background-image: radial-gradient(#ffffff 1px, transparent 1px);
-            background-size: 42px 42px;
-            z-index: -1;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 70px 70px;
         }
 
-        nav {
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 72px;
-            padding: 0 7%;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: min(1150px, 92%);
+
+            height: 64px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(5, 8, 6, .78);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(156,255,77,.12);
-            z-index: 10;
+
+            padding: 0 22px;
+
+            background: rgba(8,12,9,0.78);
+            backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(156,255,77,0.13);
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.35);
+
+            z-index: 100;
         }
 
-        .logo {
-            color: #9cff4d;
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(156,255,77,.35);
-        }
-
-        .nav-links {
+        .brand {
             display: flex;
-            gap: 22px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+
+            font-weight: 1000;
+            letter-spacing: 2px;
+            font-size: 20px;
         }
 
-        .nav-links a {
-            color: #c6ccc7;
-            text-decoration: none;
+        .brand-dot {
+            width: 10px;
+            height: 10px;
+
+            border-radius: 50%;
+
+            background: #9cff4d;
+
+            box-shadow:
+                0 0 15px #9cff4d;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav a {
+            color: #929a94;
             font-size: 13px;
-            transition: .2s;
+            font-weight: 700;
+
+            transition: 0.2s;
         }
 
-        .nav-links a:hover {
+        .nav a:hover {
             color: #9cff4d;
         }
+
+        .nav-discord {
+            padding: 10px 15px;
+
+            color: #071006 !important;
+
+            background: #9cff4d;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 0 25px rgba(156,255,77,0.12);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            min-height: 820px;
-            padding: 140px 20px 90px;
+            min-height: 100vh;
+
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+
             text-align: center;
+
+            padding:
+                160px 20px
+                100px;
+
             position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+
+            width: 700px;
+            height: 400px;
+
+            left: 50%;
+            bottom: 0;
+
+            transform: translateX(-50%);
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(135,255,60,0.16),
+                    transparent 65%
+                );
+
+            filter: blur(20px);
+
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 950px;
+            position: relative;
+            z-index: 2;
         }
 
-        .eyebrow {
-            display: inline-block;
-            padding: 8px 15px;
+        .announcement {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 9px 15px;
+
             border-radius: 999px;
-            border: 1px solid rgba(156,255,77,.35);
-            background: rgba(156,255,77,.06);
-            color: #a9ff6b;
-            font-size: 12px;
-            font-weight: bold;
+
+            background:
+                rgba(156,255,77,0.06);
+
+            border:
+                1px solid rgba(156,255,77,0.22);
+
+            color: #b8ff8b;
+
+            font-size: 11px;
+            font-weight: 900;
+
             letter-spacing: 2px;
-            margin-bottom: 25px;
-        }
 
-        h1 {
-            font-size: clamp(70px, 13vw, 150px);
-            line-height: .82;
-            letter-spacing: -8px;
-            font-weight: 1000;
-            text-shadow: 0 12px 45px rgba(0,0,0,.7);
-        }
-
-        h1 span {
-            color: #9cff4d;
-            text-shadow: 0 0 35px rgba(156,255,77,.28);
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: 32px auto;
-            color: #aeb7b0;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 25px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: .25s;
-        }
-
-        .btn-main {
-            color: #071006;
-            background: #9cff4d;
-            box-shadow: 0 0 30px rgba(156,255,77,.16);
-        }
-
-        .btn-main:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 45px rgba(156,255,77,.35);
-        }
-
-        .btn-dark {
-            color: white;
-            background: #171b18;
-            border: 1px solid #343b36;
-        }
-
-        .btn-dark:hover {
-            transform: translateY(-4px);
-            border-color: #9cff4d;
-        }
-
-        .cave-light {
-            position: absolute;
-            width: 650px;
-            height: 280px;
-            bottom: 30px;
-            border-radius: 50%;
-            background: rgba(120,255,60,.09);
-            filter: blur(90px);
-            z-index: -1;
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 90px 7%;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-heading small {
-            color: #9cff4d;
-            letter-spacing: 3px;
-            font-weight: bold;
-        }
-
-        .section-heading h2 {
-            margin-top: 10px;
-            font-size: 44px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            min-height: 245px;
-            padding: 30px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #182019, #0d120e);
-            border: 1px solid rgba(156,255,77,.12);
-            transition: .3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(156,255,77,.4);
-            box-shadow: 0 18px 55px rgba(0,0,0,.35);
-        }
-
-        .card-icon {
-            font-size: 38px;
-            margin-bottom: 22px;
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: #8f9891;
-            line-height: 1.65;
-            font-size: 15px;
-        }
-
-        .community {
-            margin: 50px auto 70px;
-            max-width: 1100px;
-            padding: 65px 30px;
-            text-align: center;
-            border-radius: 25px;
-            background: linear-gradient(135deg, rgba(156,255,77,.12), rgba(15,22,17,.95));
-            border: 1px solid rgba(156,255,77,.2);
-        }
-
-        .community h2 {
-            font-size: 40px;
-            margin-bottom: 14px;
-        }
-
-        .community p {
-            color: #9ba49d;
             margin-bottom: 28px;
         }
 
-        .credits {
-            margin-top: 40px;
+        .announcement span {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #9cff4d;
+
+            box-shadow:
+                0 0 12px #9cff4d;
         }
 
-        .video-wrap {
+        .hero h1 {
+            font-size: clamp(
+                80px,
+                15vw,
+                190px
+            );
+
+            line-height: 0.78;
+
+            letter-spacing: -10px;
+
+            font-weight: 1000;
+
+            text-shadow:
+                0 20px 70px rgba(0,0,0,0.8);
+        }
+
+        .hero h1 .green {
+            color: #9cff4d;
+
+            text-shadow:
+                0 0 50px rgba(156,255,77,0.3);
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            margin: 38px auto 32px;
+
+            color: #8d978f;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 15px 23px;
+
+            border-radius: 12px;
+
+            font-weight: 900;
+
+            font-size: 14px;
+
+            transition: 0.25s;
+        }
+
+        .button-green {
+            color: #061006;
+
+            background: #9cff4d;
+
+            box-shadow:
+                0 10px 35px
+                rgba(156,255,77,0.12);
+        }
+
+        .button-green:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 45px
+                rgba(156,255,77,0.25);
+        }
+
+        .button-dark {
+            color: white;
+
+            background: #111612;
+
+            border:
+                1px solid #29312b;
+        }
+
+        .button-dark:hover {
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(156,255,77,0.5);
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            width: min(900px, 90%);
+
+            margin: -40px auto 0;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
             position: relative;
-            width: 100%;
-            max-width: 900px;
-            aspect-ratio: 16 / 9;
-            margin: 30px auto 0;
-            overflow: hidden;
-            border-radius: 20px;
-            border: 1px solid rgba(156,255,77,.2);
-            background: #050705;
-            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+            z-index: 5;
         }
 
-        .video-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .stat {
+            padding: 24px;
 
-        /* COMING SOON SECTIONS */
+            background:
+                rgba(12,17,13,0.8);
 
-        .coming-soon {
-            margin: 70px auto;
-            max-width: 1100px;
-            padding: 70px 30px;
+            border:
+                1px solid rgba(255,255,255,0.06);
+
+            border-radius: 16px;
+
             text-align: center;
-            border-radius: 25px;
-            background: linear-gradient(145deg, rgba(24,32,25,.98), rgba(10,14,11,.98));
-            border: 1px solid rgba(156,255,77,.16);
-            box-shadow: 0 20px 60px rgba(0,0,0,.25);
         }
 
-        .coming-soon h2 {
-            font-size: 42px;
-            margin-bottom: 14px;
+        .stat-number {
+            color: #9cff4d;
+
+            font-size: 25px;
+
+            font-weight: 1000;
+
+            margin-bottom: 6px;
         }
 
-        .coming-soon p {
-            color: #9ba49d;
-            font-size: 16px;
+        .stat-label {
+            color: #6e776f;
+
+            font-size: 11px;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        .section {
+            width: min(1150px, 90%);
+
+            margin: auto;
+
+            padding:
+                130px 0;
+        }
+
+        .section-tag {
+            color: #9cff4d;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(
+                38px,
+                6vw,
+                62px
+            );
+
+            letter-spacing: -3px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            color: #737c75;
+
+            max-width: 600px;
+
+            line-height: 1.7;
+
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .feature {
+            min-height: 280px;
+
+            padding: 30px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111812,
+                    #090d0a
+                );
+
+            border:
+                1px solid rgba(156,255,77,0.08);
+
+            transition:
+                transform 0.3s,
+                border 0.3s;
+        }
+
+        .feature:hover {
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(156,255,77,0.3);
+        }
+
+        .feature-icon {
+            font-size: 38px;
+
+            margin-bottom: 45px;
+        }
+
+        .feature h3 {
+            font-size: 22px;
+
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #727c74;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           DISCORD
+        ========================= */
+
+        .discord-box {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 75px 35px;
+
+            text-align: center;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(156,255,77,0.13),
+                    rgba(8,12,9,0.95)
+                );
+
+            border:
+                1px solid rgba(156,255,77,0.16);
+        }
+
+        .discord-box::before {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            top: -250px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(156,255,77,0.13),
+                    transparent 70%
+                );
+        }
+
+        .discord-box h2 {
+            position: relative;
+
+            font-size: clamp(
+                35px,
+                5vw,
+                55px
+            );
+
+            margin-bottom: 15px;
+        }
+
+        .discord-box p {
+            position: relative;
+
+            color: #818b83;
+
+            max-width: 550px;
+
+            margin: auto auto 30px;
+
+            line-height: 1.7;
+        }
+
+        .discord-box .button {
+            position: relative;
+        }
+
+
+        /* =========================
+           CREDITS VIDEO
+        ========================= */
+
+        .video-box {
+            overflow: hidden;
+
+            border-radius: 24px;
+
+            background: #020302;
+
+            border:
+                1px solid rgba(156,255,77,0.15);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.35);
+        }
+
+        .video-box iframe {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            border: none;
+        }
+
+
+        /* =========================
+           COMING SOON
+        ========================= */
+
+        .coming-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .coming-card {
+            min-height: 300px;
+
+            padding: 35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            text-align: center;
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #101710,
+                    #080c09
+                );
+
+            border:
+                1px solid rgba(156,255,77,0.1);
+
+            transition: 0.3s;
+        }
+
+        .coming-card:hover {
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(156,255,77,0.28);
+        }
+
+        .coming-icon {
+            font-size: 45px;
+
             margin-bottom: 20px;
         }
 
-        .status {
+        .coming-card h3 {
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .coming-card p {
+            color: #727c74;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+        .coming-label {
             display: inline-block;
-            padding: 12px 22px;
+
+            align-self: center;
+
+            padding: 10px 17px;
+
             border-radius: 999px;
-            background: rgba(156,255,77,.1);
-            border: 1px solid rgba(156,255,77,.25);
+
             color: #9cff4d;
-            font-weight: 900;
+
+            background:
+                rgba(156,255,77,0.07);
+
+            border:
+                1px solid rgba(156,255,77,0.2);
+
+            font-size: 11px;
+
+            font-weight: 1000;
+
             letter-spacing: 2px;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
+            padding: 45px 20px;
+
             text-align: center;
-            padding: 32px;
-            border-top: 1px solid rgba(255,255,255,.06);
-            color: #687168;
-            font-size: 13px;
+
+            color: #4f5851;
+
+            font-size: 12px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
         }
 
-        @media (max-width: 800px) {
+        footer strong {
+            color: #778078;
+        }
 
-            nav {
-                height: auto;
-                min-height: 72px;
-                padding: 15px 5%;
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                width: 94%;
             }
 
-            .nav-links {
+            .nav {
                 display: none;
             }
 
-            .hero {
-                min-height: 720px;
+            .hero h1 {
+                letter-spacing: -5px;
             }
 
-            h1 {
-                letter-spacing: -4px;
-            }
-
-            .cards {
+            .stats {
                 grid-template-columns: 1fr;
             }
 
-            .section-heading h2 {
-                font-size: 34px;
+            .features {
+                grid-template-columns: 1fr;
             }
 
-            .coming-soon h2 {
-                font-size: 34px;
+            .coming-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 90px 0;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-    <nav>
 
-        <div class="logo">
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="#home" class="brand">
+            <span class="brand-dot"></span>
             CAVE TAG
-        </div>
+        </a>
 
-        <div class="nav-links">
+        <nav class="nav">
 
             <a href="#home">
                 Home
@@ -385,10 +805,6 @@
 
             <a href="#features">
                 Features
-            </a>
-
-            <a href="#community">
-                Discord
             </a>
 
             <a href="#credits">
@@ -400,52 +816,74 @@
             </a>
 
             <a href="#countdown">
-                Release Countdown
+                Countdown
             </a>
 
             <a href="Cave%20Tag%20Admins.html">
                 Admins
             </a>
 
-        </div>
+            <a
+                href="https://discord.gg/WaK6ykHCbS"
+                target="_blank"
+                class="nav-discord"
+            >
+                Discord
+            </a>
 
-    </nav>
+        </nav>
 
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <main id="home">
 
         <section class="hero">
 
-            <div class="cave-light"></div>
+            <div class="hero-glow"></div>
 
             <div class="hero-content">
 
-                <div class="eyebrow">
-                    THE CAVE IS WAITING
+                <div class="announcement">
+                    <span></span>
+                    CAVE TAG IS COMING
                 </div>
+
 
                 <h1>
                     CAVE<br>
-                    <span>TAG</span>
+                    <span class="green">TAG</span>
                 </h1>
 
-                <p>
-                    Welcome to Cave Tag — a fan-made Gorilla Tag-inspired
-                    experience built for movement, chaos and playing with friends.
-                    Step into the cave and see what awaits.
+
+                <p class="hero-description">
+
+                    A fan-made Gorilla Tag-inspired experience
+                    built around movement, chaos, exploration,
+                    and playing with your friends.
+
                 </p>
 
-                <div class="buttons">
 
-                    <a class="btn btn-main" href="#features">
-                        ENTER THE CAVE →
-                    </a>
+                <div class="hero-buttons">
 
                     <a
-                        class="btn btn-dark"
+                        href="#features"
+                        class="button button-green"
+                    >
+                        EXPLORE CAVE TAG →
+                    </a>
+
+
+                    <a
                         href="https://discord.gg/WaK6ykHCbS"
                         target="_blank"
-                        rel="noopener"
+                        class="button button-dark"
                     >
                         💬 JOIN DISCORD
                     </a>
@@ -457,120 +895,224 @@
         </section>
 
 
-        <section class="section" id="features">
 
-            <div class="section-heading">
+        <!-- =========================
+             STATS
+        ========================= -->
 
-                <small>
-                    WELCOME TO CAVE TAG
-                </small>
+        <div class="stats">
 
-                <h2>
-                    What's inside?
-                </h2>
+            <div class="stat">
+
+                <div class="stat-number">
+                    🦍
+                </div>
+
+                <div class="stat-label">
+                    Movement
+                </div>
 
             </div>
 
 
-            <div class="cards">
+            <div class="stat">
 
-                <div class="card">
+                <div class="stat-number">
+                    🔥
+                </div>
 
-                    <div class="card-icon">
+                <div class="stat-label">
+                    Chaos
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    👥
+                </div>
+
+                <div class="stat-label">
+                    Community
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             FEATURES
+        ========================= -->
+
+        <section class="section" id="features">
+
+            <div class="section-tag">
+                THE GAME
+            </div>
+
+            <h2 class="section-title">
+                Enter the cave.
+            </h2>
+
+            <p class="section-description">
+
+                Cave Tag is all about movement, exploring,
+                and trying not to get tagged. Grab your friends
+                and see who can survive the chaos.
+
+            </p>
+
+
+            <div class="features">
+
+
+                <article class="feature">
+
+                    <div class="feature-icon">
                         🦍
                     </div>
 
                     <h3>
-                        Fast Movement
+                        Move Fast
                     </h3>
 
                     <p>
-                        Swing, climb and move through the caves while
-                        trying to avoid getting tagged.
+
+                        Swing, climb and launch yourself
+                        through the environment while
+                        trying to stay away from whoever
+                        is tagged.
+
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="card">
 
-                    <div class="card-icon">
+                <article class="feature">
+
+                    <div class="feature-icon">
                         🪨
                     </div>
 
                     <h3>
-                        Explore the Cave
+                        Explore
                     </h3>
 
                     <p>
-                        Discover the world of Cave Tag and see what
-                        secrets and surprises are waiting inside.
+
+                        Explore the cave, find new areas,
+                        and discover what is hidden
+                        throughout the world.
+
                     </p>
 
-                </div>
+                </article>
 
 
-                <div class="card">
 
-                    <div class="card-icon">
+                <article class="feature">
+
+                    <div class="feature-icon">
                         🔥
                     </div>
 
                     <h3>
-                        Play With Friends
+                        Play Together
                     </h3>
 
                     <p>
-                        Bring your friends into the chaos and find out
-                        who can stay untagged the longest.
+
+                        Bring your friends into the game
+                        and turn a normal game into
+                        complete chaos.
+
                     </p>
 
-                </div>
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <section class="community" id="community">
 
-            <h2>
-                Join the Cave Tag community
-            </h2>
+        <!-- =========================
+             DISCORD
+        ========================= -->
 
-            <p>
-                Get updates, chat with other players and keep up with
-                everything happening in Cave Tag.
-            </p>
+        <section class="section">
 
-            <a
-                class="btn btn-main"
-                href="https://discord.gg/WaK6ykHCbS"
-                target="_blank"
-                rel="noopener"
-            >
-                JOIN THE DISCORD
-            </a>
+            <div class="discord-box" id="discord">
+
+                <h2>
+                    Join the community.
+                </h2>
+
+                <p>
+
+                    Get Cave Tag updates, talk with
+                    everyone working on the project,
+                    meet other players, and keep up
+                    with everything happening.
+
+                </p>
+
+
+                <a
+                    href="https://discord.gg/WaK6ykHCbS"
+                    target="_blank"
+                    class="button button-green"
+                >
+                    JOIN THE DISCORD
+                </a>
+
+            </div>
 
         </section>
 
 
-        <section class="community credits" id="credits">
 
-            <h2>
-                🎬 Cave Tag Credits
+        <!-- =========================
+             CREDITS
+        ========================= -->
+
+        <section class="section" id="credits">
+
+            <div class="section-tag">
+                THE PEOPLE BEHIND IT
+            </div>
+
+            <h2 class="section-title">
+                Credits
             </h2>
 
-            <p>
+            <p class="section-description">
+
                 Check out the Cave Tag credits video.
+
             </p>
 
-            <div class="video-wrap">
+
+            <div class="video-box">
 
                 <iframe
                     src="https://www.youtube.com/embed/3njvlNQcNLg"
                     title="Cave Tag Credits"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                        web-share
+                    "
                     allowfullscreen>
                 </iframe>
 
@@ -579,39 +1121,94 @@
         </section>
 
 
-        <!-- APPLICATIONS -->
 
-        <section class="coming-soon" id="applications">
+        <!-- =========================
+             COMING SOON
+        ========================= -->
 
-            <h2>
-                🛡️ Applications
-            </h2>
+        <section class="section">
 
-            <p>
-                Moderator applications will be available here soon.
-            </p>
-
-            <div class="status">
-                COMING SOON!
+            <div class="section-tag">
+                COMING SOON
             </div>
 
-        </section>
-
-
-        <!-- RELEASE COUNTDOWN -->
-
-        <section class="coming-soon" id="countdown">
-
-            <h2>
-                ⏳ Release Countdown
+            <h2 class="section-title">
+                What's next?
             </h2>
 
-            <p>
-                The official Cave Tag release countdown is being prepared.
+            <p class="section-description">
+
+                More Cave Tag features are currently being
+                worked on. These will be updated when
+                they're ready.
+
             </p>
 
-            <div class="status">
-                STARTING SOON!
+
+            <div class="coming-grid">
+
+
+                <!-- APPLICATIONS -->
+
+                <article
+                    class="coming-card"
+                    id="applications"
+                >
+
+                    <div class="coming-icon">
+                        🛡️
+                    </div>
+
+                    <h3>
+                        Applications
+                    </h3>
+
+                    <p>
+
+                        Want to help out with Cave Tag?
+                        Moderator applications will be
+                        available here soon.
+
+                    </p>
+
+                    <span class="coming-label">
+                        COMING SOON!
+                    </span>
+
+                </article>
+
+
+
+                <!-- COUNTDOWN -->
+
+                <article
+                    class="coming-card"
+                    id="countdown"
+                >
+
+                    <div class="coming-icon">
+                        ⏳
+                    </div>
+
+                    <h3>
+                        Release Countdown
+                    </h3>
+
+                    <p>
+
+                        The official Cave Tag release
+                        countdown will be added here
+                        when the countdown starts.
+
+                    </p>
+
+                    <span class="coming-label">
+                        STARTING SOON!
+                    </span>
+
+                </article>
+
+
             </div>
 
         </section>
@@ -619,9 +1216,18 @@
     </main>
 
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
-        © 2026 Cave Tag • Fan-made project
+
+        © 2026 <strong>Cave Tag</strong> •
+        Fan-made project
+
     </footer>
+
 
 </body>
 </html>
