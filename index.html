@@ -1,1956 +1,3084 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Cave Tag | Official Website</title>
 
-<meta name="description" content="The official Cave Tag website. Enter the cave. Stay untagged.">
+<meta
+    name="description"
+    content="The official Cave Tag website. Enter the cave. Stay untagged."
+>
 
-<meta property="og:title" content="Cave Tag">
-<meta property="og:description" content="Enter the cave. Stay untagged.">
-<meta property="og:image" content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true">
-<meta property="og:type" content="website">
+<meta
+    property="og:title"
+    content="Cave Tag"
+>
+
+<meta
+    property="og:description"
+    content="Enter the cave. Stay untagged."
+>
+
+<meta
+    property="og:image"
+    content="https://github.com/fingusminecraft/Cave-Tag-Website/blob/main/cavetag-preview.png?raw=true"
+>
+
+<meta
+    property="og:type"
+    content="website"
+>
+
 
 <style>
+
 /* =========================================================
-   CAVE TAG — FUTURISTIC BLUE
+   CAVE TAG
+   FUTURISTIC BLUE THEME
 ========================================================= */
 
 :root {
-    --blue: #38b6ff;
-    --blue-bright: #69caff;
-    --blue-dark: #087cff;
-    --cyan: #00e5ff;
 
-    --bg: #02060b;
-    --bg2: #050b12;
-    --panel: rgba(7, 17, 28, .78);
-    --panel-solid: #07111c;
+    --blue: #35aaff;
+    --blue2: #168cff;
+    --blue3: #006eff;
 
-    --text: #f5faff;
-    --muted: #7890a5;
-    --muted2: #52697d;
+    --dark: #03070d;
+    --panel: #08111c;
+    --panel2: #0d1926;
 
-    --border: rgba(77, 190, 255, .16);
-    --border-hover: rgba(77, 190, 255, .42);
+    --text: #f4f8ff;
+    --muted: #7d8fa3;
 
-    --danger: #ff5364;
-    --success: #45e6a5;
+    --border: rgba(53,170,255,.16);
 
-    --radius: 22px;
-    --nav-height: 70px;
 }
+
 
 /* =========================================================
    RESET
 ========================================================= */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 html {
+
     scroll-behavior: smooth;
-    scroll-padding-top: 120px;
+
 }
+
 
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
 
     font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
+        Arial,
+        Helvetica,
         sans-serif;
 
-    color: var(--text);
-    background: var(--bg);
+    background:
+        var(--dark);
+
+    color:
+        var(--text);
+
+    overflow-x:
+        hidden;
+
 }
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
 
 body::before {
+
     content: "";
+
     position: fixed;
+
     inset: 0;
-    z-index: -10;
-    pointer-events: none;
+
+    z-index: -5;
 
     background:
+
         radial-gradient(
-            circle at 15% 15%,
-            rgba(56, 182, 255, .13),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 35%,
-            rgba(0, 229, 255, .07),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(8, 124, 255, .10),
+            circle at 15% 10%,
+            rgba(53,170,255,.13),
             transparent 30%
         ),
+
+        radial-gradient(
+            circle at 90% 45%,
+            rgba(0,110,255,.08),
+            transparent 30%
+        ),
+
         linear-gradient(
-            135deg,
-            #02060b,
-            #06111b 50%,
-            #010409
+            120deg,
+            #03070d,
+            #07111c 50%,
+            #02050a
         );
+
 }
+
 
 body::after {
+
     content: "";
+
     position: fixed;
+
     inset: 0;
-    z-index: -9;
+
+    z-index: -4;
+
     pointer-events: none;
 
-    opacity: .20;
+    opacity: .12;
 
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
+        radial-gradient(
+            #ffffff 1px,
             transparent 1px
         );
 
-    background-size: 55px 55px;
+    background-size:
+        45px 45px;
 
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
 }
+
 
 ::selection {
-    background: var(--blue);
-    color: #00101b;
+
+    background:
+        var(--blue);
+
+    color:
+        #02070d;
+
 }
+
 
 ::-webkit-scrollbar {
-    width: 8px;
+
+    width:
+        8px;
+
 }
+
 
 ::-webkit-scrollbar-track {
-    background: #02060b;
+
+    background:
+        #03070d;
+
 }
+
 
 ::-webkit-scrollbar-thumb {
-    background: #17364c;
-    border-radius: 999px;
+
+    background:
+        #1b334a;
+
+    border-radius:
+        20px;
+
 }
+
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--blue);
+
+    background:
+        var(--blue);
+
 }
+
 
 a {
-    color: inherit;
-    text-decoration: none;
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+
 }
 
-button,
-input {
-    font: inherit;
+
+button {
+
+    font-family:
+        inherit;
+
 }
+
 
 /* =========================================================
    ANNOUNCEMENT
 ========================================================= */
 
 .announcement {
-    position: fixed;
-    inset: 0 0 auto 0;
 
-    min-height: 36px;
+    position:
+        fixed;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top:
+        0;
 
-    padding: 9px 55px 9px 20px;
+    left:
+        0;
 
-    z-index: 3000;
+    width:
+        100%;
 
-    color: #00101a;
+    min-height:
+        34px;
 
     background:
         linear-gradient(
             90deg,
-            var(--blue-dark),
-            var(--blue-bright),
-            var(--blue-dark)
+            #168cff,
+            #35aaff,
+            #168cff
         );
 
-    background-size: 200% 100%;
+    color:
+        #02070d;
 
-    font-size: 10px;
-    font-weight: 950;
-    letter-spacing: 1.4px;
-    text-align: center;
+    z-index:
+        2000;
 
-    animation: announcementFlow 6s linear infinite;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        8px 45px 8px 15px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        .8px;
+
+    text-align:
+        center;
+
 }
+
 
 .announcement button {
-    position: absolute;
-    right: 16px;
-    top: 50%;
 
-    width: 28px;
-    height: 28px;
+    position:
+        absolute;
 
-    transform: translateY(-50%);
+    right:
+        15px;
 
-    border: 0;
-    border-radius: 8px;
+    top:
+        50%;
 
-    color: #00101a;
-    background: rgba(255,255,255,.18);
+    transform:
+        translateY(-50%);
 
-    cursor: pointer;
+    border:
+        0;
 
-    font-size: 18px;
-    line-height: 1;
+    background:
+        transparent;
 
-    transition: .2s;
+    font-size:
+        18px;
+
+    cursor:
+        pointer;
+
+    color:
+        #02070d;
+
 }
 
-.announcement button:hover {
-    background: rgba(255,255,255,.35);
-    transform: translateY(-50%) rotate(90deg);
-}
 
 /* =========================================================
-   NAV
+   NAVIGATION
 ========================================================= */
 
 .navbar {
-    position: fixed;
 
-    top: 54px;
-    left: 50%;
+    position:
+        fixed;
 
-    width: min(1200px, calc(100% - 30px));
-    min-height: var(--nav-height);
+    top:
+        50px;
 
-    transform: translateX(-50%);
+    left:
+        50%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    transform:
+        translateX(-50%);
 
-    padding: 10px 13px 10px 20px;
+    width:
+        min(1200px, 94%);
 
-    z-index: 2000;
+    min-height:
+        68px;
+
+    padding:
+        10px 18px;
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(3,8,14,.80);
 
     border:
         1px solid
         var(--border);
 
-    border-radius: 18px;
+    backdrop-filter:
+        blur(18px);
 
-    background:
-        rgba(2, 8, 14, .78);
+    -webkit-backdrop-filter:
+        blur(18px);
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    z-index:
+        1000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.45),
-        inset 0 1px 0 rgba(255,255,255,.04);
 
-    transition: .3s;
+        0 20px 70px
+        rgba(0,0,0,.45),
+
+        0 0 40px
+        rgba(0,110,255,.03);
+
 }
 
-.navbar.scrolled {
-    top: 44px;
-
-    background:
-        rgba(2, 8, 14, .93);
-
-    border-color:
-        rgba(56,182,255,.25);
-}
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
 
-    flex-shrink: 0;
+    display:
+        flex;
 
-    font-size: 17px;
-    font-weight: 1000;
-    letter-spacing: 2.5px;
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    font-size:
+        19px;
+
+    font-weight:
+        1000;
+
+    letter-spacing:
+        2px;
+
 }
 
-.logo-mark {
-    width: 12px;
-    height: 12px;
 
-    border-radius: 4px;
+.logo-dot {
+
+    width:
+        10px;
+
+    height:
+        10px;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--cyan),
-            var(--blue-dark)
-        );
+        var(--blue);
+
+    border-radius:
+        50%;
 
     box-shadow:
-        0 0 20px rgba(56,182,255,.8);
+        0 0 20px
+        var(--blue);
 
-    transform: rotate(45deg);
+    animation:
+        pulse 1.7s infinite;
 
-    animation: logoPulse 2s ease-in-out infinite;
 }
+
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
 }
+
 
 .nav-links a {
-    padding: 10px 9px;
 
-    color: #8297a9;
+    color:
+        #8999aa;
 
-    font-size: 10px;
-    font-weight: 850;
+    font-size:
+        11px;
 
-    white-space: nowrap;
+    font-weight:
+        800;
 
-    border-radius: 8px;
+    transition:
+        .2s;
 
-    transition: .2s;
+    white-space:
+        nowrap;
+
 }
+
 
 .nav-links a:hover {
-    color: var(--blue-bright);
-    background: rgba(56,182,255,.06);
+
+    color:
+        var(--blue);
+
 }
+
 
 .nav-discord {
-    color: #03101a !important;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--blue-bright),
-            var(--blue)
-        ) !important;
+        var(--blue);
 
-    margin-left: 4px;
+    color:
+        #02070d !important;
+
+    padding:
+        10px 14px;
+
+    border-radius:
+        9px;
+
 }
+
 
 .discord-login {
-    color: white !important;
+
+    display:
+        inline-block;
+
+    padding:
+        10px 14px;
+
+    border-radius:
+        9px;
 
     background:
-        linear-gradient(
-            135deg,
-            #6874ff,
-            #5865f2
-        ) !important;
+        #5865F2;
 
-    box-shadow:
-        0 8px 25px rgba(88,101,242,.15);
+    color:
+        white !important;
+
+    font-size:
+        11px;
+
+    font-weight:
+        900;
+
+    transition:
+        .25s;
+
 }
+
 
 .discord-login:hover {
-    color: white !important;
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-3px);
 
     box-shadow:
-        0 12px 30px rgba(88,101,242,.32);
+        0 10px 30px
+        rgba(88,101,242,.35);
+
 }
 
-.mobile-menu {
-    display: none;
 
-    width: 42px;
-    height: 42px;
+.mobile-menu {
+
+    display:
+        none;
 
     border:
         1px solid
-        var(--border);
+        #20384d;
 
-    border-radius: 11px;
+    background:
+        #091421;
 
-    color: white;
-    background: rgba(255,255,255,.03);
+    color:
+        white;
 
-    cursor: pointer;
+    border-radius:
+        9px;
+
+    padding:
+        9px 12px;
+
+    cursor:
+        pointer;
+
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
-    min-height: 100vh;
 
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height:
+        100vh;
 
     padding:
-        190px 20px 100px;
+        180px 20px 100px;
 
-    text-align: center;
+    display:
+        flex;
 
-    overflow: hidden;
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    position:
+        relative;
+
 }
 
+
 .hero::before {
-    content: "";
 
-    position: absolute;
+    content:
+        "";
 
-    width: 850px;
-    height: 500px;
+    position:
+        absolute;
 
-    left: 50%;
-    bottom: -280px;
+    width:
+        700px;
 
-    transform: translateX(-50%);
+    height:
+        450px;
+
+    left:
+        50%;
+
+    bottom:
+        -180px;
+
+    transform:
+        translateX(-50%);
 
     background:
         radial-gradient(
             ellipse,
-            rgba(56,182,255,.19),
-            transparent 68%
+            rgba(53,170,255,.16),
+            transparent 70%
         );
-
-    filter: blur(35px);
-
-    pointer-events: none;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(56,182,255,.045),
-            transparent 35%
-        );
-
-    pointer-events: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-
-    width: min(1050px, 100%);
-}
-
-.status-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-
-    padding: 9px 15px;
-
-    margin-bottom: 30px;
-
-    border:
-        1px solid
-        rgba(56,182,255,.25);
-
-    border-radius: 999px;
-
-    color: #9cdbff;
-    background: rgba(56,182,255,.055);
-
-    font-size: 9px;
-    font-weight: 950;
-    letter-spacing: 2px;
-
-    box-shadow:
-        0 0 30px rgba(56,182,255,.04);
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: var(--blue);
-
-    box-shadow:
-        0 0 16px var(--blue);
-
-    animation: statusPulse 1.7s infinite;
-}
-
-.hero h1 {
-    font-size:
-        clamp(82px, 16vw, 190px);
-
-    line-height: .76;
-
-    letter-spacing:
-        clamp(-12px, -1vw, -6px);
-
-    font-weight: 1000;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 30px 100px rgba(0,0,0,.8);
-}
-
-.hero h1 span {
-    color: transparent;
-
-    background:
-        linear-gradient(
-            180deg,
-            #7bd7ff,
-            var(--blue),
-            #087cff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
 
     filter:
-        drop-shadow(
-            0 0 40px
-            rgba(56,182,255,.25)
-        );
+        blur(40px);
+
 }
 
-.hero-description {
-    max-width: 680px;
 
-    margin: 42px auto 30px;
+.hero-content {
 
-    color: #8195a8;
+    max-width:
+        1000px;
 
-    font-size: 16px;
-    line-height: 1.8;
+    position:
+        relative;
+
+    z-index:
+        2;
+
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 
-    gap: 11px;
-}
+.status-pill {
 
-.btn {
-    min-height: 48px;
+    display:
+        inline-flex;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    padding: 0 21px;
+    gap:
+        9px;
 
-    border-radius: 12px;
-
-    font-size: 11px;
-    font-weight: 950;
-
-    cursor: pointer;
-
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        border-color .25s;
-}
-
-.btn:hover {
-    transform: translateY(-4px);
-}
-
-.btn-blue {
-    color: #01101a;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-bright),
-            var(--blue)
-        );
-
-    box-shadow:
-        0 12px 35px rgba(56,182,255,.12);
-}
-
-.btn-blue:hover {
-    box-shadow:
-        0 18px 50px rgba(56,182,255,.28);
-}
-
-.btn-dark {
-    color: #eaf7ff;
+    padding:
+        9px 16px;
 
     border:
         1px solid
-        #1d3b52;
+        rgba(53,170,255,.25);
+
+    border-radius:
+        999px;
 
     background:
-        rgba(8,18,29,.8);
+        rgba(53,170,255,.06);
+
+    color:
+        #8ed2ff;
+
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+    margin-bottom:
+        28px;
+
 }
+
+
+.status-dot {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    background:
+        var(--blue);
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 15px
+        var(--blue);
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(75px, 15vw, 180px);
+
+    line-height:
+        .78;
+
+    letter-spacing:
+        -11px;
+
+    font-weight:
+        1000;
+
+    text-shadow:
+        0 25px 80px
+        rgba(0,0,0,.85);
+
+}
+
+
+.hero h1 span {
+
+    color:
+        var(--blue);
+
+    text-shadow:
+        0 0 60px
+        rgba(53,170,255,.35);
+
+}
+
+
+.hero-description {
+
+    max-width:
+        680px;
+
+    margin:
+        40px auto 30px;
+
+    color:
+        #8999aa;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.buttons {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+}
+
+
+.btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        15px 23px;
+
+    border-radius:
+        12px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        900;
+
+    cursor:
+        pointer;
+
+    transition:
+        .25s;
+
+}
+
+
+.btn:hover {
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+.btn-blue {
+
+    color:
+        #02070d;
+
+    background:
+        var(--blue);
+
+    box-shadow:
+        0 12px 40px
+        rgba(53,170,255,.12);
+
+}
+
+
+.btn-blue:hover {
+
+    box-shadow:
+        0 18px 55px
+        rgba(53,170,255,.30);
+
+}
+
+
+.btn-dark {
+
+    color:
+        white;
+
+    background:
+        #09121c;
+
+    border:
+        1px solid
+        #20384d;
+
+}
+
 
 .btn-dark:hover {
-    border-color:
-        rgba(56,182,255,.45);
 
-    background:
-        rgba(56,182,255,.055);
+    border-color:
+        rgba(53,170,255,.5);
+
 }
+
 
 /* =========================================================
    STATS
 ========================================================= */
 
 .stats {
-    width: min(1100px, calc(100% - 35px));
 
-    margin: -25px auto 0;
+    width:
+        min(1100px, 90%);
 
-    position: relative;
-    z-index: 10;
+    margin:
+        -25px auto 0;
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display:
+        grid;
 
-    overflow: hidden;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:
+        1px;
+
+    background:
+        rgba(255,255,255,.05);
 
     border:
         1px solid
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.05);
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    background:
-        rgba(255,255,255,.035);
+    overflow:
+        hidden;
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.28);
+    position:
+        relative;
+
+    z-index:
+        10;
+
 }
+
 
 .stat {
-    padding: 26px 15px;
 
-    text-align: center;
+    padding:
+        25px 15px;
+
+    text-align:
+        center;
 
     background:
-        rgba(4,10,16,.86);
+        rgba(5,10,16,.94);
 
-    border-right:
-        1px solid
-        rgba(255,255,255,.05);
 }
 
-.stat:last-child {
-    border-right: 0;
-}
 
 .stat-number {
-    margin-bottom: 7px;
 
-    color: var(--blue);
+    color:
+        var(--blue);
 
-    font-size: 25px;
-    font-weight: 1000;
+    font-size:
+        24px;
+
+    font-weight:
+        1000;
+
+    margin-bottom:
+        7px;
+
 }
+
 
 .stat-label {
-    color: #61778a;
 
-    font-size: 8px;
-    font-weight: 850;
+    color:
+        #627386;
 
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-size:
+        9px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
 }
 
+
 /* =========================================================
-   SECTIONS
+   GENERAL SECTIONS
 ========================================================= */
 
 .section {
-    width: min(1150px, calc(100% - 35px));
 
-    margin: auto;
+    width:
+        min(1150px, 90%);
 
-    padding: 115px 0;
+    margin:
+        auto;
+
+    padding:
+        120px 0;
+
 }
+
 
 .section-label {
-    margin-bottom: 12px;
 
-    color: var(--blue);
-
-    font-size: 9px;
-    font-weight: 1000;
-
-    letter-spacing: 3px;
-}
-
-.section-title {
-    margin-bottom: 14px;
+    color:
+        var(--blue);
 
     font-size:
-        clamp(40px, 6vw, 65px);
+        10px;
 
-    line-height: .95;
+    font-weight:
+        1000;
 
-    letter-spacing: -3px;
+    letter-spacing:
+        3px;
+
+    margin-bottom:
+        12px;
+
 }
+
+
+.section-title {
+
+    font-size:
+        clamp(40px,6vw,65px);
+
+    letter-spacing:
+        -3px;
+
+    margin-bottom:
+        15px;
+
+}
+
 
 .section-description {
-    max-width: 650px;
 
-    margin-bottom: 43px;
+    color:
+        #708196;
 
-    color: var(--muted);
+    max-width:
+        650px;
 
-    line-height: 1.8;
+    line-height:
+        1.8;
+
+    margin-bottom:
+        45px;
+
 }
+
 
 /* =========================================================
    FEATURES
 ========================================================= */
 
 .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
-    gap: 14px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        15px;
+
 }
 
+
 .feature {
-    position: relative;
 
-    min-height: 245px;
+    min-height:
+        250px;
 
-    padding: 29px;
+    padding:
+        30px;
 
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(56,182,255,.08);
-
-    border-radius: var(--radius);
+    border-radius:
+        22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(14,31,47,.9),
-            rgba(3,9,15,.9)
+            #0e1a27,
+            #050a10
         );
 
+    border:
+        1px solid
+        rgba(53,170,255,.08);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
     transition:
-        transform .35s,
-        border-color .35s,
-        box-shadow .35s;
+        .35s;
+
 }
 
-.feature::before {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    top: -80px;
-    right: -80px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(56,182,255,.10);
-
-    filter: blur(35px);
-
-    transition: .35s;
-}
 
 .feature:hover {
+
     transform:
-        translateY(-8px);
+        translateY(-9px)
+        scale(1.01);
 
     border-color:
-        var(--border-hover);
+        rgba(53,170,255,.38);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.35),
-        0 0 35px rgba(56,182,255,.055);
+
+        0 25px 70px
+        rgba(0,0,0,.4),
+
+        0 0 35px
+        rgba(53,170,255,.05);
+
 }
 
-.feature:hover::before {
-    background:
-        rgba(56,182,255,.2);
-}
 
 .feature-icon {
-    position: relative;
-    z-index: 1;
 
-    margin-bottom: 35px;
+    font-size:
+        38px;
 
-    font-size: 35px;
+    margin-bottom:
+        35px;
+
 }
+
 
 .feature h3 {
-    position: relative;
-    z-index: 1;
 
-    margin-bottom: 10px;
+    font-size:
+        21px;
 
-    font-size: 20px;
+    margin-bottom:
+        11px;
+
 }
+
 
 .feature p {
-    position: relative;
-    z-index: 1;
 
-    color: #718599;
+    color:
+        #707f90;
 
-    font-size: 13px;
-    line-height: 1.75;
+    font-size:
+        14px;
+
+    line-height:
+        1.7;
+
 }
+
 
 /* =========================================================
    CHANGELOG
 ========================================================= */
 
 .changelog {
-    display: grid;
-    gap: 11px;
+
+    display:
+        grid;
+
+    gap:
+        12px;
+
 }
 
-.update {
-    display: grid;
-    grid-template-columns: 125px 1fr;
-    gap: 25px;
 
-    padding: 24px;
+.update {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        130px 1fr;
+
+    gap:
+        25px;
+
+    padding:
+        25px;
+
+    border-radius:
+        18px;
+
+    background:
+        #07101a;
 
     border:
         1px solid
-        rgba(255,255,255,.055);
+        rgba(255,255,255,.05);
 
-    border-radius: 17px;
+    transition:
+        .25s;
 
-    background:
-        rgba(6,16,26,.75);
-
-    transition: .25s;
 }
 
+
 .update:hover {
+
     border-color:
-        rgba(56,182,255,.28);
+        rgba(53,170,255,.3);
 
     transform:
         translateX(5px);
+
 }
+
 
 .update-date {
-    color: var(--blue);
 
-    font-size: 9px;
-    font-weight: 1000;
-    letter-spacing: 1.5px;
+    color:
+        var(--blue);
+
+    font-size:
+        11px;
+
+    font-weight:
+        1000;
+
+    letter-spacing:
+        1px;
+
 }
+
 
 .update h3 {
-    margin-bottom: 7px;
-    font-size: 17px;
+
+    margin-bottom:
+        7px;
+
 }
+
 
 .update p {
-    color: #667b8e;
 
-    font-size: 13px;
-    line-height: 1.65;
+    color:
+        #68798a;
+
+    line-height:
+        1.6;
+
+    font-size:
+        13px;
+
 }
+
 
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
-.countdown-box,
-.play-card {
-    position: relative;
+.countdown-box {
 
-    overflow: hidden;
+    text-align:
+        center;
 
-    text-align: center;
+    padding:
+        75px 25px;
 
-    padding: 75px 25px;
-
-    border:
-        1px solid
-        rgba(56,182,255,.18);
-
-    border-radius: 28px;
+    border-radius:
+        28px;
 
     background:
+
         radial-gradient(
             circle at 50% 0%,
-            rgba(56,182,255,.15),
-            transparent 42%
+            rgba(53,170,255,.14),
+            transparent 45%
         ),
-        #06101a;
 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.03);
-}
-
-.countdown-box::before,
-.play-card::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(56,182,255,.035),
-            transparent
-        );
-
-    transform:
-        translateX(-100%);
-
-    animation:
-        scan 5s linear infinite;
-}
-
-.countdown-box > *,
-.play-card > * {
-    position: relative;
-    z-index: 1;
-}
-
-.countdown-box h2 {
-    margin-bottom: 12px;
-
-    font-size:
-        clamp(35px, 5vw, 55px);
-}
-
-.countdown-box p,
-.play-card p {
-    color: #74879a;
-}
-
-.starting-soon {
-    display: inline-block;
-
-    margin-top: 30px;
-
-    padding: 15px 25px;
+        #07101a;
 
     border:
         1px solid
-        rgba(56,182,255,.25);
+        rgba(53,170,255,.18);
 
-    border-radius: 999px;
+}
 
-    color: var(--blue);
+
+.countdown-box h2 {
+
+    font-size:
+        clamp(35px,5vw,55px);
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.countdown-box p {
+
+    color:
+        #737f8e;
+
+    font-size:
+        17px;
+
+}
+
+
+.countdown-timer {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    margin-top:
+        40px;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+.countdown-unit {
+
+    min-width:
+        105px;
+
+    padding:
+        20px 15px;
+
+    border-radius:
+        16px;
 
     background:
-        rgba(56,182,255,.055);
+        rgba(3,10,17,.75);
 
-    font-size: 10px;
-    font-weight: 1000;
+    border:
+        1px solid
+        rgba(53,170,255,.18);
 
-    letter-spacing: 3px;
+}
+
+
+.countdown-unit strong {
+
+    display:
+        block;
+
+    color:
+        var(--blue);
+
+    font-size:
+        42px;
+
+    line-height:
+        1;
+
+    font-weight:
+        1000;
+
+    text-shadow:
+        0 0 25px
+        rgba(53,170,255,.3);
+
+}
+
+
+.countdown-unit span {
+
+    display:
+        block;
+
+    margin-top:
+        9px;
+
+    color:
+        #596b7d;
+
+    font-size:
+        8px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.countdown-separator {
+
+    color:
+        var(--blue);
+
+    font-size:
+        30px;
+
+    font-weight:
+        1000;
+
+    opacity:
+        .65;
+
+}
+
+
+.starting-soon {
+
+    margin-top:
+        30px;
+
+    display:
+        inline-block;
+
+    padding:
+        16px 26px;
+
+    border-radius:
+        999px;
+
+    color:
+        var(--blue);
+
+    background:
+        rgba(53,170,255,.07);
+
+    border:
+        1px solid
+        rgba(53,170,255,.25);
+
+    font-weight:
+        1000;
+
+    letter-spacing:
+        3px;
 
     animation:
         glow 2s ease-in-out infinite;
+
 }
+
 
 /* =========================================================
    GALLERY
 ========================================================= */
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
-    gap: 14px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        15px;
+
 }
+
 
 .gallery-card {
-    position: relative;
 
-    height: 245px;
+    height:
+        250px;
 
-    overflow: hidden;
+    border-radius:
+        20px;
+
+    overflow:
+        hidden;
+
+    position:
+        relative;
 
     border:
         1px solid
-        rgba(56,182,255,.1);
-
-    border-radius: 20px;
+        rgba(53,170,255,.1);
 
     background:
+
         radial-gradient(
-            circle at 50% 40%,
-            rgba(56,182,255,.18),
-            transparent 25%
+            circle at 50% 35%,
+            rgba(53,170,255,.15),
+            transparent 30%
         ),
+
         linear-gradient(
             145deg,
-            #102437,
-            #04090f
+            #102031,
+            #050a10
         );
 
-    transition: .35s;
+    transition:
+        .35s;
+
 }
 
-.gallery-card::before {
-    content: "CAVE TAG";
-
-    position: absolute;
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    color:
-        rgba(56,182,255,.23);
-
-    font-size: 25px;
-    font-weight: 1000;
-
-    letter-spacing: 3px;
-}
-
-.gallery-card::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent 40%,
-            rgba(56,182,255,.07),
-            transparent 60%
-        );
-
-    transform:
-        translateX(-100%);
-
-    transition: .6s;
-}
 
 .gallery-card:hover {
+
     transform:
-        translateY(-7px)
-        scale(1.01);
+        translateY(-8px)
+        scale(1.015);
 
     border-color:
-        rgba(56,182,255,.35);
+        rgba(53,170,255,.35);
+
 }
 
-.gallery-card:hover::after {
+
+.gallery-card::before {
+
+    content:
+        "CAVE TAG";
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
     transform:
-        translateX(100%);
+        translate(-50%,-50%);
+
+    color:
+        rgba(53,170,255,.25);
+
+    font-size:
+        28px;
+
+    font-weight:
+        1000;
+
+    letter-spacing:
+        3px;
+
 }
+
 
 .gallery-card span {
-    position: absolute;
 
-    left: 14px;
-    bottom: 14px;
+    position:
+        absolute;
 
-    z-index: 2;
+    bottom:
+        15px;
 
-    padding: 7px 10px;
+    left:
+        15px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.08);
+    padding:
+        7px 10px;
 
-    border-radius: 7px;
+    border-radius:
+        7px;
 
-    color: #b4c4d2;
-    background: rgba(0,0,0,.58);
+    background:
+        rgba(0,0,0,.65);
 
-    font-size: 8px;
-    font-weight: 900;
-    letter-spacing: 1px;
+    color:
+        #b5c2cf;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
 }
 
+
 /* =========================================================
-   APPLICATION / CODE
+   APPLICATIONS / CODES
 ========================================================= */
 
 .application {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    gap: 30px;
 
-    padding: 44px;
+    display:
+        grid;
 
-    border:
-        1px solid
-        rgba(56,182,255,.17);
+    grid-template-columns:
+        1fr 300px;
 
-    border-radius: 25px;
+    gap:
+        30px;
+
+    padding:
+        45px;
+
+    border-radius:
+        25px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(56,182,255,.09),
-            rgba(4,10,16,.9)
+            rgba(53,170,255,.10),
+            #050b11
         );
+
+    border:
+        1px solid
+        rgba(53,170,255,.18);
+
 }
+
 
 .application h2 {
-    margin-bottom: 12px;
 
-    font-size: 36px;
+    font-size:
+        38px;
+
+    margin-bottom:
+        12px;
+
 }
+
 
 .application p {
-    color: #718497;
 
-    line-height: 1.8;
+    color:
+        #707f90;
+
+    line-height:
+        1.8;
+
 }
+
 
 .application-side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
 }
+
 
 .coming-badge {
-    display: inline-block;
 
-    padding: 13px 19px;
+    display:
+        inline-block;
 
-    color: var(--blue);
+    padding:
+        13px 20px;
 
-    border:
-        1px solid
-        rgba(56,182,255,.23);
+    color:
+        var(--blue);
 
-    border-radius: 999px;
+    border-radius:
+        999px;
 
     background:
-        rgba(56,182,255,.055);
-
-    font-size: 9px;
-    font-weight: 1000;
-
-    letter-spacing: 2px;
-}
-
-/* =========================================================
-   INPUTS
-========================================================= */
-
-.invite-box {
-    display: flex;
-    gap: 9px;
-
-    max-width: 700px;
-
-    margin: 28px auto 0;
-}
-
-.application .invite-box {
-    margin-left: 0;
-}
-
-.invite-input {
-    flex: 1;
-    min-width: 0;
-
-    height: 48px;
-
-    padding: 0 14px;
+        rgba(53,170,255,.06);
 
     border:
         1px solid
-        #1c384d;
+        rgba(53,170,255,.22);
 
-    border-radius: 10px;
+    font-size:
+        11px;
 
-    outline: none;
+    font-weight:
+        1000;
 
-    color: #76ccff;
-    background: #030910;
+    letter-spacing:
+        2px;
 
-    transition: .2s;
 }
 
+
+.invite-box {
+
+    max-width:
+        700px;
+
+    margin:
+        30px auto 0;
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+}
+
+
+.invite-input {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    padding:
+        14px;
+
+    border-radius:
+        10px;
+
+    background:
+        #040a10;
+
+    color:
+        #72c6ff;
+
+    border:
+        1px solid
+        #20384d;
+
+    outline:
+        none;
+
+}
+
+
 .invite-input:focus {
+
     border-color:
         var(--blue);
 
-    box-shadow:
-        0 0 0 3px rgba(56,182,255,.07);
 }
+
 
 .copy-btn {
-    min-width: 85px;
 
-    border: 0;
-    border-radius: 10px;
+    border:
+        0;
 
-    color: #01101a;
-    background: var(--blue);
+    border-radius:
+        10px;
 
-    font-size: 10px;
-    font-weight: 1000;
+    padding:
+        0 18px;
 
-    cursor: pointer;
+    background:
+        var(--blue);
 
-    transition: .2s;
+    color:
+        #02070d;
+
+    font-weight:
+        900;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+
 }
+
 
 .copy-btn:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
+
 }
+
 
 .copy-btn:disabled {
-    opacity: .55;
-    cursor: not-allowed;
+
+    opacity:
+        .6;
+
+    cursor:
+        not-allowed;
+
 }
+
 
 #codeResult {
-    min-height: 22px;
 
-    margin-top: 14px;
+    margin-top:
+        15px;
 
-    font-size: 13px;
-    font-weight: 850;
+    min-height:
+        20px;
+
+    font-weight:
+        900;
+
 }
+
 
 .code-note {
-    margin-top: 10px;
 
-    color: #526678 !important;
+    margin-top:
+        12px;
 
-    font-size: 11px;
+    color:
+        #58697a !important;
+
+    font-size:
+        12px;
+
 }
+
 
 /* =========================================================
    DISCORD
 ========================================================= */
 
 .discord {
-    padding: 75px 30px;
 
-    text-align: center;
+    text-align:
+        center;
+
+    padding:
+        75px 30px;
+
+    border-radius:
+        28px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(53,170,255,.13),
+            rgba(3,8,14,.97)
+        );
 
     border:
         1px solid
-        rgba(56,182,255,.18);
+        rgba(53,170,255,.2);
 
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(56,182,255,.11),
-            rgba(3,8,14,.96)
-        );
 }
+
 
 .discord h2 {
-    margin-bottom: 14px;
 
     font-size:
-        clamp(35px, 5vw, 58px);
+        clamp(35px,5vw,58px);
+
+    margin-bottom:
+        14px;
+
 }
 
-.discord > p {
-    max-width: 620px;
+
+.discord p {
+
+    max-width:
+        620px;
 
     margin:
-        0 auto 30px;
+        auto auto 30px;
 
-    color: #74879a;
+    color:
+        #737f8e;
 
-    line-height: 1.7;
+    line-height:
+        1.7;
+
 }
+
 
 /* =========================================================
    TEAM
 ========================================================= */
 
 .team {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
-    gap: 14px;
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        15px;
+
 }
 
+
 .member {
-    padding: 30px;
 
-    text-align: center;
+    padding:
+        30px;
 
-    border:
-        1px solid
-        rgba(56,182,255,.09);
+    text-align:
+        center;
 
-    border-radius: 21px;
+    border-radius:
+        22px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(14,29,44,.9),
-            rgba(3,9,15,.9)
+            #0e1a27,
+            #050a10
         );
-
-    transition: .3s;
-}
-
-.member:hover {
-    transform:
-        translateY(-7px);
-
-    border-color:
-        rgba(56,182,255,.3);
-}
-
-.avatar {
-    width: 82px;
-    height: 82px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 0 auto 18px;
 
     border:
         1px solid
-        rgba(56,182,255,.25);
+        rgba(53,170,255,.1);
 
-    border-radius: 50%;
+    transition:
+        .3s;
+
+}
+
+
+.member:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(53,170,255,.3);
+
+}
+
+
+.avatar {
+
+    width:
+        85px;
+
+    height:
+        85px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     background:
-        radial-gradient(
-            circle,
-            #10283b,
-            #07121d
-        );
+        #0c1a28;
 
-    font-size: 30px;
+    border:
+        2px solid
+        rgba(53,170,255,.25);
 
-    box-shadow:
-        0 0 35px rgba(56,182,255,.05);
+    font-size:
+        32px;
+
 }
+
 
 .member h3 {
-    margin-bottom: 7px;
+
+    margin-bottom:
+        7px;
+
 }
+
 
 .member-role {
-    color: var(--blue);
 
-    font-size: 8px;
-    font-weight: 1000;
+    color:
+        var(--blue);
 
-    letter-spacing: 2px;
+    font-size:
+        10px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
 }
 
+
 /* =========================================================
-   VIDEO
+   CREDITS VIDEO
 ========================================================= */
 
 .video {
-    overflow: hidden;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        24px;
+
+    background:
+        #000;
 
     border:
         1px solid
-        rgba(56,182,255,.17);
-
-    border-radius: 24px;
-
-    background: #000;
+        rgba(53,170,255,.18);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.4);
+        0 30px 80px
+        rgba(0,0,0,.4);
+
 }
+
 
 .video iframe {
-    display: block;
 
-    width: 100%;
+    display:
+        block;
 
-    aspect-ratio: 16 / 9;
+    width:
+        100%;
 
-    border: 0;
+    aspect-ratio:
+        16/9;
+
+    border:
+        0;
+
 }
+
+
+/* =========================================================
+   FLOOR NUGGET MEMORIAL
+========================================================= */
+
+.memorial {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        55px;
+
+    border-radius:
+        28px;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(53,170,255,.12),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(100,160,255,.06),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0b1724,
+            #050a10
+        );
+
+    border:
+        1px solid
+        rgba(53,170,255,.18);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.45);
+
+}
+
+
+.memorial-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        280px 1fr;
+
+    gap:
+        45px;
+
+    align-items:
+        center;
+
+}
+
+
+.memorial-image {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / 1;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        22px;
+
+    border:
+        1px solid
+        rgba(53,170,255,.25);
+
+    background:
+        #050a10;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.5);
+
+}
+
+
+.memorial-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    object-fit:
+        cover;
+
+    filter:
+        saturate(.8)
+        brightness(.9);
+
+    transition:
+        .4s;
+
+}
+
+
+.memorial:hover
+.memorial-image img {
+
+    transform:
+        scale(1.03);
+
+    filter:
+        saturate(1)
+        brightness(1);
+
+}
+
+
+.memorial-image::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(53,170,255,.12),
+            transparent 50%
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+.memorial-label {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        15px;
+
+    padding:
+        7px 12px;
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(53,170,255,.07);
+
+    border:
+        1px solid
+        rgba(53,170,255,.2);
+
+    color:
+        #72c6ff;
+
+    font-size:
+        9px;
+
+    font-weight:
+        1000;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.memorial-label span {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blue);
+
+    box-shadow:
+        0 0 12px
+        var(--blue);
+
+}
+
+
+.memorial h2 {
+
+    font-size:
+        clamp(38px,5vw,62px);
+
+    line-height:
+        1;
+
+    letter-spacing:
+        -3px;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.memorial h2 span {
+
+    color:
+        var(--blue);
+
+    text-shadow:
+        0 0 35px
+        rgba(53,170,255,.25);
+
+}
+
+
+.memorial-subtitle {
+
+    color:
+        #a6b6c7;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.memorial-text {
+
+    max-width:
+        650px;
+
+    color:
+        #718296;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.memorial-quote {
+
+    margin-top:
+        25px;
+
+    padding-left:
+        18px;
+
+    border-left:
+        2px solid
+        var(--blue);
+
+    color:
+        #9aaabd;
+
+    font-size:
+        13px;
+
+    font-style:
+        italic;
+
+    line-height:
+        1.7;
+
+}
+
+
+.memorial-date {
+
+    margin-top:
+        25px;
+
+    color:
+        #4f6275;
+
+    font-size:
+        9px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        2px;
+
+}
+
 
 /* =========================================================
    FAQ
 ========================================================= */
 
 .faq {
-    display: grid;
-    gap: 9px;
+
+    display:
+        grid;
+
+    gap:
+        10px;
+
 }
 
+
 .faq-item {
-    overflow: hidden;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        15px;
+
+    background:
+        #07101a;
 
     border:
         1px solid
-        rgba(255,255,255,.055);
+        rgba(255,255,255,.05);
 
-    border-radius: 14px;
-
-    background:
-        rgba(6,16,26,.78);
-
-    transition: .2s;
 }
 
-.faq-item.active {
-    border-color:
-        rgba(56,182,255,.25);
-}
 
 .faq-question {
-    width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width:
+        100%;
 
-    padding: 19px 20px;
+    padding:
+        20px;
 
-    border: 0;
+    border:
+        0;
 
-    color: white;
-    background: transparent;
+    background:
+        transparent;
 
-    text-align: left;
+    color:
+        white;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
-    font-size: 13px;
-    font-weight: 900;
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    text-align:
+        left;
+
+    font-weight:
+        900;
+
 }
 
-.faq-question:hover,
-.faq-item.active .faq-question {
-    color: var(--blue);
+
+.faq-question:hover {
+
+    color:
+        var(--blue);
+
 }
 
-.faq-question span {
-    color: var(--blue);
-    font-size: 19px;
-
-    transition: .2s;
-}
-
-.faq-item.active .faq-question span {
-    transform: rotate(180deg);
-}
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
 
-    padding: 0 20px;
-
-    color: #708396;
-
-    font-size: 13px;
-    line-height: 1.7;
-
-    transition:
-        max-height .3s ease,
-        padding .3s ease;
-}
-
-.faq-item.active .faq-answer {
-    max-height: 300px;
+    display:
+        none;
 
     padding:
         0 20px 20px;
+
+    color:
+        #707f90;
+
+    line-height:
+        1.7;
+
+    font-size:
+        14px;
+
 }
 
+
+.faq-item.active
+.faq-answer {
+
+    display:
+        block;
+
+}
+
+
+.faq-item.active
+.faq-question {
+
+    color:
+        var(--blue);
+
+}
+
+
 /* =========================================================
-   PLAY
+   PLAY NOW
 ========================================================= */
 
 .play-section {
-    text-align: center;
+
+    text-align:
+        center;
+
 }
+
+
+.play-card {
+
+    padding:
+        80px 25px;
+
+    border-radius:
+        30px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(53,170,255,.16),
+            transparent 45%
+        ),
+
+        #07101a;
+
+    border:
+        1px solid
+        rgba(53,170,255,.2);
+
+}
+
 
 .play-card h2 {
-    margin-bottom: 15px;
 
     font-size:
-        clamp(40px, 6vw, 70px);
+        clamp(40px,6vw,70px);
 
-    letter-spacing: -3px;
+    letter-spacing:
+        -3px;
+
+    margin-bottom:
+        15px;
+
 }
+
 
 .play-card p {
-    margin-bottom: 30px;
+
+    color:
+        #737f8e;
+
+    margin-bottom:
+        30px;
+
 }
+
 
 /* =========================================================
    MUSIC
 ========================================================= */
 
 .music-toggle {
-    position: fixed;
 
-    right: 20px;
-    bottom: 20px;
+    position:
+        fixed;
 
-    z-index: 1500;
+    right:
+        20px;
 
-    width: 50px;
-    height: 50px;
+    bottom:
+        20px;
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    border-radius:
+        50%;
 
     border:
         1px solid
-        rgba(56,182,255,.25);
+        rgba(53,170,255,.25);
 
-    border-radius: 50%;
-
-    color: white;
     background:
-        rgba(5,13,21,.93);
+        rgba(7,14,22,.92);
 
-    cursor: pointer;
+    color:
+        white;
 
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.4);
+    cursor:
+        pointer;
 
-    transition: .25s;
+    z-index:
+        1500;
+
+    font-size:
+        19px;
+
+    transition:
+        .25s;
+
 }
 
+
 .music-toggle:hover {
+
     transform:
         translateY(-4px);
 
     border-color:
         var(--blue);
+
 }
 
+
 .music-toggle.on {
-    color: #00101a;
-    background: var(--blue);
+
+    color:
+        #02070d;
+
+    background:
+        var(--blue);
+
 }
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer {
-    padding: 50px 20px;
+
+    padding:
+        50px 20px;
+
+    text-align:
+        center;
+
+    color:
+        #4f6070;
 
     border-top:
         1px solid
         rgba(255,255,255,.05);
 
-    color: #4e6274;
+    font-size:
+        12px;
 
-    text-align: center;
-
-    font-size: 11px;
 }
+
 
 footer strong {
-    color: #7890a3;
+
+    color:
+        #778b9e;
+
 }
 
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal {
-    opacity: 0;
-
-    transform:
-        translateY(24px);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* =========================================================
    ANIMATIONS
 ========================================================= */
 
-@keyframes announcementFlow {
-    from {
-        background-position: 0% 50%;
-    }
+@keyframes pulse {
 
-    to {
-        background-position: 200% 50%;
-    }
-}
+    0%,100% {
 
-@keyframes logoPulse {
-    0%, 100% {
-        box-shadow:
-            0 0 12px rgba(56,182,255,.45);
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
     }
 
     50% {
-        box-shadow:
-            0 0 28px rgba(56,182,255,.95);
-    }
-}
 
-@keyframes statusPulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
+        opacity:
+            .45;
+
+        transform:
+            scale(.75);
+
     }
 
-    50% {
-        opacity: .45;
-        transform: scale(.7);
-    }
 }
+
 
 @keyframes glow {
-    0%, 100% {
+
+    0%,100% {
+
         box-shadow:
-            0 0 0 rgba(56,182,255,0);
+            0 0 0
+            rgba(53,170,255,0);
+
     }
 
     50% {
+
         box-shadow:
-            0 0 30px rgba(56,182,255,.17);
-    }
-}
+            0 0 30px
+            rgba(53,170,255,.18);
 
-@keyframes scan {
-    0% {
-        transform: translateX(-100%);
     }
 
-    45%, 100% {
-        transform: translateX(100%);
-    }
 }
+
+
+.reveal {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+
+.reveal.show {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 1050px) {
-    .nav-links {
-        gap: 0;
-    }
-
-    .nav-links a {
-        padding-inline: 7px;
-    }
-}
-
-@media (max-width: 900px) {
-    .navbar {
-        width: calc(100% - 24px);
-    }
-
-    .mobile-menu {
-        display: block;
-    }
+@media(max-width: 900px) {
 
     .nav-links {
-        position: absolute;
 
-        top: calc(100% + 9px);
-        left: 0;
-        right: 0;
+        display:
+            none;
 
-        display: none;
+        position:
+            absolute;
 
-        flex-direction: column;
-        align-items: stretch;
+        top:
+            75px;
 
-        padding: 10px;
+        left:
+            0;
+
+        width:
+            100%;
+
+        padding:
+            20px;
+
+        border-radius:
+            15px;
+
+        background:
+            #07101a;
 
         border:
             1px solid
             var(--border);
 
-        border-radius: 16px;
+        flex-direction:
+            column;
 
-        background:
-            rgba(3,10,17,.97);
+        align-items:
+            stretch;
 
-        backdrop-filter: blur(20px);
-
-        box-shadow:
-            0 25px 60px rgba(0,0,0,.45);
     }
+
 
     .nav-links.open {
-        display: flex;
+
+        display:
+            flex;
+
     }
+
 
     .nav-links a {
-        padding: 13px;
+
+        padding:
+            12px;
+
     }
+
+
+    .mobile-menu {
+
+        display:
+            block;
+
+    }
+
 
     .stats {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
-    .stat:nth-child(2) {
-        border-right: 0;
-    }
-
-    .stat:nth-child(-n+2) {
-        border-bottom:
-            1px solid
-            rgba(255,255,255,.05);
-    }
 
     .feature-grid,
     .gallery,
     .team {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            1fr;
+
     }
+
 
     .application {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
+        text-align:
+            center;
+
     }
 
-    .application-side {
-        justify-content: flex-start;
+
+    .memorial-content {
+
+        grid-template-columns:
+            1fr;
+
+        text-align:
+            center;
+
     }
+
+
+    .memorial-image {
+
+        max-width:
+            280px;
+
+        margin:
+            auto;
+
+    }
+
+
+    .memorial-label {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .memorial-quote {
+
+        text-align:
+            left;
+
+    }
+
 }
 
-@media (max-width: 620px) {
+
+@media(max-width: 600px) {
+
     .announcement {
-        min-height: 34px;
 
-        padding:
-            8px 48px 8px 12px;
+        font-size:
+            9px;
 
-        font-size: 8px;
-        letter-spacing: 1px;
     }
+
 
     .navbar {
-        top: 45px;
+
+        top:
+            45px;
+
     }
 
-    .navbar.scrolled {
-        top: 40px;
-    }
 
     .hero {
-        padding:
-            165px 17px 90px;
+
+        padding-top:
+            170px;
+
     }
+
 
     .hero h1 {
-        letter-spacing: -6px;
+
+        letter-spacing:
+            -6px;
+
     }
 
-    .hero-description {
-        margin-top: 32px;
-
-        font-size: 14px;
-    }
-
-    .section {
-        width: calc(100% - 30px);
-        padding: 85px 0;
-    }
 
     .stats {
-        width: calc(100% - 24px);
+
+        grid-template-columns:
+            1fr 1fr;
+
     }
 
-    .stat {
-        padding: 21px 10px;
-    }
-
-    .stat-number {
-        font-size: 21px;
-    }
-
-    .feature-grid,
-    .gallery,
-    .team {
-        grid-template-columns: 1fr;
-    }
-
-    .feature {
-        min-height: 215px;
-    }
 
     .update {
-        grid-template-columns: 1fr;
-        gap: 9px;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            10px;
+
     }
 
-    .application {
-        padding: 30px 20px;
-    }
-
-    .application h2 {
-        font-size: 30px;
-    }
-
-    .application-side {
-        justify-content: center;
-    }
 
     .invite-box {
-        flex-direction: column;
+
+        flex-direction:
+            column;
+
     }
+
 
     .copy-btn {
-        min-height: 48px;
+
+        min-height:
+            48px;
+
     }
 
-    .discord {
+
+    .application {
+
         padding:
-            60px 18px;
+            30px 20px;
+
     }
 
-    .music-toggle {
-        right: 14px;
-        bottom: 14px;
+
+    .memorial {
+
+        padding:
+            30px 22px;
+
     }
+
+
+    .countdown-timer {
+
+        gap:
+            7px;
+
+    }
+
+
+    .countdown-unit {
+
+        min-width:
+            70px;
+
+        padding:
+            15px 8px;
+
+    }
+
+
+    .countdown-unit strong {
+
+        font-size:
+            27px;
+
+    }
+
+
+    .countdown-separator {
+
+        font-size:
+            20px;
+
+    }
+
 }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-    }
-}
 </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =========================================================
      ANNOUNCEMENT
 ========================================================= -->
 
-<div class="announcement" id="announcement">
-    🔔 CAVE TAG WEBSITE REVAMPED • CHECK OUT THE LATEST UPDATES
+<div
+    class="announcement"
+    id="announcement"
+>
+
+    🔔 CAVE TAG WEBSITE REVAMPED •
+    🚀 3 DAY COUNTDOWN IS LIVE •
+    🐈 REMEMBERING FLOOR NUGGET
 
     <button
-        type="button"
         onclick="closeAnnouncement()"
         aria-label="Close announcement"
     >
         ×
     </button>
+
 </div>
+
 
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
 
-<header class="navbar" id="navbar">
+<header class="navbar">
 
-    <a href="#home" class="logo">
-        <span class="logo-mark"></span>
+    <a
+        href="#home"
+        class="logo"
+    >
+
+        <span class="logo-dot"></span>
+
         CAVE TAG
+
     </a>
+
 
     <button
         class="mobile-menu"
-        id="mobileMenu"
-        type="button"
         onclick="toggleMenu()"
-        aria-label="Open navigation"
-        aria-expanded="false"
+        type="button"
     >
+
         ☰
+
     </button>
 
-    <nav class="nav-links" id="navLinks">
 
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#updates">Updates</a>
-        <a href="#countdown">Countdown</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#applications">Applications</a>
-        <a href="#codes">Codes</a>
-        <a href="#team">Team</a>
-        <a href="#credits">Credits</a>
+    <nav
+        class="nav-links"
+        id="navLinks"
+    >
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#updates">
+            Updates
+        </a>
+
+        <a href="#countdown">
+            Countdown
+        </a>
+
+        <a href="#gallery">
+            Gallery
+        </a>
+
+        <a href="#applications">
+            Applications
+        </a>
+
+        <a href="#codes">
+            Codes
+        </a>
+
+        <a href="#team">
+            Team
+        </a>
+
+        <a href="#floor-nugget">
+            Floor Nugget
+        </a>
+
+        <a href="#credits">
+            Credits
+        </a>
 
         <a
             href="https://discord.gg/WaK6ykHCbS"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             class="nav-discord"
         >
             Discord
         </a>
 
-        <!-- KEEPING YOUR EXISTING LOGIN URL -->
         <a
             href="https://cave-tag-discord-login.onrender.com/login"
             class="discord-login"
@@ -1959,7 +3087,9 @@ footer strong {
         </a>
 
     </nav>
+
 </header>
+
 
 <!-- =========================================================
      HERO
@@ -1972,20 +3102,31 @@ footer strong {
     <div class="hero-content">
 
         <div class="status-pill">
+
             <span class="status-dot"></span>
+
             CAVE TAG • IN DEVELOPMENT
+
         </div>
 
+
         <h1>
+
             CAVE<br>
+
             <span>TAG</span>
+
         </h1>
 
+
         <p class="hero-description">
+
             A fan-made Gorilla Tag-inspired experience
             built around movement, exploration, chaos,
             and playing with friends.
+
         </p>
+
 
         <div class="buttons">
 
@@ -1994,16 +3135,21 @@ footer strong {
                 class="btn btn-blue"
                 onclick="playButton(event)"
             >
+
                 🕹️ PLAY NOW
+
             </a>
+
 
             <a
                 href="https://discord.gg/WaK6ykHCbS"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 class="btn btn-dark"
             >
+
                 💬 JOIN DISCORD
+
             </a>
 
         </div>
@@ -2011,6 +3157,7 @@ footer strong {
     </div>
 
 </section>
+
 
 <!-- =========================================================
      STATS
@@ -2019,173 +3166,316 @@ footer strong {
 <section class="stats reveal">
 
     <div class="stat">
-        <div class="stat-number" data-target="250">0+</div>
-        <div class="stat-label">Community Members</div>
+
+        <div
+            class="stat-number"
+            data-target="250"
+        >
+            0+
+        </div>
+
+        <div class="stat-label">
+            Community Members
+        </div>
+
     </div>
 
-    <div class="stat">
-        <div class="stat-number" data-target="3">0</div>
-        <div class="stat-label">Team Members</div>
-    </div>
 
     <div class="stat">
-        <div class="stat-number" data-target="6">0</div>
-        <div class="stat-label">Planned Features</div>
+
+        <div
+            class="stat-number"
+            data-target="6"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Team Members
+        </div>
+
     </div>
 
+
     <div class="stat">
-        <div class="stat-number">SOON</div>
-        <div class="stat-label">Game Release</div>
+
+        <div
+            class="stat-number"
+            data-target="6"
+        >
+            0
+        </div>
+
+        <div class="stat-label">
+            Planned Features
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-number">
+            SOON
+        </div>
+
+        <div class="stat-label">
+            Game Release
+        </div>
+
     </div>
 
 </section>
+
 
 <!-- =========================================================
      FEATURES
 ========================================================= -->
 
-<section class="section" id="features">
+<section
+    class="section"
+    id="features"
+>
 
     <div class="section-label">
         THE EXPERIENCE
     </div>
 
+
     <h2 class="section-title">
         Built for chaos.
     </h2>
 
+
     <p class="section-description">
+
         Everything Cave Tag is being built around:
         movement, exploration and having fun with friends.
+
     </p>
+
 
     <div class="feature-grid">
 
         <article class="feature reveal">
-            <div class="feature-icon">🦍</div>
-            <h3>Movement</h3>
+
+            <div class="feature-icon">
+                🦍
+            </div>
+
+            <h3>
+                Movement
+            </h3>
+
             <p>
                 Swing, climb and move around the cave
                 while trying not to get tagged.
             </p>
+
         </article>
 
+
         <article class="feature reveal">
-            <div class="feature-icon">🪨</div>
-            <h3>Explore</h3>
+
+            <div class="feature-icon">
+                🪨
+            </div>
+
+            <h3>
+                Explore
+            </h3>
+
             <p>
                 Explore the cave and discover different
                 areas throughout the game.
             </p>
+
         </article>
 
+
         <article class="feature reveal">
-            <div class="feature-icon">🔥</div>
-            <h3>Chaos</h3>
+
+            <div class="feature-icon">
+                🔥
+            </div>
+
+            <h3>
+                Chaos
+            </h3>
+
             <p>
                 Games can turn chaotic fast.
                 Keep moving and don't get caught.
             </p>
+
         </article>
 
+
         <article class="feature reveal">
-            <div class="feature-icon">👥</div>
-            <h3>Multiplayer</h3>
+
+            <div class="feature-icon">
+                👥
+            </div>
+
+            <h3>
+                Multiplayer
+            </h3>
+
             <p>
                 Play with friends and turn every round
                 into a giant game of tag.
             </p>
+
         </article>
 
+
         <article class="feature reveal">
-            <div class="feature-icon">🛠️</div>
-            <h3>Constant Updates</h3>
+
+            <div class="feature-icon">
+                🛠️
+            </div>
+
+            <h3>
+                Constant Updates
+            </h3>
+
             <p>
                 New features, improvements and updates
                 are planned as development continues.
             </p>
+
         </article>
 
+
         <article class="feature reveal">
-            <div class="feature-icon">🌑</div>
-            <h3>The Cave</h3>
+
+            <div class="feature-icon">
+                🌑
+            </div>
+
+            <h3>
+                The Cave
+            </h3>
+
             <p>
                 A dark environment full of places to
                 climb, hide and explore.
             </p>
+
         </article>
 
     </div>
+
 </section>
+
 
 <!-- =========================================================
      UPDATES
 ========================================================= -->
 
-<section class="section" id="updates">
+<section
+    class="section"
+    id="updates"
+>
 
     <div class="section-label">
         DEVELOPMENT
     </div>
 
+
     <h2 class="section-title">
         Latest updates.
     </h2>
+
 
     <p class="section-description">
         Here's what's been happening with Cave Tag.
     </p>
 
+
     <div class="changelog">
 
         <article class="update reveal">
-            <div class="update-date">LATEST</div>
+
+            <div class="update-date">
+                LATEST
+            </div>
 
             <div>
-                <h3>Website Overhaul</h3>
+
+                <h3>
+                    Website Overhaul
+                </h3>
 
                 <p>
                     The Cave Tag website has been completely
-                    revamped with a new futuristic design,
-                    animations, sections and mobile support.
+                    revamped with a new design, animations,
+                    sections and mobile support.
                 </p>
+
             </div>
+
         </article>
 
+
         <article class="update reveal">
-            <div class="update-date">RECENT</div>
+
+            <div class="update-date">
+                RECENT
+            </div>
 
             <div>
-                <h3>Credits Added</h3>
+
+                <h3>
+                    Floor Nugget Memorial
+                </h3>
 
                 <p>
-                    The credits section has been added along
-                    with the official Cave Tag credits video.
+                    A permanent memorial has been added
+                    to remember Floor Nugget, the server's
+                    first pet and a special part of the
+                    Cave Tag community.
                 </p>
+
             </div>
+
         </article>
 
+
         <article class="update reveal">
-            <div class="update-date">NEXT</div>
+
+            <div class="update-date">
+                NEXT
+            </div>
 
             <div>
-                <h3>Mod Applications</h3>
+
+                <h3>
+                    Mod Applications
+                </h3>
 
                 <p>
                     Moderator applications are planned
                     for an upcoming update.
                 </p>
+
             </div>
+
         </article>
 
     </div>
+
 </section>
+
 
 <!-- =========================================================
      COUNTDOWN
 ========================================================= -->
 
-<section class="section" id="countdown">
+<section
+    class="section"
+    id="countdown"
+>
 
     <div class="countdown-box reveal">
 
@@ -2193,73 +3483,177 @@ footer strong {
             RELEASE
         </div>
 
-        <h2>Release Countdown</h2>
+
+        <h2>
+            Cave Tag is almost here.
+        </h2>
+
 
         <p>
-            The Cave Tag release date has not been announced yet.
+            The countdown has begun. Get ready.
         </p>
 
-        <div class="starting-soon">
-            STARTING SOON!
+
+        <div class="countdown-timer">
+
+            <div class="countdown-unit">
+
+                <strong id="days">
+                    03
+                </strong>
+
+                <span>
+                    DAYS
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-unit">
+
+                <strong id="hours">
+                    00
+                </strong>
+
+                <span>
+                    HOURS
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-unit">
+
+                <strong id="minutes">
+                    00
+                </strong>
+
+                <span>
+                    MINUTES
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-unit">
+
+                <strong id="seconds">
+                    00
+                </strong>
+
+                <span>
+                    SECONDS
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="starting-soon"
+            id="countdownStatus"
+        >
+            🔥 3 DAYS REMAINING
         </div>
 
     </div>
 
 </section>
+
 
 <!-- =========================================================
      GALLERY
 ========================================================= -->
 
-<section class="section" id="gallery">
+<section
+    class="section"
+    id="gallery"
+>
 
     <div class="section-label">
         MEDIA
     </div>
 
+
     <h2 class="section-title">
         Cave Tag Gallery.
     </h2>
 
+
     <p class="section-description">
+
         Screenshots and media from Cave Tag will appear here.
+
     </p>
+
 
     <div class="gallery">
 
         <div class="gallery-card reveal">
-            <span>GAMEPLAY</span>
+            <span>
+                GAMEPLAY
+            </span>
         </div>
 
         <div class="gallery-card reveal">
-            <span>THE CAVE</span>
+            <span>
+                THE CAVE
+            </span>
         </div>
 
         <div class="gallery-card reveal">
-            <span>COMING SOON</span>
+            <span>
+                COMING SOON
+            </span>
         </div>
 
         <div class="gallery-card reveal">
-            <span>MAPS</span>
+            <span>
+                MAPS
+            </span>
         </div>
 
         <div class="gallery-card reveal">
-            <span>COMMUNITY</span>
+            <span>
+                COMMUNITY
+            </span>
         </div>
 
         <div class="gallery-card reveal">
-            <span>DEVELOPMENT</span>
+            <span>
+                DEVELOPMENT
+            </span>
         </div>
 
     </div>
 
 </section>
 
+
 <!-- =========================================================
-     APPLICATIONS
+     MOD APPLICATIONS
 ========================================================= -->
 
-<section class="section" id="applications">
+<section
+    class="section"
+    id="applications"
+>
 
     <div class="application reveal">
 
@@ -2269,19 +3663,27 @@ footer strong {
                 STAFF
             </div>
 
-            <h2>Moderator Applications</h2>
+
+            <h2>
+                Moderator Applications
+            </h2>
+
 
             <p>
+
                 Want to help out with Cave Tag?
+
                 Moderator applications are currently
                 being worked on and will open in a
                 future update.
 
                 Keep an eye on the Discord for the
                 announcement when applications go live.
+
             </p>
 
         </div>
+
 
         <div class="application-side">
 
@@ -2295,24 +3697,33 @@ footer strong {
 
 </section>
 
+
 <!-- =========================================================
      CODES
 ========================================================= -->
 
-<section class="section" id="codes">
+<section
+    class="section"
+    id="codes"
+>
 
     <div class="section-label">
         REWARDS
     </div>
 
+
     <h2 class="section-title">
         Cave Tag Codes.
     </h2>
 
+
     <p class="section-description">
-        Got a code? Enter it below to redeem your Cave Tag
-        Discord reward.
+
+        Got a code? Enter it below to redeem your
+        Cave Tag Discord reward.
+
     </p>
+
 
     <div class="application reveal">
 
@@ -2322,13 +3733,21 @@ footer strong {
                 CODE REDEMPTION
             </div>
 
-            <h2>Redeem a Code</h2>
+
+            <h2>
+                Redeem a Code
+            </h2>
+
 
             <p>
+
                 Enter your code below. If the code is valid,
                 you'll be taken through the Discord login
-                process so the reward can be added to your account.
+                process so the reward can be added to your
+                account.
+
             </p>
+
 
             <div class="invite-box">
 
@@ -2340,8 +3759,9 @@ footer strong {
                     maxlength="50"
                     autocomplete="off"
                     spellcheck="false"
-                    aria-label="Cave Tag code"
+                    onkeydown="handleCodeKey(event)"
                 >
+
 
                 <button
                     class="copy-btn"
@@ -2354,13 +3774,19 @@ footer strong {
 
             </div>
 
-            <p id="codeResult" aria-live="polite"></p>
+
+            <p id="codeResult"></p>
+
 
             <p class="code-note">
-                Never share your Discord password or bot credentials.
+
+                Never share your Discord password
+                or bot credentials.
+
             </p>
 
         </div>
+
 
         <div class="application-side">
 
@@ -2374,6 +3800,7 @@ footer strong {
 
 </section>
 
+
 <!-- =========================================================
      DISCORD
 ========================================================= -->
@@ -2386,24 +3813,30 @@ footer strong {
             COMMUNITY
         </div>
 
+
         <h2>
             Join the Cave Tag Discord.
         </h2>
 
+
         <p>
+
             Get announcements, development updates,
             talk with other players and keep up with
             everything happening with Cave Tag.
+
         </p>
+
 
         <a
             href="https://discord.gg/WaK6ykHCbS"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             class="btn btn-blue"
         >
             💬 JOIN DISCORD
         </a>
+
 
         <div class="invite-box">
 
@@ -2412,8 +3845,8 @@ footer strong {
                 id="invite"
                 value="https://discord.gg/WaK6ykHCbS"
                 readonly
-                aria-label="Discord invite"
             >
+
 
             <button
                 class="copy-btn"
@@ -2430,97 +3863,275 @@ footer strong {
 
 </section>
 
+
 <!-- =========================================================
      TEAM
 ========================================================= -->
 
-<section class="section" id="team">
+<section
+    class="section"
+    id="team"
+>
 
     <div class="section-label">
         THE PEOPLE
     </div>
 
+
     <h2 class="section-title">
         Cave Tag Team.
     </h2>
+
 
     <p class="section-description">
         Meet the people working on Cave Tag.
     </p>
 
+
     <div class="team">
 
         <article class="member reveal">
-            <div class="avatar">👑</div>
-            <h3>Fingus</h3>
-            <div class="member-role">OWNER</div>
+
+            <div class="avatar">
+                👑
+            </div>
+
+            <h3>
+                Fingus
+            </h3>
+
+            <div class="member-role">
+                OWNER
+            </div>
+
         </article>
 
-        <article class="member reveal">
-            <div class="avatar">🛠️</div>
-            <h3>Shazam</h3>
-            <div class="member-role">DEVELOPER</div>
-        </article>
 
         <article class="member reveal">
-            <div class="avatar">🛡️</div>
-            <h3>Pax</h3>
-            <div class="member-role">MODERATOR</div>
+
+            <div class="avatar">
+                🛠️
+            </div>
+
+            <h3>
+                Shazam
+            </h3>
+
+            <div class="member-role">
+                DEVELOPER
+            </div>
+
         </article>
 
-        <article class="member reveal">
-            <div class="avatar">🛡️</div>
-            <h3>Axolotl</h3>
-            <div class="member-role">MODERATOR</div>
-        </article>
 
         <article class="member reveal">
-            <div class="avatar">🛡️</div>
-            <h3>Goofus</h3>
-            <div class="member-role">MODERATOR</div>
+
+            <div class="avatar">
+                🛡️
+            </div>
+
+            <h3>
+                Pax
+            </h3>
+
+            <div class="member-role">
+                MODERATOR
+            </div>
+
         </article>
 
+
         <article class="member reveal">
-            <div class="avatar">👑</div>
-            <h3>Vexo</h3>
-            <div class="member-role">OWNER</div>
+
+            <div class="avatar">
+                🛡️
+            </div>
+
+            <h3>
+                Axolotl
+            </h3>
+
+            <div class="member-role">
+                MODERATOR
+            </div>
+
+        </article>
+
+
+        <article class="member reveal">
+
+            <div class="avatar">
+                🛡️
+            </div>
+
+            <h3>
+                Goofus
+            </h3>
+
+            <div class="member-role">
+                MODERATOR
+            </div>
+
+        </article>
+
+
+        <article class="member reveal">
+
+            <div class="avatar">
+                👑
+            </div>
+
+            <h3>
+                Vexo
+            </h3>
+
+            <div class="member-role">
+                OWNER
+            </div>
+
         </article>
 
     </div>
 
 </section>
 
+
+<!-- =========================================================
+     FLOOR NUGGET MEMORIAL
+========================================================= -->
+
+<section
+    class="section"
+    id="floor-nugget"
+>
+
+    <div class="section-label">
+        COMMUNITY MEMORY
+    </div>
+
+
+    <div class="memorial reveal">
+
+        <div class="memorial-content">
+
+
+            <div class="memorial-image">
+
+                <!--
+                    IMPORTANT:
+                    Put floor-nugget.png next to index.html
+                -->
+
+                <img
+                    src="floor-nugget.png"
+                    alt="Floor Nugget"
+                >
+
+            </div>
+
+
+            <div>
+
+                <div class="memorial-label">
+
+                    <span></span>
+
+                    IN LOVING MEMORY
+
+                </div>
+
+
+                <h2>
+
+                    Floor
+                    <span>Nugget.</span>
+
+                </h2>
+
+
+                <div class="memorial-subtitle">
+
+                    The server's first pet 🐈
+
+                </div>
+
+
+                <p class="memorial-text">
+
+                    Floor Nugget will always hold a
+                    special place in the Cave Tag community.
+
+                    As the server's first pet, he became
+                    a small but memorable part of the
+                    community and its history.
+
+                    This page is dedicated to remembering
+                    Floor Nugget and the memories he left
+                    behind.
+
+                </p>
+
+
+                <p class="memorial-quote">
+
+                    "Gone from the floor,
+                    but never forgotten by the server."
+
+                </p>
+
+
+                <div class="memorial-date">
+
+                    🕊️ FOREVER PART OF CAVE TAG
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 <!-- =========================================================
      CREDITS
 ========================================================= -->
 
-<section class="section" id="credits">
+<section
+    class="section"
+    id="credits"
+>
 
     <div class="section-label">
         CREDITS
     </div>
 
+
     <h2 class="section-title">
         The people behind Cave Tag.
     </h2>
 
+
     <p class="section-description">
         Check out the Cave Tag credits video.
     </p>
+
 
     <div class="video reveal">
 
         <iframe
             src="https://www.youtube.com/embed/3njvlNQcNLg"
             title="Cave Tag Credits"
-            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
+            allowfullscreen
+        ></iframe>
 
     </div>
 
 </section>
+
 
 <!-- =========================================================
      FAQ
@@ -2532,105 +4143,147 @@ footer strong {
         FAQ
     </div>
 
+
     <h2 class="section-title">
         Frequently asked questions.
     </h2>
 
+
     <div class="faq">
+
 
         <div class="faq-item reveal">
 
             <button
                 class="faq-question"
-                type="button"
                 onclick="toggleFAQ(this)"
-                aria-expanded="false"
+                type="button"
             >
-                <span>What is Cave Tag?</span>
-                <span>+</span>
+
+                What is Cave Tag?
+
+                <span>
+                    +
+                </span>
+
             </button>
 
+
             <div class="faq-answer">
+
                 Cave Tag is a fan-made Gorilla Tag-inspired
                 game focused on movement, tag gameplay,
                 exploration and playing with friends.
+
             </div>
 
         </div>
+
 
         <div class="faq-item reveal">
 
             <button
                 class="faq-question"
-                type="button"
                 onclick="toggleFAQ(this)"
-                aria-expanded="false"
+                type="button"
             >
-                <span>When does Cave Tag release?</span>
-                <span>+</span>
+
+                When does Cave Tag release?
+
+                <span>
+                    +
+                </span>
+
             </button>
 
+
             <div class="faq-answer">
-                The release date has not been announced yet.
-                The countdown will be activated once an official
-                release date is confirmed.
+
+                The Cave Tag countdown is currently active.
+                Check the release countdown above for the
+                current timer.
+
             </div>
 
         </div>
+
 
         <div class="faq-item reveal">
 
             <button
                 class="faq-question"
-                type="button"
                 onclick="toggleFAQ(this)"
-                aria-expanded="false"
+                type="button"
             >
-                <span>Where can I get updates?</span>
-                <span>+</span>
+
+                Where can I get updates?
+
+                <span>
+                    +
+                </span>
+
             </button>
 
+
             <div class="faq-answer">
+
                 Join the Cave Tag Discord for announcements,
                 development news and community updates.
+
             </div>
 
         </div>
+
 
         <div class="faq-item reveal">
 
             <button
                 class="faq-question"
-                type="button"
                 onclick="toggleFAQ(this)"
-                aria-expanded="false"
+                type="button"
             >
-                <span>Are moderator applications open?</span>
-                <span>+</span>
+
+                Are moderator applications open?
+
+                <span>
+                    +
+                </span>
+
             </button>
 
+
             <div class="faq-answer">
+
                 Not currently. Moderator applications are
                 coming soon.
+
             </div>
 
         </div>
+
 
         <div class="faq-item reveal">
 
             <button
                 class="faq-question"
-                type="button"
                 onclick="toggleFAQ(this)"
-                aria-expanded="false"
+                type="button"
             >
-                <span>Is this the official Gorilla Tag website?</span>
-                <span>+</span>
+
+                Is this the official Gorilla Tag website?
+
+                <span>
+                    +
+                </span>
+
             </button>
 
+
             <div class="faq-answer">
+
                 No. Cave Tag is a fan-made project and
                 is not the official Gorilla Tag website.
+
             </div>
 
         </div>
@@ -2638,6 +4291,7 @@ footer strong {
     </div>
 
 </section>
+
 
 <!-- =========================================================
      PLAY NOW
@@ -2651,20 +4305,25 @@ footer strong {
             READY?
         </div>
 
+
         <h2>
             Enter the cave.
         </h2>
 
+
         <p>
-            Cave Tag is coming soon.
+            Cave Tag is almost here.
         </p>
+
 
         <a
             href="#"
             class="btn btn-blue"
             onclick="playButton(event)"
         >
+
             🕹️ PLAY NOW
+
         </a>
 
     </div>
@@ -2673,13 +4332,23 @@ footer strong {
 
 </main>
 
+
 <!-- =========================================================
      MUSIC
 ========================================================= -->
 
-<audio id="music" loop preload="none">
-    <source src="music.mp3" type="audio/mpeg">
+<audio
+    id="music"
+    loop
+>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg"
+    >
+
 </audio>
+
 
 <button
     class="music-toggle"
@@ -2687,58 +4356,39 @@ footer strong {
     onclick="toggleMusic()"
     title="Toggle music"
     type="button"
-    aria-label="Toggle background music"
 >
+
     🔇
+
 </button>
+
 
 <!-- =========================================================
      FOOTER
 ========================================================= -->
 
 <footer>
-    © 2026 <strong>Cave Tag</strong> • Fan-made project
+
+    © 2026
+    <strong>
+        Cave Tag
+    </strong>
+
+    • Fan-made project
+
 </footer>
 
+
 <script>
+
 /* =========================================================
    SETTINGS
 ========================================================= */
 
-/*
- * KEEP THIS AS "#" UNTIL THE GAME HAS A REAL URL.
- */
 const GAME_LINK = "#";
-
-/*
- * YOUR EXISTING BACKEND.
- *
- * This is intentionally unchanged so the Discord
- * authentication/redeem flow doesn't get broken.
- */
-const LOGIN_URL =
-    "https://cave-tag-discord-login.onrender.com/login";
 
 const CODE_REDEEM_URL =
     "https://cave-tag-discord-login.onrender.com/redeem";
-
-const DISCORD_URL =
-    "https://discord.gg/WaK6ykHCbS";
-
-
-/* =========================================================
-   DOM READY
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    setupCodeInput();
-    setupScrollEffects();
-    setupRevealAnimations();
-    setupStatCounters();
-    setupNavigation();
-
-});
 
 
 /* =========================================================
@@ -2748,121 +4398,67 @@ document.addEventListener("DOMContentLoaded", () => {
 function closeAnnouncement() {
 
     const announcement =
-        document.getElementById("announcement");
+        document.getElementById(
+            "announcement"
+        );
 
-    if (!announcement) {
-        return;
+    if (announcement) {
+
+        announcement.style.display =
+            "none";
+
     }
-
-    announcement.style.display = "none";
 
 }
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   MOBILE MENU
 ========================================================= */
 
 function toggleMenu() {
 
     const nav =
-        document.getElementById("navLinks");
+        document.getElementById(
+            "navLinks"
+        );
 
-    const button =
-        document.getElementById("mobileMenu");
-
-    if (!nav || !button) {
+    if (!nav) {
         return;
     }
 
-    const isOpen =
-        nav.classList.toggle("open");
-
-    button.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
-    button.textContent =
-        isOpen ? "✕" : "☰";
-
-}
-
-
-function closeMenu() {
-
-    const nav =
-        document.getElementById("navLinks");
-
-    const button =
-        document.getElementById("mobileMenu");
-
-    if (!nav || !button) {
-        return;
-    }
-
-    nav.classList.remove("open");
-
-    button.setAttribute(
-        "aria-expanded",
-        "false"
-    );
-
-    button.textContent = "☰";
-
-}
-
-
-function setupNavigation() {
-
-    document
-        .querySelectorAll(".nav-links a")
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                closeMenu
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   NAV SCROLL EFFECT
-========================================================= */
-
-function setupScrollEffects() {
-
-    const navbar =
-        document.getElementById("navbar");
-
-    if (!navbar) {
-        return;
-    }
-
-    const updateNavbar =
-        () => {
-
-            navbar.classList.toggle(
-                "scrolled",
-                window.scrollY > 80
-            );
-
-        };
-
-    updateNavbar();
-
-    window.addEventListener(
-        "scroll",
-        updateNavbar,
-        {
-            passive: true
-        }
+    nav.classList.toggle(
+        "open"
     );
 
 }
+
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                const nav =
+                    document.getElementById(
+                        "navLinks"
+                    );
+
+                if (nav) {
+
+                    nav.classList.remove(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+    });
 
 
 /* =========================================================
@@ -2872,61 +4468,70 @@ function setupScrollEffects() {
 async function copyInvite() {
 
     const input =
-        document.getElementById("invite");
+        document.getElementById(
+            "invite"
+        );
 
     const button =
-        document.getElementById("copyButton");
+        document.getElementById(
+            "copyButton"
+        );
 
     if (!input || !button) {
         return;
     }
 
-    const originalText =
-        button.textContent;
 
     try {
 
-        if (
-            navigator.clipboard &&
-            window.isSecureContext
-        ) {
-
-            await navigator.clipboard.writeText(
-                input.value
-            );
-
-        } else {
-
-            input.focus();
-            input.select();
-
-            const successful =
-                document.execCommand("copy");
-
-            if (!successful) {
-                throw new Error("Copy failed");
-            }
-
-        }
-
-        button.textContent = "COPIED!";
-
-        setTimeout(() => {
-            button.textContent = originalText;
-        }, 1800);
-
-    } catch (error) {
-
-        console.error(
-            "Clipboard error:",
-            error
+        await navigator.clipboard.writeText(
+            input.value
         );
 
-        button.textContent = "FAILED";
+        button.textContent =
+            "COPIED!";
 
-        setTimeout(() => {
-            button.textContent = originalText;
-        }, 1800);
+
+        setTimeout(
+            () => {
+
+                button.textContent =
+                    "COPY";
+
+            },
+            1800
+        );
+
+
+    } catch {
+
+        input.select();
+
+        try {
+
+            document.execCommand(
+                "copy"
+            );
+
+            button.textContent =
+                "COPIED!";
+
+            setTimeout(
+                () => {
+
+                    button.textContent =
+                        "COPY";
+
+                },
+                1800
+            );
+
+        } catch {
+
+            button.textContent =
+                "FAILED";
+
+        }
 
     }
 
@@ -2939,42 +4544,40 @@ async function copyInvite() {
 
 function toggleFAQ(button) {
 
-    if (!button) {
-        return;
-    }
-
     const item =
-        button.closest(".faq-item");
+        button.parentElement;
 
     if (!item) {
         return;
     }
 
+
     const wasOpen =
-        item.classList.contains("active");
+        item.classList.contains(
+            "active"
+        );
 
 
     document
-        .querySelectorAll(".faq-item")
+        .querySelectorAll(
+            ".faq-item"
+        )
         .forEach(faq => {
 
-            faq.classList.remove("active");
+            faq.classList.remove(
+                "active"
+            );
 
-            const question =
-                faq.querySelector(".faq-question");
-
-            if (question) {
-                question.setAttribute(
-                    "aria-expanded",
-                    "false"
+            const span =
+                faq.querySelector(
+                    ".faq-question span"
                 );
-            }
 
-            const spans =
-                question?.querySelectorAll("span");
+            if (span) {
 
-            if (spans && spans[1]) {
-                spans[1].textContent = "+";
+                span.textContent =
+                    "+";
+
             }
 
         });
@@ -2982,18 +4585,20 @@ function toggleFAQ(button) {
 
     if (!wasOpen) {
 
-        item.classList.add("active");
-
-        button.setAttribute(
-            "aria-expanded",
-            "true"
+        item.classList.add(
+            "active"
         );
 
-        const spans =
-            button.querySelectorAll("span");
+        const span =
+            button.querySelector(
+                "span"
+            );
 
-        if (spans[1]) {
-            spans[1].textContent = "−";
+        if (span) {
+
+            span.textContent =
+                "−";
+
         }
 
     }
@@ -3006,58 +4611,67 @@ function toggleFAQ(button) {
 ========================================================= */
 
 const music =
-    document.getElementById("music");
+    document.getElementById(
+        "music"
+    );
 
 const musicButton =
-    document.getElementById("musicButton");
+    document.getElementById(
+        "musicButton"
+    );
 
-let musicPlaying = false;
+let musicPlaying =
+    false;
 
 
-async function toggleMusic() {
+function toggleMusic() {
 
     if (!music || !musicButton) {
+
         return;
+
     }
 
 
     if (!musicPlaying) {
 
-        try {
+        music.play()
+            .then(() => {
 
-            await music.play();
+                musicPlaying =
+                    true;
 
-            musicPlaying = true;
+                musicButton.textContent =
+                    "🔊";
 
-            musicButton.textContent = "🔊";
+                musicButton.classList.add(
+                    "on"
+                );
 
-            musicButton.classList.add("on");
+            })
+            .catch(() => {
 
-        } catch (error) {
+                alert(
+                    "Add a file named music.mp3 next to your index.html first."
+                );
 
-            console.error(
-                "Music playback error:",
-                error
-            );
+            });
 
-            alert(
-                "Add a file named music.mp3 next to this HTML file first."
-            );
+    } else {
 
-        }
+        music.pause();
 
-        return;
+        musicPlaying =
+            false;
+
+        musicButton.textContent =
+            "🔇";
+
+        musicButton.classList.remove(
+            "on"
+        );
 
     }
-
-
-    music.pause();
-
-    musicPlaying = false;
-
-    musicButton.textContent = "🔇";
-
-    musicButton.classList.remove("on");
 
 }
 
@@ -3068,15 +4682,7 @@ async function toggleMusic() {
 
 function playButton(event) {
 
-    if (!event) {
-        return;
-    }
-
-
-    if (
-        !GAME_LINK ||
-        GAME_LINK === "#"
-    ) {
+    if (GAME_LINK === "#") {
 
         event.preventDefault();
 
@@ -3096,54 +4702,43 @@ function playButton(event) {
 
 
 /* =========================================================
-   REVEAL ANIMATIONS
+   SCROLL REVEAL
 ========================================================= */
 
-function setupRevealAnimations() {
-
-    const elements =
-        document.querySelectorAll(".reveal");
-
-
-    if (!elements.length) {
-        return;
-    }
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 
-    if (
-        !("IntersectionObserver" in window)
-    ) {
+if (
+    "IntersectionObserver"
+    in window
+) {
 
-        elements.forEach(element => {
-            element.classList.add("show");
-        });
-
-        return;
-
-    }
-
-
-    const observer =
+    const revealObserver =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    entry => {
 
-                    if (
-                        !entry.isIntersecting
-                    ) {
-                        return;
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "show"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
                     }
-
-                    entry.target.classList.add(
-                        "show"
-                    );
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
+                );
 
             },
             {
@@ -3152,9 +4747,28 @@ function setupRevealAnimations() {
         );
 
 
-    elements.forEach(element => {
-        observer.observe(element);
-    });
+    revealElements.forEach(
+        element => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+
+} else {
+
+    revealElements.forEach(
+        element => {
+
+            element.classList.add(
+                "show"
+            );
+
+        }
+    );
 
 }
 
@@ -3163,73 +4777,88 @@ function setupRevealAnimations() {
    STAT COUNTERS
 ========================================================= */
 
-function setupStatCounters() {
-
-    const stats =
-        document.querySelectorAll(
-            ".stat-number[data-target]"
-        );
+const statNumbers =
+    document.querySelectorAll(
+        ".stat-number[data-target]"
+    );
 
 
-    if (!stats.length) {
-        return;
-    }
+if (
+    "IntersectionObserver"
+    in window
+) {
 
-
-    if (
-        !("IntersectionObserver" in window)
-    ) {
-
-        stats.forEach(stat => {
-
-            const target =
-                Number(
-                    stat.dataset.target
-                );
-
-            stat.textContent =
-                formatStat(target);
-
-        });
-
-        return;
-
-    }
-
-
-    const observer =
+    const statObserver =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    entry => {
 
-                    if (
-                        !entry.isIntersecting
-                    ) {
-                        return;
-                    }
+                        if (
+                            !entry.isIntersecting
+                        ) {
+
+                            return;
+
+                        }
 
 
-                    const element =
-                        entry.target;
+                        const element =
+                            entry.target;
 
-                    const target =
-                        Number(
-                            element.dataset.target
+                        const target =
+                            Number(
+                                element.dataset.target
+                            );
+
+                        let current =
+                            0;
+
+
+                        const interval =
+                            setInterval(
+                                () => {
+
+                                    current +=
+                                        Math.ceil(
+                                            target / 30
+                                        );
+
+
+                                    if (
+                                        current >= target
+                                    ) {
+
+                                        current =
+                                            target;
+
+                                        clearInterval(
+                                            interval
+                                        );
+
+                                    }
+
+
+                                    element.textContent =
+                                        current +
+                                        (
+                                            target === 250
+                                                ? "+"
+                                                : ""
+                                        );
+
+                                },
+                                35
+                            );
+
+
+                        statObserver.unobserve(
+                            element
                         );
 
-
-                    animateNumber(
-                        element,
-                        target
-                    );
-
-
-                    observer.unobserve(
-                        element
-                    );
-
-                });
+                    }
+                );
 
             },
             {
@@ -3238,114 +4867,262 @@ function setupStatCounters() {
         );
 
 
-    stats.forEach(stat => {
-        observer.observe(stat);
-    });
+    statNumbers.forEach(
+        stat => {
 
-}
-
-
-function animateNumber(
-    element,
-    target
-) {
-
-    const duration = 850;
-
-    const start =
-        performance.now();
-
-
-    function update(now) {
-
-        const progress =
-            Math.min(
-                (now - start) / duration,
-                1
-            );
-
-
-        /*
-         * Ease-out curve.
-         */
-        const eased =
-            1 -
-            Math.pow(
-                1 - progress,
-                3
-            );
-
-
-        const current =
-            Math.round(
-                target * eased
-            );
-
-
-        element.textContent =
-            formatStat(current);
-
-
-        if (progress < 1) {
-
-            requestAnimationFrame(
-                update
+            statObserver.observe(
+                stat
             );
 
         }
-
-    }
-
-
-    requestAnimationFrame(update);
-
-}
+    );
 
 
-function formatStat(number) {
+} else {
 
-    return (
-        number +
-        (
-            number === 250
-                ? "+"
-                : ""
-        )
+    statNumbers.forEach(
+        stat => {
+
+            const target =
+                Number(
+                    stat.dataset.target
+                );
+
+            stat.textContent =
+                target +
+                (
+                    target === 250
+                        ? "+"
+                        : ""
+                );
+
+        }
     );
 
 }
 
 
 /* =========================================================
-   CODE INPUT
+   RELEASE COUNTDOWN
 ========================================================= */
 
-function setupCodeInput() {
+/*
 
-    const input =
-        document.getElementById("codeInput");
+    COUNTDOWN TARGET
 
-    if (!input) {
+    October 1st 2026
+    20:13 UK time
+
+    +01:00 = British Summer Time
+
+*/
+
+const countdownTarget =
+    new Date(
+        "2026-10-01T20:13:00+01:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const days =
+        document.getElementById(
+            "days"
+        );
+
+    const hours =
+        document.getElementById(
+            "hours"
+        );
+
+    const minutes =
+        document.getElementById(
+            "minutes"
+        );
+
+    const seconds =
+        document.getElementById(
+            "seconds"
+        );
+
+    const status =
+        document.getElementById(
+            "countdownStatus"
+        );
+
+
+    if (
+        !days ||
+        !hours ||
+        !minutes ||
+        !seconds
+    ) {
+
         return;
+
     }
 
 
-    input.addEventListener(
-        "keydown",
-        event => {
+    const now =
+        Date.now();
 
-            if (
-                event.key === "Enter"
-            ) {
+    const difference =
+        countdownTarget -
+        now;
 
-                event.preventDefault();
 
-                redeemCode();
+    /* COUNTDOWN FINISHED */
 
-            }
+    if (
+        difference <= 0
+    ) {
+
+        days.textContent =
+            "00";
+
+        hours.textContent =
+            "00";
+
+        minutes.textContent =
+            "00";
+
+        seconds.textContent =
+            "00";
+
+
+        if (status) {
+
+            status.textContent =
+                "🔥 CAVE TAG IS HERE";
 
         }
-    );
+
+        return;
+
+    }
+
+
+    const totalSeconds =
+        Math.floor(
+            difference / 1000
+        );
+
+
+    const remainingDays =
+        Math.floor(
+            totalSeconds / 86400
+        );
+
+
+    const remainingHours =
+        Math.floor(
+            (
+                totalSeconds % 86400
+            ) / 3600
+        );
+
+
+    const remainingMinutes =
+        Math.floor(
+            (
+                totalSeconds % 3600
+            ) / 60
+        );
+
+
+    const remainingSeconds =
+        totalSeconds % 60;
+
+
+    days.textContent =
+        String(
+            remainingDays
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    hours.textContent =
+        String(
+            remainingHours
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    minutes.textContent =
+        String(
+            remainingMinutes
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    seconds.textContent =
+        String(
+            remainingSeconds
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    if (status) {
+
+        if (
+            remainingDays === 0
+        ) {
+
+            status.textContent =
+                "⚡ LESS THAN 1 DAY REMAINING";
+
+        } else if (
+            remainingDays === 1
+        ) {
+
+            status.textContent =
+                "🔥 1 DAY REMAINING";
+
+        } else {
+
+            status.textContent =
+                `🔥 ${remainingDays} DAYS REMAINING`;
+
+        }
+
+    }
+
+}
+
+
+updateCountdown();
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================================
+   CODE ENTER KEY
+========================================================= */
+
+function handleCodeKey(event) {
+
+    if (
+        event.key ===
+        "Enter"
+    ) {
+
+        event.preventDefault();
+
+        redeemCode();
+
+    }
 
 }
 
@@ -3357,13 +5134,19 @@ function setupCodeInput() {
 async function redeemCode() {
 
     const input =
-        document.getElementById("codeInput");
+        document.getElementById(
+            "codeInput"
+        );
 
     const button =
-        document.getElementById("redeemButton");
+        document.getElementById(
+            "redeemButton"
+        );
 
     const result =
-        document.getElementById("codeResult");
+        document.getElementById(
+            "codeResult"
+        );
 
 
     if (
@@ -3371,7 +5154,9 @@ async function redeemCode() {
         !button ||
         !result
     ) {
+
         return;
+
     }
 
 
@@ -3383,11 +5168,11 @@ async function redeemCode() {
 
     if (!code) {
 
-        setCodeResult(
-            result,
-            "❌ Enter a code first.",
-            "error"
-        );
+        result.textContent =
+            "❌ Enter a code first.";
+
+        result.style.color =
+            "#ff5555";
 
         input.focus();
 
@@ -3396,82 +5181,49 @@ async function redeemCode() {
     }
 
 
-    /*
-     * Basic client-side validation.
-     * The server remains responsible for actually
-     * deciding whether a code is valid.
-     */
-    if (
-        code.length < 2 ||
-        code.length > 50
-    ) {
-
-        setCodeResult(
-            result,
-            "❌ Please enter a valid code.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    button.disabled = true;
+    button.disabled =
+        true;
 
     button.textContent =
         "CHECKING...";
 
 
-    setCodeResult(
-        result,
-        "Checking your code...",
-        "normal"
-    );
+    result.textContent =
+        "Checking your code...";
+
+    result.style.color =
+        "#7d8fa3";
 
 
     try {
 
-        const url =
-            CODE_REDEEM_URL +
-            "?code=" +
-            encodeURIComponent(code);
-
-
         const response =
             await fetch(
-                url,
+                CODE_REDEEM_URL +
+                "?code=" +
+                encodeURIComponent(
+                    code
+                ),
                 {
-                    method: "GET",
+                    method:
+                        "GET",
 
                     headers: {
                         "Accept":
                             "application/json"
-                    },
-
-                    /*
-                     * Prevent a request hanging forever
-                     * if the Render server is asleep.
-                     */
-                    signal:
-                        AbortSignal.timeout(
-                            15000
-                        )
+                    }
                 }
             );
 
 
         const contentType =
-            (
-                response.headers.get(
-                    "content-type"
-                ) || ""
-            ).toLowerCase();
+            response.headers.get(
+                "content-type"
+            ) || "";
 
 
-        /*
-         * JSON response.
-         */
+        /* JSON RESPONSE */
+
         if (
             contentType.includes(
                 "application/json"
@@ -3487,74 +5239,70 @@ async function redeemCode() {
                 data.valid
             ) {
 
-                setCodeResult(
-                    result,
-                    "✅ Code accepted! Redirecting to Discord...",
-                    "success"
-                );
+                result.textContent =
+                    "✅ Code accepted! Redirecting to Discord...";
+
+                result.style.color =
+                    "#35aaff";
 
 
-                /*
-                 * If your backend supplies a redirect,
-                 * trust that redirect.
-                 */
                 if (
                     data.redirect
                 ) {
 
-                    window.location.assign(
-                        data.redirect
-                    );
+                    window.location.href =
+                        data.redirect;
 
                     return;
 
                 }
 
 
-                /*
-                 * Fallback to your existing login flow.
-                 */
-                window.location.assign(
-                    LOGIN_URL +
-                    "?code=" +
-                    encodeURIComponent(code)
-                );
+                window.location.href =
+                    "https://cave-tag-discord-login.onrender.com/login?code=" +
+                    encodeURIComponent(
+                        code
+                    );
 
                 return;
 
             }
 
 
-            setCodeResult(
-                result,
+            result.textContent =
                 "❌ " +
                 (
                     data.message ||
                     "That code is invalid or has already been used."
-                ),
-                "error"
-            );
+                );
+
+            result.style.color =
+                "#ff5555";
 
 
-            resetRedeemButton(button);
+            button.disabled =
+                false;
+
+            button.textContent =
+                "REDEEM";
 
             return;
 
         }
 
 
-        /*
-         * Non-JSON backend response.
-         *
-         * Keep compatibility with the previous
-         * implementation in case your Render server
-         * returns an HTML page or redirect.
-         */
-        if (response.ok) {
+        /* NON-JSON RESPONSE */
 
-            window.location.assign(
-                url
-            );
+        if (
+            response.ok
+        ) {
+
+            window.location.href =
+                CODE_REDEEM_URL +
+                "?code=" +
+                encodeURIComponent(
+                    code
+                );
 
             return;
 
@@ -3562,9 +5310,9 @@ async function redeemCode() {
 
 
         throw new Error(
-            "Server returned HTTP " +
-            response.status
+            "Server returned an error."
         );
+
 
     } catch (error) {
 
@@ -3574,135 +5322,26 @@ async function redeemCode() {
         );
 
 
-        let message =
+        result.textContent =
             "❌ Couldn't connect to the Cave Tag server. Please try again.";
 
-
-        if (
-            error?.name === "TimeoutError" ||
-            error?.name === "AbortError"
-        ) {
-
-            message =
-                "❌ The Cave Tag server took too long to respond. Please try again.";
-
-        }
+        result.style.color =
+            "#ff5555";
 
 
-        setCodeResult(
-            result,
-            message,
-            "error"
-        );
+        button.disabled =
+            false;
 
-
-        resetRedeemButton(button);
+        button.textContent =
+            "REDEEM";
 
     }
 
 }
 
-
-function resetRedeemButton(button) {
-
-    button.disabled = false;
-
-    button.textContent =
-        "REDEEM";
-
-}
-
-
-function setCodeResult(
-    element,
-    message,
-    type
-) {
-
-    element.textContent =
-        message;
-
-
-    if (type === "success") {
-
-        element.style.color =
-            "var(--success)";
-
-    } else if (type === "error") {
-
-        element.style.color =
-            "var(--danger)";
-
-    } else {
-
-        element.style.color =
-            "var(--muted)";
-
-    }
-
-}
-
-
-/* =========================================================
-   CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
-========================================================= */
-
-document.addEventListener(
-    "click",
-    event => {
-
-        const navbar =
-            document.getElementById("navbar");
-
-        const nav =
-            document.getElementById("navLinks");
-
-        const menu =
-            document.getElementById("mobileMenu");
-
-
-        if (
-            !navbar ||
-            !nav ||
-            !menu
-        ) {
-            return;
-        }
-
-
-        if (
-            nav.classList.contains("open") &&
-            !navbar.contains(event.target)
-        ) {
-
-            closeMenu();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeMenu();
-
-        }
-
-    }
-);
 </script>
 
 </body>
+
 </html>
 ```
